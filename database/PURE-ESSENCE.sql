@@ -12,8 +12,8 @@
 -- Database Section
 -- ________________ 
 
-create database DATABASE;
-use DATABASE;
+create database PUREESSENCE;
+use PUREESSENCE;
 
 
 -- Tables Section
@@ -209,6 +209,6 @@ alter table RICEZIONE-VENDITORE add constraint FKRIC_VEN
      references VENDITORE (username);
 
 
--- Index Section
+-- Category creation - TODO
 -- _____________ 
 
