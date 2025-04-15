@@ -21,7 +21,7 @@ use PUREESSENCE;
 
 create table ACQUIRENTE (
      username varchar(50) not null,
-     password char(256) not null,
+     password text(256) not null,
      email varchar(100) not null,
      constraint IDACQUIRENTE primary key (username));
 
@@ -37,7 +37,7 @@ create table PRODOTTO (
 
 create table VENDITORE (
      username varchar(50) not null,
-     password char(256) not null,
+     password text(256) not null,
      email varchar(100) not null,
      constraint IDVENDITORE primary key (username));
 
@@ -70,15 +70,15 @@ create table PAGAMENTO (
      constraint IDPAGAMENTO primary key (usernameAcquirente, IDordine),
      constraint FKFINALITÀ_ID unique (IDordine));
 
-create table NOTIFICA-ACQUIRENTE (
+create table `NOTIFICA-ACQUIRENTE` (
      titolo varchar(20) not null,
      testo varchar(100) not null,
-     constraint IDNOTIFICA-ACQUIRENTE primary key (titolo));
+     constraint `IDNOTIFICA-ACQUIRENTE` primary key (titolo));
 
-create table NOTIFICA-VENDITORE (
+create table `NOTIFICA-VENDITORE` (
      titolo varchar(20) not null,
      testo varchar(100) not null,
-     constraint IDNOTIFICA-VENDITORE primary key (titolo));
+     constraint `IDNOTIFICA-VENDITORE` primary key (titolo));
 
 create table PREFERITO (
      usernameAcquirente varchar(50) not null,
@@ -87,7 +87,7 @@ create table PREFERITO (
 
 create table CATEGORIA (
      nome varchar(50) not null,
-     descrizione varchar(200) not null,
+     descrizione tinytext not null,
      constraint IDCATEGORIA primary key (nome));
 
 create table OFFERTA (
@@ -110,23 +110,22 @@ create table MARCA (
 
 create table SOTTOCATEGORIA (
      nome varchar(50) not null,
-     descrizione varchar(200) not null,
      categoria varchar(50) not null,
      constraint IDSOTTOCATEGORIA primary key (nome));
 
-create table RICEZIONE-ACQUIRENTE (
+create table `RICEZIONE-ACQUIRENTE` (
      usernameAcquirente varchar(50) not null,
      titoloNotifica varchar(20) not null,
      data date not null,
      letto char not null,
-     constraint IDRICEZIONE-ACQUIRENTE primary key (usernameAcquirente, titoloNotifica));
+     constraint `IDRICEZIONE-ACQUIRENTE` primary key (usernameAcquirente, titoloNotifica));
 
-create table RICEZIONE-VENDITORE (
+create table `RICEZIONE-VENDITORE` (
      usernameVenditore varchar(50) not null,
      titoloNotifica varchar(20) not null,
      data date not null,
      letto char not null,
-     constraint IDRICEZIONE-VENDITORE primary key (usernameVenditore, titoloNotifica));
+     constraint `IDRICEZIONE-VENDITORE` primary key (usernameVenditore, titoloNotifica));
 
 
 -- Constraints Section
@@ -192,19 +191,19 @@ alter table SOTTOCATEGORIA add constraint FKINCLUSIONE
      foreign key (categoria)
      references CATEGORIA (nome);
 
-alter table RICEZIONE-ACQUIRENTE add constraint FKnotifica
+alter table `RICEZIONE-ACQUIRENTE` add constraint FKnotifica
      foreign key (titoloNotifica)
-     references NOTIFICA-ACQUIRENTE (titolo);
+     references `NOTIFICA-ACQUIRENTE` (titolo);
 
-alter table RICEZIONE-ACQUIRENTE add constraint FKusernameAcquirente
+alter table `RICEZIONE-ACQUIRENTE` add constraint FKusernameAcquirente
      foreign key (usernameAcquirente)
      references ACQUIRENTE (username);
 
-alter table RICEZIONE-VENDITORE add constraint FKRIC_NOT
+alter table `RICEZIONE-VENDITORE` add constraint FKRIC_NOT
      foreign key (titoloNotifica)
-     references NOTIFICA-VENDITORE (titolo);
+     references `NOTIFICA-VENDITORE` (titolo);
 
-alter table RICEZIONE-VENDITORE add constraint FKRIC_VEN
+alter table `RICEZIONE-VENDITORE` add constraint FKRIC_VEN
      foreign key (usernameVenditore)
      references VENDITORE (username);
 
