@@ -30,8 +30,8 @@ body > header > nav > a {
 }
 
 body > header > nav a img {
-    height: 20px;
-    margin-bottom: 15px;
+    height: 15px;
+    margin-bottom: 12.5px;
 }
 
 body > header > div {
@@ -44,7 +44,7 @@ body > header > div > a > img{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    height: 50px;
+    height: 40px;
 }
 
 body > header > nav > ul {
@@ -125,6 +125,15 @@ body > footer > p {
 @media screen and (min-width: 992px) {
     body > header > nav:first-child {
         visibility: hidden;
+    }
+
+    body > header > div > a > img {
+        height: 50px;
+    }
+
+    body > header > nav a img {
+        height: 20px;
+        margin-bottom: 15px;
     }
 
     body > nav {
