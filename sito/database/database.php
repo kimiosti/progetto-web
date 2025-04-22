@@ -9,6 +9,14 @@ class DatabaseHelper{
             die("Connection failed: " . $this->db->connect_error);
         }
     }
+
+    public function getCategories() {
+        $statement = $this->db->prepare("SELECT * FROM categoria");
+        $statement->execute();
+        $result = $statement->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 
 ?>
