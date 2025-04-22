@@ -38,7 +38,7 @@
                 <nav><ul>
                     <li><a href="privacy.php">Informativa sulla privacy</a></li>
                     <li><a href="#">Spedizioni e resi</a></li>
-                    <li><a href="#">Metodi di pagamento</a></li>
+                    <li><a href="payments.php">Metodi di pagamento</a></li>
                 </ul></nav>
             </section><section>
                 <header><h2>I nostri social</h2></header>
