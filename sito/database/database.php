@@ -11,7 +11,7 @@ class DatabaseHelper{
     }
 
     public function getCategories() {
-        $statement = $this->db->prepare("SELECT * FROM categoria");
+        $statement = $this->db->prepare("SELECT * FROM categoria LIMIT 5");
         $statement->execute();
         $result = $statement->get_result();
 
