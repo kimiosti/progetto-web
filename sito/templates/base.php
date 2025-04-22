@@ -36,7 +36,7 @@
             <section>
                 <header><h2>Politiche aziendali</h2></header>
                 <nav><ul>
-                    <li><a href="#">Informativa sulla privacy</a></li>
+                    <li><a href="privacy.php">Informativa sulla privacy</a></li>
                     <li><a href="#">Spedizioni e resi</a></li>
                     <li><a href="#">Metodi di pagamento</a></li>
                 </ul></nav>
