@@ -37,7 +37,7 @@
                 <header><h2>Politiche aziendali</h2></header>
                 <nav><ul>
                     <li><a href="privacy.php">Informativa sulla privacy</a></li>
-                    <li><a href="#">Spedizioni e resi</a></li>
+                    <li><a href="shipping.php">Spedizioni e resi</a></li>
                     <li><a href="payments.php">Metodi di pagamento</a></li>
                 </ul></nav>
             </section><section>
