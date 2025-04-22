@@ -70,6 +70,24 @@ body > main {
     margin-top: 83.5px;
 }
 
+body > main > section {
+    width: 80%;
+    margin: 20px 10%;
+    padding-top: 20px;
+}
+
+body > main > section > header > h1 {
+    font-size: 20pt;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+body > main > section > p {
+    font-size: 12pt;
+    font-weight: normal;
+    line-height: 150%;
+}
+
 body > footer {
     margin-top: 20px;
     background-color: #f6f6f6;
