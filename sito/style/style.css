@@ -19,6 +19,10 @@ a {
     color: black;
 }
 
+a:hover {
+    color: #417c64;
+}
+
 body > header {
     background-color: white;
     padding-top: 20px;
@@ -68,10 +72,6 @@ body > header > nav > ul > li {
 
 body > nav {
     display: none;
-}
-
-a:hover {
-    color: #417c64;
 }
 
 body > main {
