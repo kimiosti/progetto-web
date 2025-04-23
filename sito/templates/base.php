@@ -13,7 +13,7 @@
             </div><nav><ul>
                 <li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."search.svg"; ?>" alt="Cerca" /></a>
                 </li><li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."heart.svg"; ?>" alt="Preferiti" /></a>
-                </li><li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."person.svg"; ?>" alt="Profilo" /></a>
+                </li><li><a href="profile.php"><img src="<?php echo LOCAL_IMG_DIR."person.svg"; ?>" alt="Profilo" /></a>
                 </li><li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."handbag.svg"; ?>" alt="Carrello" /></a></li>
         </ul></nav>
         </header>
