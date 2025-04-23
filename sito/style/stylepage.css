@@ -1,0 +1,36 @@
+/* Prodotti Categoria - specifico per la pagina prodotti_categoria.php */
+div {
+    background-color: #ffffff; /* Colore di sfondo specifico per questa pagina */
+    color: rgb(0, 0, 0); /* Colore del testo */
+}
+
+.prodotti_categoria h2 {
+    font-size: 24px;
+    text-align: left;
+}
+
+.prodotti_categoria .elenco_prodotti {
+    display: flex;
+    flex-wrap: wrap;/*se non c'è spazio i prodotti vanno a capo*/
+    justify-content: space-around; /*distribuisce i prodotti in modo uniforme.*/
+    gap: 20px;
+}
+
+.prodotti_categoria .prodotto {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.prodotti_categoria .prodotto img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.prodotti_categoria .prodotto h3 {
+    font-size: 18px;
+    color: #333;
+}
