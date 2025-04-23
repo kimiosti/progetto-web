@@ -45,7 +45,7 @@
                     if ($templateParams["tipoForm"] == 1) {
                         echo "Registrati";
                     } else {
-                        echo "Login";
+                        echo "Accedi";
                     }
                 ?>" />
             </li>
