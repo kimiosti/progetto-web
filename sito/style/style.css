@@ -9,6 +9,11 @@ body, header, h1, h2 {
     padding: 0;
 }
 
+ul {
+    list-style: none;
+    padding: 0;
+}
+
 body > header {
     background-color: white;
     padding-top: 20px;
@@ -49,8 +54,6 @@ body > header > div > a > img{
 
 body > header > nav > ul {
     margin: 0;
-    padding: 0;
-    list-style: none;
 }
 
 body > header > nav > ul > li {
@@ -93,9 +96,7 @@ body > main > section > form {
 }
 
 body > main > section > form > ul {
-    list-style: none;
     line-height: 250%;
-    padding: 0;
 }
 
 body > main > section > form > ul > li > label {
@@ -162,7 +163,6 @@ body > footer > section > header > h2 {
 
 body > footer > section > nav > ul {
     margin-top: 10px;
-    list-style: none;
     padding-left: 3%;
 }
 
@@ -219,10 +219,8 @@ body > footer > p {
 
     body > nav > ul {
         margin: 0;
-        padding-left: 0;
         padding-top: 10px;
         padding-bottom: 10px;
-        list-style: none;
     }
 
     body > nav > ul > li {
