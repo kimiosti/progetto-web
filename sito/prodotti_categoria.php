@@ -1,4 +1,4 @@
-<!-- podotti_Categoria.php -->
+<!-- prodotti_Categoria.php -->
 <?php
 require_once 'setup.php';
 
