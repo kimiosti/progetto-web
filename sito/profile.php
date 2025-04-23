@@ -4,6 +4,8 @@ require_once 'setup.php';
 if (isset($_SESSION["idutente"])) {
     $templateParams["titolo"] = "PureEssence - Pagina personale";
     $templateParams["categorie"] = $dbh->getCategories();
+
+    $templateParams["main"] = "templates/profile.php";
 } else if (isset($_POST["email"])) {
     if (empty($_POST["username"]) || empty($_POST["password"])) {
         header("Location: registration.php?err=1");
