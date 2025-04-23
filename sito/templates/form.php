@@ -1,5 +1,11 @@
 <form action="profile.php" method="post">
-    <h1>Login</h1>
+    <h1><?php
+        if ($templateParams["tipoForm"] == 1) {
+            echo "Registrazione";
+        } else {
+            echo "Login";
+        }
+    ?></h1>
     <p><?php 
         if (isset($templateParams["erroreLogin"])) {
             echo $templateParams["erroreLogin"];
