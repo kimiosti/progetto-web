@@ -20,7 +20,7 @@
 
         <nav>
             <ul>
-                <?php foreach($templateParams["categorie"] as $categoria): ?><li><a href="#"><?php echo strtoupper($categoria["nome"]) ?></a></li><?php endforeach; ?>
+                <?php foreach($templateParams["categorie"] as $categoria): ?><li><a href="prodotti_categoria.php?categoria=<?php echo urlencode($categoria["nome"]); ?>"><?php echo strtoupper($categoria["nome"]); ?></a></li><?php endforeach; ?>
             </ul>
         </nav>
 
