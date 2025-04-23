@@ -17,6 +17,37 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function addUser($username, $password, $email) {
+        $statement = $this->db->prepare("INSERT INTO acquirente(username, password, email) VALUES (?,?,?)");
+        $statement->bind_param("sss", $username, $password, $email);
+        try {
+            $statement->execute();
+            return true;
+        } catch (Exception $th) {
+            return false;
+        }
+    }
+
+    public function checkLogin($username, $password) {
+        $customerStatement = $this->db->prepare("SELECT * FROM acquirente WHERE username = ? AND password = ?");
+        $customerStatement->bind_param("ss", $username, $password);
+        $customerStatement->execute();
+        $customers = $customerStatement->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        $sellerStatement = $this->db->prepare("SELECT * FROM venditore WHERE username = ? AND password = ?");
+        $sellerStatement->bind_param("ss", $username, $password);
+        $sellerStatement->execute();
+        $sellers = $sellerStatement->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        if (count($customers) == 1) {
+            return 1;
+        } else if (count($sellers) == 1) {
+            return 2;
+        } else {
+            return 0;
+        }
+    }
 }
 
 ?>
