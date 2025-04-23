@@ -17,6 +17,8 @@ if (isset($_SESSION["idutente"])) {
             $templateParams["erroreLogin"] = "Le due password non coincidono.";
         } else if ($_GET["err"] == 3) {
             $templateParams["erroreLogin"] = "Le due email non coincidono.";
+        } else if ($_GET["err"] == 4) {
+            $templateParams["erroreLogin"] = "Username già in uso.";
         }
     }
 }
