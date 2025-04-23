@@ -76,7 +76,7 @@ body > main > section {
     padding-top: 20px;
 }
 
-body > main > section > header > h1 {
+body > main > section > header > h1, body > main > section > form > h1 {
     font-size: 20pt;
     font-weight: bold;
     margin-bottom: 20px;
@@ -86,6 +86,57 @@ body > main > section > p {
     font-size: 12pt;
     font-weight: normal;
     line-height: 150%;
+}
+
+body > main > section > form {
+    text-align: center;
+}
+
+body > main > section > form > ul {
+    list-style: none;
+    line-height: 250%;
+    padding: 0;
+}
+
+body > main > section > form > ul > li > label {
+    box-sizing: border-box;
+    width: 50%;
+    text-align: left;
+    font-size: 12pt;
+    font-weight: normal;
+    display: inline-block;
+}
+
+body > main > section > form > ul > li > input {
+    box-sizing: border-box;
+    width: 50%;
+    border-radius: 5px;
+    height: 30px;
+}
+
+body > main > section > form > ul > li:last-child > input {
+    width: 30%;
+    margin-left: auto;
+    height: 30px;
+    background-color: #f6f6f6;
+    font-size: 10pt;
+    border-color: black;
+}
+
+body > main > section > form > ul > li:last-child > input:hover {
+    cursor: pointer;
+    color: #417c64;
+}
+
+body > main > section > form > p {
+    font-size: 10pt;
+    font-weight: normal;
+    color: #cc0003;
+}
+
+body > main > section > form > p > a {
+    text-decoration: none;
+    color: black;
 }
 
 body > footer {
@@ -186,5 +237,17 @@ body > footer > p {
 
     body > main {
         margin-top: 122.5px;
+    }
+
+    body > main > section > form > ul > li > label {
+        width: 15%;
+    }
+
+    body > main > section > form > ul > li > input {
+        width: 20%;
+    }
+
+    body > main > section > form > ul > li:last-child > input {
+        width: 10%;
     }
 }
