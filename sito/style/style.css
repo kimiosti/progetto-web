@@ -14,6 +14,11 @@ ul {
     padding: 0;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
 body > header {
     background-color: white;
     padding-top: 20px;
@@ -137,11 +142,6 @@ body > main > section > form > p {
     color: #cc0003;
 }
 
-body > main > section > form > p > a {
-    text-decoration: none;
-    color: black;
-}
-
 body > footer {
     margin-top: 20px;
     background-color: #f6f6f6;
@@ -169,11 +169,6 @@ body > footer > section > nav > ul {
 body > footer > section > nav > ul > li {
     font-size: 8pt;
     line-height: 200%;
-}
-
-body > footer > section > nav > ul > li > a {
-    color: black;
-    text-decoration: none;
 }
 
 body > footer > section:nth-child(2) > nav > ul > li {
@@ -230,8 +225,6 @@ body > footer > p {
     }
 
     body > nav > ul > li > a {
-        color: black;
-        text-decoration: none;
         font-size: 12pt;
     }
 
