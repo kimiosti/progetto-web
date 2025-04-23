@@ -111,20 +111,22 @@ body > main > section > form > ul > li > input {
     box-sizing: border-box;
     width: 50%;
     border-radius: 5px;
+    border: 1px solid #8b92a7;
     height: 30px;
 }
 
 body > main > section > form > ul > li:last-child > input {
     width: 30%;
-    margin-left: auto;
     height: 30px;
-    background-color: #f6f6f6;
+    background-color: white;
+    color: black;
     font-size: 10pt;
-    border-color: black;
+    font-weight: 600;
 }
 
 body > main > section > form > ul > li:last-child > input:hover {
     cursor: pointer;
+    background-color: #f6f6f6;
     color: #417c64;
 }
 
