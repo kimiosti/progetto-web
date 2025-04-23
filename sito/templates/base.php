@@ -43,9 +43,9 @@
             </section><section>
                 <header><h2>I nostri social</h2></header>
                 <nav><ul>
-                    <li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."instagram-logo.png"; ?>" alt="Instagram" /></a>
-                    </li><li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."facebook-logo.png"; ?>" alt="Facebook" /></a>
-                    </li><li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."x-logo.png"; ?>" alt="X o Twitter" /></a></li>
+                    <li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."instagram.svg"; ?>" alt="Instagram" /></a>
+                    </li><li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."facebook.svg"; ?>" alt="Facebook" /></a>
+                    </li><li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."twitter-x.svg"; ?>" alt="X o Twitter" /></a></li>
                 </ul></nav>
             </section>
             <p>© 2025 PureEssence</p>
