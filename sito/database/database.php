@@ -17,6 +17,20 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getProductByCategories($categoria){
+        $statement = $this->db->prepare(
+            "SELECT p.* 
+             FROM PRODOTTO p
+             JOIN SOTTOCATEGORIA s ON p.sottocategoria = s.nome
+             JOIN CATEGORIA c ON s.categoria = c.nome
+             WHERE c.nome = ?" 
+            );
+        $statement->bind_param("s", $categoria);
+        $statement->execute();
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 
 ?>
