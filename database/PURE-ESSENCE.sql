@@ -21,7 +21,7 @@ use PUREESSENCE;
 
 create table ACQUIRENTE (
      username varchar(50) not null,
-     password text(256) not null,
+     password char(128) not null,
      email varchar(100) not null,
      constraint IDACQUIRENTE primary key (username));
 
@@ -37,7 +37,7 @@ create table PRODOTTO (
 
 create table VENDITORE (
      username varchar(50) not null,
-     password text(256) not null,
+     password char(128) not null,
      email varchar(100) not null,
      constraint IDVENDITORE primary key (username));
 
@@ -240,3 +240,9 @@ values (
      "profumi",
      "Che sia per un'occasione speciale, o per la tua vita quotidiana, PureEssence ha il profumo giusto per te. Scopri il nostro catalogo e trova la migliore fragranza per le tue esigenze."
 );
+
+-- Seller profile
+-- _____________
+
+insert into VENDITORE(username, password, email)
+values ("pureessence", "c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec", "");

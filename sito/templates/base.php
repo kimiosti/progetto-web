@@ -10,11 +10,11 @@
     <body>
         <header>
             <nav><a href="#"><img src="<?php echo LOCAL_IMG_DIR."list.svg"; ?>" alt="Categorie" /></a>
-            </nav><div><a href="index.php"><img src="<?php echo LOCAL_IMG_DIR."logo.png"; ?> " alt="" /></a>
+            </nav><div><a href="index.php"><img src="<?php echo LOCAL_IMG_DIR."logo.png"; ?> " alt="Home Page" /></a>
             </div><nav><ul>
                 <li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."search.svg"; ?>" alt="Cerca" /></a>
-                </li><li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."heart.svg"; ?>" alt="Preferiti" /></a>
-                </li><li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."person.svg"; ?>" alt="Profilo" /></a>
+                </li><li><a href="wishlist.php"><img src="<?php echo LOCAL_IMG_DIR."heart.svg"; ?>" alt="Preferiti" /></a>
+                </li><li><a href="profile.php"><img src="<?php echo LOCAL_IMG_DIR."person.svg"; ?>" alt="Profilo" /></a>
                 </li><li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."handbag.svg"; ?>" alt="Carrello" /></a></li>
         </ul></nav>
         </header>
@@ -37,16 +37,16 @@
             <section>
                 <header><h2>Politiche aziendali</h2></header>
                 <nav><ul>
-                    <li><a href="#">Informativa sulla privacy</a></li>
-                    <li><a href="#">Spedizioni e resi</a></li>
-                    <li><a href="#">Metodi di pagamento</a></li>
+                    <li><a href="privacy.php">Informativa sulla privacy</a></li>
+                    <li><a href="shipping.php">Spedizioni e resi</a></li>
+                    <li><a href="payments.php">Metodi di pagamento</a></li>
                 </ul></nav>
             </section><section>
                 <header><h2>I nostri social</h2></header>
                 <nav><ul>
-                    <li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."instagram-logo.png"; ?>" alt="Instagram" /></a>
-                    </li><li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."facebook-logo.png"; ?>" alt="Facebook" /></a>
-                    </li><li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."x-logo.png"; ?>" alt="X o Twitter" /></a></li>
+                    <li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."instagram.svg"; ?>" alt="Instagram" /></a>
+                    </li><li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."facebook.svg"; ?>" alt="Facebook" /></a>
+                    </li><li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."twitter-x.svg"; ?>" alt="X o Twitter" /></a></li>
                 </ul></nav>
             </section>
             <p>© 2025 PureEssence</p>
