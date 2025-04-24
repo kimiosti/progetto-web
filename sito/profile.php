@@ -1,12 +1,7 @@
 <?php
 require_once 'setup.php';
 
-if (isset($_SESSION["idutente"])) {
-    $templateParams["titolo"] = "PureEssence - Pagina personale";
-    $templateParams["categorie"] = $dbh->getCategories();
-
-    $templateParams["main"] = "templates/profile.php";
-} else if (isset($_POST["email"])) {
+if (isset($_POST["email"])) {
     if (empty($_POST["username"]) || empty($_POST["password"])) {
         header("Location: registration.php?err=1");
         die();
@@ -47,6 +42,16 @@ if (isset($_SESSION["idutente"])) {
     $templateParams["erroreLogin"] = "login";
     header("Location: login.php");
     die();
+} else if (isset($_GET["logout"]) && $_GET["logout"] == "true") {
+    unset($_SESSION["idutente"]);
+    unset($_SESSION["tipoUtente"]);
+    header("Location: login.php?logout=true");
+    die();
+} else if (isset($_SESSION["idutente"])) {
+    $templateParams["titolo"] = "PureEssence - Pagina personale";
+    $templateParams["categorie"] = $dbh->getCategories();
+
+    $templateParams["main"] = "templates/profile.php";
 } else {
     header("Location: login.php");
     die();
