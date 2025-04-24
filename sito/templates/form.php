@@ -4,6 +4,12 @@
         <h1><?php
             if ($templateParams["tipoForm"] == "registrazione") {
                 echo "Registrazione";
+            } else if ($templateParams["tipoForm"] == "cambiaEmail") {
+                echo "Cambia email";
+            } else if ($templateParams["tipoForm"] == "cambiaPass") {
+                echo "Cambia password";
+            } else if ($templateParams["tipoForm"] == "cambiaTelefono") {
+                echo "Cambia numero di telefono";
             } else {
                 echo "Login";
             }
