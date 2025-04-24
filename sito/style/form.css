@@ -1,0 +1,63 @@
+body > main > section > form {
+    text-align: center;
+}
+
+body > main > section > form > ul {
+    line-height: 250%;
+}
+
+body > main > section > form > ul > li > label {
+    box-sizing: border-box;
+    width: 50%;
+    text-align: left;
+    font-size: 12pt;
+    font-weight: normal;
+    display: inline-block;
+}
+
+body > main > section > form > ul > li > input {
+    box-sizing: border-box;
+    width: 50%;
+    border-radius: 5px;
+    border: 1px solid #8b92a7;
+    height: 30px;
+}
+
+body > main > section > form > ul > li:last-child > input {
+    width: 30%;
+    height: 30px;
+    background-color: white;
+    color: black;
+    font-size: 10pt;
+    font-weight: 600;
+}
+
+body > main > section > form > ul > li:last-child > input:hover {
+    cursor: pointer;
+    background-color: #f6f6f6;
+    color: #417c64;
+}
+
+body > main > section > form > p {
+    font-size: 10pt;
+    font-weight: normal;
+    color: #cc0003;
+}
+
+body > main > section > form > p > a > span {
+    font-weight: bold;
+}
+
+@media screen and (min-width: 992px) {
+    body > main > section > form > ul > li > label {
+        width: 15%;
+    }
+
+    body > main > section > form > ul > li > input {
+        width: 20%;
+    }
+
+    body > main > section > form > ul > li:last-child > input, body > main > section > a > button {
+        width: 10%;
+    }
+}
