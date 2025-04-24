@@ -16,6 +16,8 @@ if (isset($_SESSION["idutente"])) {
         } else if ($_GET["err"] == 2) {
             $templateParams["erroreLogin"] = "Username o password errati.";
         }
+    } else if (isset($_GET["logout"]) && $_GET["logout"] == "true") {
+        $templateParams["erroreLogin"] = "Logout effettuato con successo";
     }
 }
 
