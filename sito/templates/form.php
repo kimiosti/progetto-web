@@ -9,8 +9,8 @@
             }
         ?></h1>
         <p class="errore"><?php 
-            if (isset($templateParams["erroreLogin"])) {
-                echo $templateParams["erroreLogin"];
+            if (isset($templateParams["messaggioForm"])) {
+                echo $templateParams["messaggioForm"];
             }
         ?></p>
         <ul>

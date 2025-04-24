@@ -3,15 +3,15 @@ require_once 'setup.php';
 
 if (isset($_POST["email"])) {
     if (empty($_POST["username"]) || empty($_POST["password"])) {
-        $_SESSION["regErr"] = "emptyFields";
+        $_SESSION["regErr"] = "Inserire username e password per registrarsi.";
         header("Location: registration.php");
         die();
     } else if (strcmp($_POST["password"], $_POST["confermaPassword"]) != 0) {
-        $_SESSION["regErr"] = "diffPass";
+        $_SESSION["regErr"] = "Le due password non coincidono.";
         header("Location: registration.php");
         die();
     } else if (strcmp($_POST["email"], $_POST["confermaEmail"]) != 0) {
-        $_SESSION["regErr"] = "diffEmail";
+        $_SESSION["regErr"] = "Le due email non coincidono.";
         header("Location: registration.php");
         die();
     } else {
@@ -21,20 +21,20 @@ if (isset($_POST["email"])) {
             header("Location: profile.php");
             die();
         } else {
-            $_SESSION["regErr"] = "userTaken";
+            $_SESSION["regErr"] = "Questo username è già in uso";
             header("Location: registration.php");
             die();
         }
     }
 } else if (isset($_POST["username"])) {
     if (empty($_POST["username"]) || empty($_POST["password"])) {
-        $_SESSION["logErr"] = "emptyFields";
+        $_SESSION["logErr"] = "Inserire username e password.";
         header("Location: login.php");
         die();
     } else {
         $loginResult = $dbh->checkLogin($_POST["username"], hash("sha512", $_POST["password"]));
         if ($loginResult == "wrongCredentials") {
-            $_SESSION["logErr"] = $loginResult;
+            $_SESSION["logErr"] = "Username o password errati.";
             header("Location: login.php");
             die();
         } else {
