@@ -18,9 +18,9 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function addUser($username, $password, $email) {
-        $statement = $this->db->prepare("INSERT INTO acquirente(username, password, email) VALUES (?,?,?)");
-        $statement->bind_param("sss", $username, $password, $email);
+    public function addUser($username, $password, $email, $phone) {
+        $statement = $this->db->prepare("INSERT INTO acquirente(username, password, email, telefono) VALUES (?,?,?,?)");
+        $statement->bind_param("ssss", $username, $password, $email, $phone);
         try {
             $statement->execute();
             return true;
