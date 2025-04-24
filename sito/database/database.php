@@ -18,6 +18,25 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getDescriptionByCategories($categoria){
+        $statement= $this->db->prepare(
+        "SELECT descrizione 
+         FROM categoria  
+         WHERE nome= ?"
+         );
+
+        $statement->bind_param("s", $categoria);
+        $statement->execute();
+        $result = $statement->get_result();
+        $row = $result->fetch_assoc();
+    
+        // Restituisci solo la descrizione, non l'intero array
+        return $row ? $row['descrizione'] : null;
+        
+    }
+
+
+
     public function getProductByCategories($categoria){
         $statement = $this->db->prepare(
             "SELECT p.* 
