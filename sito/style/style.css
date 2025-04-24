@@ -23,6 +23,10 @@ a:hover {
     color: #417c64;
 }
 
+.errore {
+    color: #cc0003;
+}
+
 body > header {
     background-color: white;
     padding-top: 20px;
