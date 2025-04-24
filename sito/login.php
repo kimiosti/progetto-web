@@ -8,7 +8,7 @@ if (isset($_SESSION["idutente"])) {
     $templateParams["categorie"] = $dbh->getCategories();
 
     $templateParams["main"] = "templates/form.php";
-    $templateParams["tipoForm"] = 0;
+    $templateParams["tipoForm"] = "login";
 
     if (isset($_SESSION["logErr"])) {
         $templateParams["messaggioForm"] = $_SESSION["logErr"];
