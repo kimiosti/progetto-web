@@ -41,7 +41,6 @@ body > main > section > form > ul > li:last-child > input:hover {
 body > main > section > form > p {
     font-size: 10pt;
     font-weight: normal;
-    color: #cc0003;
 }
 
 body > main > section > form > p > a > span {

@@ -8,7 +8,7 @@
                 echo "Login";
             }
         ?></h1>
-        <p><?php 
+        <p class="errore"><?php 
             if (isset($templateParams["erroreLogin"])) {
                 echo $templateParams["erroreLogin"];
             }
