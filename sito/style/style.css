@@ -91,100 +91,10 @@ body > main h1 {
     margin-bottom: 20px;
 }
 
-body > main > section > p {
+body > main p {
     font-size: 12pt;
     font-weight: normal;
     line-height: 150%;
-}
-
-body > main > section > form {
-    text-align: center;
-}
-
-body > main > section > form > ul {
-    line-height: 250%;
-}
-
-body > main > section > form > ul > li > label {
-    box-sizing: border-box;
-    width: 50%;
-    text-align: left;
-    font-size: 12pt;
-    font-weight: normal;
-    display: inline-block;
-}
-
-body > main > section > form > ul > li > input {
-    box-sizing: border-box;
-    width: 50%;
-    border-radius: 5px;
-    border: 1px solid #8b92a7;
-    height: 30px;
-}
-
-body > main > section > form > ul > li:last-child > input, body > main > section > a > button {
-    width: 30%;
-    height: 30px;
-    background-color: white;
-    color: black;
-    font-size: 10pt;
-    font-weight: 600;
-}
-
-body > main > section > form > ul > li:last-child > input:hover, body > main > section > a > button:hover {
-    cursor: pointer;
-    background-color: #f6f6f6;
-    color: #417c64;
-}
-
-body > main > section > form > p {
-    font-size: 10pt;
-    font-weight: normal;
-    color: #cc0003;
-}
-
-body > main > section > form > p > a > span {
-    font-weight: bold;
-}
-
-body > main > section > nav > ul > li {
-    background-color: white;
-    color: black;
-    display: inline-block;
-    width: 45%;
-    box-sizing: border-box;
-    margin-bottom: 20px;
-    text-align: center;
-    vertical-align: top;
-    aspect-ratio: 1.618;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-body > main > section > nav > ul > li:nth-child(odd) {
-    margin-right: 10%;
-}
-
-body > main > section > nav > ul > li > a > div > img {
-    height: 30px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
-
-body > main > section > nav > ul > li > a > div > h2 {
-    padding: 0 10%;
-    font-size: 16pt;
-    font-weight: 500;
-    margin-bottom: 10px;
-}
-
-body > main > section > a > button {
-    display: block;
-    margin: auto;
-    box-sizing: border-box;
-    border-radius: 5px;
-    border: 1px solid #8b92a7;
-    height: 30px;
 }
 
 body > footer {
@@ -275,25 +185,5 @@ body > footer > p {
 
     body > main {
         margin-top: 122.5px;
-    }
-
-    body > main > section > form > ul > li > label {
-        width: 15%;
-    }
-
-    body > main > section > form > ul > li > input {
-        width: 20%;
-    }
-
-    body > main > section > form > ul > li:last-child > input, body > main > section > a > button {
-        width: 10%;
-    }
-
-    body > main > section > nav > ul > li {
-        width: 19%;
-    }
-
-    body > main > section > nav > ul > li:not(:last-child) {
-        margin-right: 8%;
     }
 }
