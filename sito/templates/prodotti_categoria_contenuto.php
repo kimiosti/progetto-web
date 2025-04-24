@@ -1,7 +1,12 @@
 <!-- pagina prodotti categoria -->
 <link rel="stylesheet" type="text/css" href="style/stylepage.css"/>
 <div class="prodotti_categoria">
-    <h2>Prodotti nella categoria: <?php echo htmlspecialchars($templateParams['categoriaSelezionata']); ?></h2>
+    <h2><?php echo strtoupper(htmlspecialchars($templateParams['categoriaSelezionata'])); ?></h2>
+    <div class="intro">
+        <img src="img/banner.png" alt="#">
+        <h3><?php echo htmlspecialchars($templateParams["descrizioneCategoria"]); ?> </h3>
+    </div>
+
     <div class="elenco_prodotti">
         <?php
         if (empty($templateParams["prodotti"])) {
