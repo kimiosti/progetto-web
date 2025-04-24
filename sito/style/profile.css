@@ -1,4 +1,13 @@
+body > main > section > p > span {
+    font-weight: bold;
+}
+
 body > main > section > a > button {
+    display: block;
+    margin: auto;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #8b92a7;
     width: 30%;
     height: 30px;
     background-color: white;
@@ -42,15 +51,6 @@ body > main > section > nav > ul > li > a > div > h2 {
     font-size: 16pt;
     font-weight: 500;
     margin-bottom: 10px;
-}
-
-body > main > section > a > button {
-    display: block;
-    margin: auto;
-    box-sizing: border-box;
-    border-radius: 5px;
-    border: 1px solid #8b92a7;
-    height: 30px;
 }
 
 @media screen and (min-width: 992px) {
