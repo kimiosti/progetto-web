@@ -26,9 +26,9 @@ if ($_SESSION["tipoUtente"] == "acquirente") {
         }
     ?>
     <nav><ul>  
-        <li><a href="#"><div><img src="<?php echo LOCAL_IMG_DIR."envelope.svg"; ?>" alt="Cambia email" /><h2>Cambia email</h2></div></a>
-        </li><li><a href="#"><div><img src="<?php echo LOCAL_IMG_DIR."key.svg"; ?>" alt="Cambia password" /><h2>Cambia password</h2></div></a>
-        </li><li><a href="#"><div><img src="<?php echo LOCAL_IMG_DIR."telephone.svg"; ?>" alt="Cambia telefono" /><h2>Cambia telefono</h2></div></a>
+        <li><a href="set-email.php"><div><img src="<?php echo LOCAL_IMG_DIR."envelope.svg"; ?>" alt="Cambia email" /><h2>Cambia email</h2></div></a>
+        </li><li><a href="set-password.php"><div><img src="<?php echo LOCAL_IMG_DIR."key.svg"; ?>" alt="Cambia password" /><h2>Cambia password</h2></div></a>
+        </li><li><a href="set-phone.php"><div><img src="<?php echo LOCAL_IMG_DIR."telephone.svg"; ?>" alt="Cambia telefono" /><h2>Cambia telefono</h2></div></a>
         </li><li><a href="#"><div><img src="<?php echo LOCAL_IMG_DIR."x.svg"; ?>" alt="Rimuovi account" /><h2>Rimuovi account<h2></div></a>
     </ul></nav>
     <a href="profile.php"><button>Torna indietro</button></a>
