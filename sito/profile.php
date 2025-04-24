@@ -17,7 +17,7 @@ if (isset($_POST["email"])) {
     } else {
         if ($dbh->addUser($_POST["username"], hash("sha512", $_POST["password"]), $_POST["email"])) {
             $_SESSION["idutente"] = $_POST["username"];
-            $_SESSION["tipoUtente"] = 1;
+            $_SESSION["tipoUtente"] = "acquirente";
             header("Location: profile.php");
             die();
         } else {
@@ -33,8 +33,8 @@ if (isset($_POST["email"])) {
         die();
     } else {
         $loginResult = $dbh->checkLogin($_POST["username"], hash("sha512", $_POST["password"]));
-        if ($loginResult == 0) {
-            $_SESSION["logErr"] = "wrongCredentials";
+        if ($loginResult == "wrongCredentials") {
+            $_SESSION["logErr"] = $loginResult;
             header("Location: login.php");
             die();
         } else {

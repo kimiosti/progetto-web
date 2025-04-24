@@ -2,7 +2,7 @@
 <?php 
 $email = "";
 $telefono = "";
-if ($_SESSION["tipoUtente"] == 1) {
+if ($_SESSION["tipoUtente"] == "acquirente") {
     $email = $dbh->getCustomerInfo($_SESSION["idutente"])[0]["email"];
     $telefono = $dbh->getCustomerInfo($_SESSION["idutente"])[0]["telefono"];
 } else {

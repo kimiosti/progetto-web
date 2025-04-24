@@ -41,11 +41,11 @@ class DatabaseHelper{
         $sellers = $sellerStatement->get_result()->fetch_all(MYSQLI_ASSOC);
 
         if (count($customers) == 1) {
-            return 1;
+            return "acquirente";
         } else if (count($sellers) == 1) {
-            return 2;
+            return "venditore";
         } else {
-            return 0;
+            return "wrongCredentials";
         }
     }
 
