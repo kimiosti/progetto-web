@@ -2,15 +2,17 @@
     <h1>Pagina personale</h1>
     <nav>
         <ul>
-            <a href="#"><li><img src="<?php echo LOCAL_IMG_DIR."truck.svg"; ?>" alt="Ordini" /><h2>I tuoi ordini</h2>
-            </li></a><a href="#"><li><img src="<?php echo LOCAL_IMG_DIR."bell.svg"; ?>" alt="Notifiche" /><h2>Le tue notifiche</h2>
-            </li></a><?php
+            <li><a href="#"><div><img src="<?php echo LOCAL_IMG_DIR."truck.svg"; ?>" alt="Ordini" /><h2>I tuoi ordini</h2></div>
+            </a></li><li><a href="#"><div><img src="<?php echo LOCAL_IMG_DIR."bell.svg"; ?>" alt="Notifiche" /><h2>Le tue notifiche</h2></div>
+            </a></li><?php
                 if (isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == 1) {
-                    echo '<a href="wishlist.php"><li><img src="'.LOCAL_IMG_DIR.'heart.svg'.'" alt="Lista dei desideri" /><h2>Lista dei desideri</h2>';
+                    echo '<li><a href="wishlist.php"><div><img src="'.LOCAL_IMG_DIR.'heart.svg'.'" alt="Lista dei desideri" /><h2>Lista dei desideri</h2></div>';
                 } else {
-                    echo '<a href="#"><li><img src="'.LOCAL_IMG_DIR.'plus.svg'.'" alt="Disponibilità" /><h2>Gestisci disponibilità</h2>';
+                    echo '<li><a href="#"><div><img src="'.LOCAL_IMG_DIR.'plus.svg'.'" alt="Disponibilità" /><h2>Gestisci disponibilità</h2></div>';
                 }
-            ?></li></a><a href="#"><li><img src="<?php echo LOCAL_IMG_DIR."pencil.svg"; ?>" alt="Anagrafica" /><h2>Gestisci il tuo profilo</h2></li></a>
+            ?></a></li><li><a href="#"><div><img src="<?php echo LOCAL_IMG_DIR."pencil.svg"; ?>" alt="Anagrafica" /><h2>Gestisci il tuo profilo</h2></div></a></li>
         </ul>
     </nav>
+    <a href="profile.php?logout=true"><button>Logout</button></a>
 </section>
+<script src="scripts/profile.js"></script>
