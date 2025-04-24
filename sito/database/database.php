@@ -64,6 +64,39 @@ class DatabaseHelper{
 
         return $statement->get_result()->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function setEmail($table, $username, $email) {
+        $statement = $this->db->prepare("UPDATE " . $table . " SET email = ? WHERE username = ?");
+        $statement->bind_param("ss", $email, $username);
+        try {
+            $statement->execute();
+            return true;
+        } catch (Exception $th) {
+            return false;
+        }
+    }
+
+    public function setPassword($table, $username, $password) {
+        $statement = $this->db->prepare("UPDATE " . $table . " SET password = ? WHERE username = ?");
+        $statement->bind_param("ss", $password, $username);
+        try {
+            $statement->execute();
+            return true;
+        } catch (Exception $th) {
+            return false;
+        }
+    }
+
+    public function setPhoneNumber($table, $username, $phone) {
+        $statement = $this->db->prepare("UPDATE " . $table . " SET phone = ? WHERE username = ?");
+        $statement->bind_param("ss", $phone, $username);
+        try {
+            $statement->execute();
+            return true;
+        } catch (Exception $th) {
+            return false;
+        }
+    }
 }
 
 ?>
