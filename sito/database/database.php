@@ -48,6 +48,22 @@ class DatabaseHelper{
             return 0;
         }
     }
+
+    public function getCustomerEmail($username) {
+        $statement = $this->db->prepare("SELECT email FROM acquirente WHERE username = ?");
+        $statement->bind_param("s", $username);
+        $statement->execute();
+
+        return $statement->get_result();
+    }
+
+    public function getSellerEmail($username) {
+        $statement = $this->db->prepare("SELECT email FROM venditore WHERE username = ?");
+        $statement->bind_param("s", $username);
+        $statement->execute();
+
+        return $statement->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
 }
 
 ?>
