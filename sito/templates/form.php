@@ -1,6 +1,18 @@
 <link rel="stylesheet" type="text/css" href="style/form.css"/>
 <section>
-    <form action="profile.php" method="post">
+    <form action="actions/profile/<?php
+        if ($templateParams["tipoForm"] == "registrazione") {
+            echo "register.php";
+        } else if ($templateParams["tipoForm"] == "cambiaEmail") {
+            echo "change-email.php";
+        } else if ($templateParams["tipoForm"] == "cambiaPass") {
+            echo "change-pass.php";
+        } else if ($templateParams["tipoForm"] == "cambiaTelefono") {
+            echo "change-phone.php";
+        } else {
+            echo "login.php";
+        }
+    ?>" method="post">
         <h1><?php
             if ($templateParams["tipoForm"] == "registrazione") {
                 echo "Registrazione";

@@ -14,6 +14,6 @@
             ?></a></li><li><a href="handle-profile.php"><div><img src="<?php echo LOCAL_IMG_DIR."pencil.svg"; ?>" alt="Anagrafica" /><h2>Gestisci il tuo profilo</h2></div></a></li>
         </ul>
     </nav>
-    <a href="profile.php?logout=true"><button>Logout</button></a>
+    <a href="actions/profile/logout.php"><button>Logout</button></a>
 </section>
 <script src="scripts/profile.js"></script>
