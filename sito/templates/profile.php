@@ -10,7 +10,7 @@
                 } else {
                     echo '<li><a href="#"><div><img src="'.LOCAL_IMG_DIR.'plus.svg'.'" alt="Disponibilità" /><h2>Gestisci disponibilità</h2></div>';
                 }
-            ?></a></li><li><a href="#"><div><img src="<?php echo LOCAL_IMG_DIR."pencil.svg"; ?>" alt="Anagrafica" /><h2>Gestisci il tuo profilo</h2></div></a></li>
+            ?></a></li><li><a href="handle-profile.php"><div><img src="<?php echo LOCAL_IMG_DIR."pencil.svg"; ?>" alt="Anagrafica" /><h2>Gestisci il tuo profilo</h2></div></a></li>
         </ul>
     </nav>
     <a href="profile.php?logout=true"><button>Logout</button></a>
