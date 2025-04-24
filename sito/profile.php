@@ -3,13 +3,16 @@ require_once 'setup.php';
 
 if (isset($_POST["email"])) {
     if (empty($_POST["username"]) || empty($_POST["password"])) {
-        header("Location: registration.php?err=1");
+        $_SESSION["regErr"] = "emptyFields";
+        header("Location: registration.php");
         die();
     } else if (strcmp($_POST["password"], $_POST["confermaPassword"]) != 0) {
-        header("Location: registration.php?err=2");
+        $_SESSION["regErr"] = "diffPass";
+        header("Location: registration.php");
         die();
     } else if (strcmp($_POST["email"], $_POST["confermaEmail"]) != 0) {
-        header("Location: registration.php?err=3");
+        $_SESSION["regErr"] = "diffEmail";
+        header("Location: registration.php");
         die();
     } else {
         if ($dbh->addUser($_POST["username"], hash("sha512", $_POST["password"]), $_POST["email"])) {
@@ -18,18 +21,21 @@ if (isset($_POST["email"])) {
             header("Location: profile.php");
             die();
         } else {
-            header("Location: registration.php?err=4");
+            $_SESSION["regErr"] = "userTaken";
+            header("Location: registration.php");
             die();
         }
     }
 } else if (isset($_POST["username"])) {
     if (empty($_POST["username"]) || empty($_POST["password"])) {
-        header("Location: login.php?err=1");
+        $_SESSION["logErr"] = "emptyFields";
+        header("Location: login.php");
         die();
     } else {
         $loginResult = $dbh->checkLogin($_POST["username"], hash("sha512", $_POST["password"]));
         if ($loginResult == 0) {
-            header("Location: login.php?err=2");
+            $_SESSION["logErr"] = "wrongCredentials";
+            header("Location: login.php");
             die();
         } else {
             $_SESSION["idutente"] = $_POST["username"];
@@ -38,14 +44,11 @@ if (isset($_POST["email"])) {
             die();
         }
     }
-
-    $templateParams["erroreLogin"] = "login";
-    header("Location: login.php");
-    die();
 } else if (isset($_GET["logout"]) && $_GET["logout"] == "true") {
     unset($_SESSION["idutente"]);
     unset($_SESSION["tipoUtente"]);
-    header("Location: login.php?logout=true");
+    $_SESSION["logout"] = true;
+    header("Location: login.php");
     die();
 } else if (isset($_SESSION["idutente"])) {
     $templateParams["titolo"] = "PureEssence - Pagina personale";
