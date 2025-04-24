@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="style/profile.css"/>
 <section>
     <h1>Pagina personale</h1>
     <nav>
