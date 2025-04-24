@@ -25,7 +25,8 @@ body > main > section > form > ul > li > input {
 
 body > main > section > form > ul > li:last-child > input {
     width: 30%;
-    height: 30px;
+    padding: 5px 0;
+    height: auto;
     background-color: white;
     color: black;
     font-size: 10pt;
