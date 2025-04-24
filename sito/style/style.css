@@ -143,6 +143,10 @@ body > main > section > form > p {
     color: #cc0003;
 }
 
+body > main > section > form > p > a > span {
+    font-weight: bold;
+}
+
 body > main > section > nav > ul > li {
     background-color: white;
     color: black;

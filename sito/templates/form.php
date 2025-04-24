@@ -52,9 +52,9 @@
         </ul>
         <p><?php
             if ($templateParams["tipoForm"] == 1) {
-                echo '<a href="login.php">Hai già un account? Accedi!</a>';
+                echo '<a href="login.php">Hai già un account? <span>Accedi!</span></a>';
             } else {
-                echo '<a href="registration.php">Non hai ancora un account? Registrati!</a>';
+                echo '<a href="registration.php">Non hai ancora un account? <span>Registrati!</span></a>';
             }
         ?></p>
     </form>
