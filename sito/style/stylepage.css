@@ -12,21 +12,23 @@ div {
 .prodotti_categoria .elenco_prodotti {
     display: flex;
     flex-wrap: wrap;/*se non c'è spazio i prodotti vanno a capo*/
-    justify-content: space-around; /*distribuisce i prodotti in modo uniforme.*/
-    gap: 20px;
+    justify-content: center; /*distribuisce i prodotti in modo uniforme.*/
+    gap: 60px;
 }
 
-.prodotti_categoria .prodotto {
+.prodotti_categoria  .prodotto {
+    width: 270px;
+    height: 370px; /* altezza fissa */
     background-color: white;
-    padding: 20px;
+    padding: 15px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
 .prodotti_categoria .prodotto img {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     object-fit: cover;
 }
 
