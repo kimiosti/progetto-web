@@ -49,16 +49,16 @@ class DatabaseHelper{
         }
     }
 
-    public function getCustomerEmail($username) {
-        $statement = $this->db->prepare("SELECT email FROM acquirente WHERE username = ?");
+    public function getCustomerInfo($username) {
+        $statement = $this->db->prepare("SELECT email, telefono FROM acquirente WHERE username = ?");
         $statement->bind_param("s", $username);
         $statement->execute();
 
         return $statement->get_result();
     }
 
-    public function getSellerEmail($username) {
-        $statement = $this->db->prepare("SELECT email FROM venditore WHERE username = ?");
+    public function getSellerInfo($username) {
+        $statement = $this->db->prepare("SELECT email, telefono FROM venditore WHERE username = ?");
         $statement->bind_param("s", $username);
         $statement->execute();
 
