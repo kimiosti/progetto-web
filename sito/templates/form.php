@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="style/form.css"/>
 <section>
     <form action="profile.php" method="post">
         <h1><?php
