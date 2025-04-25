@@ -8,13 +8,23 @@
     </div>
 
     <div class= "filtri">
-        <button>Marca<img src="img/arrow-up.png"></button>
-        <button>Taglia<img src="img/arrow-up.png"></button>
+        <button class="click">Marca<img class="arrow" src="img/arrow-up.png"></button>
+        <ul class="dropdown">
+            <?php foreach($templateParams['marcafiltri'] as $marca): ?>
+                <li><h3><?php echo htmlspecialchars($marca['marca']); ?></h3></li>
+            <?php endforeach; ?>
+        </ul>
+        <button class="click">Taglia<img class="arrow" src="img/arrow-up.png"></button>
+        <ul class="dropdown">
+            <?php foreach($templateParams['sottocategoriafiltri'] as $sottocategoria): ?>
+                <li><h3><?php echo htmlspecialchars($sottocategoria['sottocategoria']); ?></h3></li>
+            <?php endforeach; ?>
+        </ul>
         <button>Tipo di prodotto<img src="img/arrow-up.png"></button>
         <button>Prezzo<img src="img/arrow-up.png"></button>
     </div>
 
-
+    
     <div class="elenco_prodotti">
         <?php
         if (empty($templateParams["prodotti"])) {
@@ -31,4 +41,7 @@
         }
         ?>
     </div>
+
+       
+
 </div>
