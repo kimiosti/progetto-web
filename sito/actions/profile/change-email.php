@@ -14,11 +14,11 @@ if (isset($_SESSION["idutente"]) && isset($_SESSION["tipoUtente"])) {
             $_SESSION["mess"] = "Errore nella modifica della mail.";
         }
     }
+
+    header("Location: ../../set-email.php");
+    die();
 } else {
     header("Location: ../../login.php");
     die();
 }
-
-header("Location: ../../set-email.php");
-die();
 ?>
