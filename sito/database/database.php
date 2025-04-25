@@ -83,17 +83,36 @@ class DatabaseHelper{
     }
 
 
-    public function getBrand(){
+    public function getBrand($categoria){
         $statement= $this->db->prepare(
-            "SELECT DISTINCT o.categoria AS Categoria, o.marca AS Marca
-             FROM OFFERTA o  
-             JOIN CATEGORIA c ON o.categoria = c.nome"
+            "SELECT DISTINCT p.marca 
+             FROM PRODOTTO p
+             JOIN SOTTOCATEGORIA s ON p.sottocategoria = s.nome
+             JOIN CATEGORIA c ON s.categoria = c.nome
+             WHERE c.nome = ?"
              );
-    
+            $statement->bind_param("s", $categoria); // Manca questa riga nel tuo codice
             $statement->execute();
             $result = $statement->get_result();
             return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+
+
+    public function getSubcategory($categoria){
+        $statement= $this->db->prepare(
+            "SELECT DISTINCT p.sottocategoria
+             FROM PRODOTTO p
+             JOIN SOTTOCATEGORIA s ON p.sottocategoria = s.nome
+             JOIN CATEGORIA c ON s.categoria = c.nome
+             WHERE c.nome = ?"
+             );
+            $statement->bind_param("s", $categoria); // Manca questa riga nel tuo codice
+            $statement->execute();
+            $result = $statement->get_result();
+            return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
 }
 
 ?>
