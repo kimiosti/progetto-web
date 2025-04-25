@@ -26,9 +26,11 @@
                 echo "Login";
             }
         ?></h1>
-        <p class="errore"><?php 
+        <p class="errore"<?php 
             if (isset($templateParams["messaggioForm"])) {
-                echo $templateParams["messaggioForm"];
+                echo '>' . $templateParams["messaggioForm"];
+            } else {
+                echo ' hidden="true">';
             }
         ?></p>
         <ul>
@@ -114,12 +116,23 @@
                 }
             ?>
         </ul>
-        <p><?php
+        <p<?php
             if ($templateParams["tipoForm"] == "registrazione") {
-                echo '<a href="login.php">Hai già un account? <span>Accedi!</span></a>';
+                echo '><a href="login.php">Hai già un account? <span>Accedi!</span></a>';
             } else if ($templateParams["tipoForm"] == "login") {
-                echo '<a href="registration.php">Non hai ancora un account? <span>Registrati!</span></a>';
+                echo '><a href="registration.php">Non hai ancora un account? <span>Registrati!</span></a>';
+            } else {
+                echo ' hidden="true">';
             }
         ?></p>
     </form>
+    <?php
+            if (
+                $templateParams["tipoForm"] == "cambiaEmail"
+                || $templateParams["tipoForm"] == "cambiaPass"
+                || $templateParams["tipoForm"] == "cambiaTelefono"
+            ) {
+                echo '<a href="handle-profile.php"><button>Torna indietro</button></a>';
+            }
+        ?>
 </section>
