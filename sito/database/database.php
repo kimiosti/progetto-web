@@ -88,7 +88,7 @@ class DatabaseHelper{
     }
 
     public function setPhoneNumber($table, $username, $phone) {
-        $statement = $this->db->prepare("UPDATE " . $table . " SET phone = ? WHERE username = ?");
+        $statement = $this->db->prepare("UPDATE " . $table . " SET telefono = ? WHERE username = ?");
         $statement->bind_param("ss", $phone, $username);
         try {
             $statement->execute();
