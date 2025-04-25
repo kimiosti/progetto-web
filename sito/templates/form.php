@@ -77,7 +77,7 @@
                 } else if ($templateParams["tipoForm"] == "cambiaPass") {
                     echo <<<EOD
                         <li>
-                            <label for="vecchiaPassword">Vecchia password:</label><input type="password" id="vecchiaPassword" name="password" />
+                            <label for="vecchiaPassword">Vecchia password:</label><input type="password" id="vecchiaPassword" name="vecchiaPassword" />
                         </li>
                         <li>
                             <label for="password">Nuova password:</label><input type="password" id="password" name="password" />
