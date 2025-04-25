@@ -10,6 +10,11 @@ if (!isset($_SESSION["idutente"])) {
 
     $templateParams["tipoForm"] = "cambiaEmail";
     $templateParams["main"] = "templates/form.php";
+
+    if (isset($_SESSION["mess"])) {
+        $templateParams["messaggioForm"] = $_SESSION["mess"];
+        unset($_SESSION["mess"]);
+    }
 }
 
 require 'templates/base.php';
