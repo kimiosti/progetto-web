@@ -7,6 +7,14 @@
         <h3><?php echo htmlspecialchars($templateParams["descrizioneCategoria"]); ?> </h3>
     </div>
 
+    <div class= "filtri">
+        <button>Marca<img src="img/arrow-up.png"></button>
+        <button>Taglia<img src="img/arrow-up.png"></button>
+        <button>Tipo di prodotto<img src="img/arrow-up.png"></button>
+        <button>Prezzo<img src="img/arrow-up.png"></button>
+    </div>
+
+
     <div class="elenco_prodotti">
         <?php
         if (empty($templateParams["prodotti"])) {
