@@ -1,10 +1,41 @@
 /* Prodotti Categoria - specifico per la pagina prodotti_categoria.php */
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 div {
     background-color: #ffffff; /* Colore di sfondo specifico per questa pagina */
     color: rgb(0, 0, 0); /* Colore del testo */
+    font-family: 'Montserrat';
+
 }
 
 
+.filtri{
+    display: flex;
+    flex-wrap: wrap;/*se non c'è spazio i prodotti vanno a capo*/
+    justify-content: center; /*distribuisce i prodotti in modo uniforme.*/
+    gap: 150px;
+    margin-bottom: 50px;
+}
+
+
+.filtri button{
+    position: relative;
+    font-family: 'Montserrat';
+    background-color: white;
+    border: 1.5px solid #a6a6a6;
+    width:220px; 
+    height: 50px; 
+    text-align: left;
+}
+
+button img{
+    position: absolute;
+    width: 18px; 
+    height: 8px;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);/*la centra*/
+}
 
 .intro {
     position: relative;
@@ -40,7 +71,6 @@ div {
     color:#383838;
     text-align: justify;
 }
-
 
 
 
