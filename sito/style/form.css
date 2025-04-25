@@ -4,6 +4,7 @@ body > main > section > form {
 
 body > main > section > form > ul {
     line-height: 250%;
+    margin-bottom: 0;
 }
 
 body > main > section > form > ul > li > label {
@@ -23,9 +24,18 @@ body > main > section > form > ul > li > input {
     height: 30px;
 }
 
-body > main > section > form > ul > li:last-child > input {
+body > main > section > a > button {
+    border-radius: 5px;
+    border: 1px solid #8b92a7;
+    display: block;
+    margin: auto;
+    margin-top: 5px;
+}
+
+body > main > section > form > ul > li:last-child > input, body > main > section > a > button {
     width: 30%;
     padding: 5px 0;
+    white-space: normal;
     height: auto;
     background-color: white;
     color: black;
@@ -33,7 +43,7 @@ body > main > section > form > ul > li:last-child > input {
     font-weight: 600;
 }
 
-body > main > section > form > ul > li:last-child > input:hover {
+body > main > section > form > ul > li:last-child > input:hover, body > main > section > a > button:hover {
     cursor: pointer;
     background-color: #f6f6f6;
     color: #417c64;
