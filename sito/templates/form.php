@@ -95,7 +95,7 @@
                             <label for="telefono">Telefono:</label><input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" />
                         </li>
                         <li>
-                            <label for="confermaTelefono">Ripeti telefono:</label><input type="tel" id="confermaTelefono" name="confermaTelefono" pattern="[0-9]{10} />
+                            <label for="confermaTelefono">Ripeti telefono:</label><input type="tel" id="confermaTelefono" name="confermaTelefono" pattern="[0-9]{10}" />
                         </li>
                         <li>
                             <input type="submit" name="submit" value="Cambia telefono" />
