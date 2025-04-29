@@ -130,6 +130,58 @@ class DatabaseHelper{
             return false;
         }
     }
+
+    public function deleteSeller($username) {
+        try {
+            $availabilityStatement = $this->db->prepare("DELETE FROM disponibilità WHERE usernameVenditore = ?");
+            $availabilityStatement->bind_param("s", $username);
+            $availabilityStatement->execute();
+
+            $offerStatement = $this->db->prepare("DELETE FROM offerta WHERE usernameVenditore = ?");
+            $offerStatement->bind_param("s", $username);
+            $offerStatement->execute();
+
+            $notificationStatement = $this->db->prepare("DELETE FROM `ricezione-venditore` WHERE usernameVenditore = ?");
+            $notificationStatement->bind_param("s", $username);
+            $notificationStatement->execute();
+
+            $accountStatement = $this->db->prepare("DELETE FROM venditore WHERE username = ?");
+            $accountStatement->bind_param("s", $username);
+            $accountStatement->execute();
+
+            return true;
+        } catch (Exception $th) {
+            return false;
+        }
+    }
+
+    public function deleteCustomer($username) {
+        try {
+            $orderStatement = $this->db->prepare("DELETE FROM ordine WHERE usernameAcquirente = ?");
+            $orderStatement->bind_param("s", $username);
+            $orderStatement->execute();
+
+            $paymentStatement = $this->db->prepare("DELETE FROM pagamento WHERE usernameAcquirente = ?");
+            $paymentStatement->bind_param("s", $username);
+            $paymentStatement->execute();
+
+            $favouriteStatement = $this->db->prepare("DELETE FROM preferito WHERE usernameAcquirente = ?");
+            $favouriteStatement->bind_param("s", $username);
+            $favouriteStatement->execute();
+
+            $notificationStatement = $this->db->prepare("DELETE FROM `ricezione-acquirente` WHERE usernameAcquirente = ?");
+            $notificationStatement->bind_param("s", $username);
+            $notificationStatement->execute();
+
+            $accountStatement = $this->db->prepare("DELETE FROM acquirente WHERE username = ?");
+            $accountStatement->bind_param("s", $username);
+            $accountStatement->execute();
+
+            return true;
+        } catch (Exception $th) {
+            return false;
+        }
+    }
 }
 
 ?>
