@@ -68,6 +68,6 @@ body > main > section > form > p > a > span {
     }
 
     body > main > section > form > ul > li:last-child > input, body > main > section > a > button {
-        width: 10%;
+        width: 15%;
     }
 }
