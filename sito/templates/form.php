@@ -9,6 +9,8 @@
             echo "change-pass.php";
         } else if ($templateParams["tipoForm"] == "cambiaTelefono") {
             echo "change-phone.php";
+        } else if ($templateParams["tipoForm"] == "rimuoviAccount") {
+            echo "delete-account.php";
         } else {
             echo "login.php";
         }
@@ -22,6 +24,8 @@
                 echo "Cambia password";
             } else if ($templateParams["tipoForm"] == "cambiaTelefono") {
                 echo "Cambia numero di telefono";
+            } else if ($templateParams["tipoForm"] == "rimuoviAccount") {
+                echo "Conferma rimozione dell'account";
             } else {
                 echo "Login";
             }
@@ -101,6 +105,12 @@
                             <input type="submit" name="submit" value="Cambia telefono" />
                         </li>
                     EOD;
+                } else if ($templateParams["tipoForm"] == "rimuoviAccount") {
+                    echo <<<EOD
+                        <li>
+                            <input type="submit" name="submit" value="Rimuovi account" />
+                        </li>
+                    EOD;
                 } else {
                     echo <<<EOD
                         <li>
@@ -127,12 +137,13 @@
         ?></p>
     </form>
     <?php
-            if (
-                $templateParams["tipoForm"] == "cambiaEmail"
-                || $templateParams["tipoForm"] == "cambiaPass"
-                || $templateParams["tipoForm"] == "cambiaTelefono"
-            ) {
-                echo '<a href="handle-profile.php"><button>Torna indietro</button></a>';
-            }
-        ?>
+        if (
+            $templateParams["tipoForm"] == "cambiaEmail"
+            || $templateParams["tipoForm"] == "cambiaPass"
+            || $templateParams["tipoForm"] == "cambiaTelefono"
+            || $templateParams["tipoForm"] == "rimuoviAccount"
+        ) {
+            echo '<a href="handle-profile.php"><button>Torna indietro</button></a>';
+        } 
+    ?>
 </section>
