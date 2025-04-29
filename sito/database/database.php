@@ -149,7 +149,7 @@ class DatabaseHelper{
             $accountStatement->bind_param("s", $username);
             $accountStatement->execute();
 
-            return true;
+            return $this->db->affected_rows == 1;
         } catch (Exception $th) {
             return false;
         }
@@ -177,7 +177,7 @@ class DatabaseHelper{
             $accountStatement->bind_param("s", $username);
             $accountStatement->execute();
 
-            return true;
+            return $this->db->affected_rows == 1;
         } catch (Exception $th) {
             return false;
         }
