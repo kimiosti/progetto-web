@@ -182,6 +182,19 @@ class DatabaseHelper{
             return false;
         }
     }
+
+
+    public function getBrand(){
+        $statement= $this->db->prepare(
+            "SELECT DISTINCT o.categoria AS Categoria, o.marca AS Marca
+             FROM OFFERTA o  
+             JOIN CATEGORIA c ON o.categoria = c.nome"
+             );
+    
+            $statement->execute();
+            $result = $statement->get_result();
+            return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 
 ?>
