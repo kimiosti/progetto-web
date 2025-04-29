@@ -16,7 +16,7 @@ function nonDeletedRedirect() {
 }
 
 if (isset($_SESSION["idutente"]) && isset($_SESSION["tipoUtente"])) {
-    if ($_SESSION["idutente"] == "acquirente") {
+    if ($_SESSION["tipoUtente"] == "acquirente") {
         if ($dbh->deleteCustomer($_SESSION["idutente"])) {
             deletedRedirect();
         } else {
