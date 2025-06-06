@@ -183,7 +183,6 @@ class DatabaseHelper{
         }
     }
 
-
     public function getBrand(){
         $statement= $this->db->prepare(
             "SELECT DISTINCT o.categoria AS Categoria, o.marca AS Marca
@@ -195,6 +194,22 @@ class DatabaseHelper{
             $result = $statement->get_result();
             return $result->fetch_all(MYSQLI_ASSOC);
     }
-}
 
+    public function getWishlist($idUtente) {
+        $statement = $this->db->prepare("
+            SELECT *
+            FROM prodotto p
+            WHERE p.IDprodotto IN (
+                SELECT pr.IDprodotto
+                FROM preferito pr, acquirente a
+                WHERE a.username = ?
+            )
+        ");
+        $statement->bind_param("s", $id);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+}
 ?>
