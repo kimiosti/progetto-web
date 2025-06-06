@@ -3,7 +3,7 @@ require_once 'setup.php';
 
 if (!isset($_SESSION["idutente"])) {
     header("Location: login.php");
-}else {
+} else {
     $templateParams["titolo"] = "PureEssence - Wishlist";
     $templateParams["categorie"] = $dbh->getCategories();
 
@@ -13,8 +13,12 @@ if (!isset($_SESSION["idutente"])) {
 
         $templateParams["main"] = "templates/message.php";
     } else {
-        echo "acquirente";
-        $templateParams["main"] = null;
+        $templateParams["titoloPagina"] = "Lista dei desideri";
+        $templateParams["prodotti"] = $dbh->getWishlist($_SESSION["idutente"]);
+        if (empty($templateParams["prodotti"])) {
+            $templateParams["info"] = "Non hai ancora aggiunto prodotti alla tua Lista dei desideri.";
+        }
+        $templateParams["main"] = "templates/wishlist.php";
     }
 }
 
