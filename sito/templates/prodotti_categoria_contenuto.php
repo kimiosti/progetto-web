@@ -38,7 +38,12 @@
         </div>
     
         <div class="wrapper">
-            <button>Taglia<img src="img/arrow-up.png"></button>
+            <button class="click">Taglia<img class= "arrow" src="img/arrow-up.png"></button>
+                <ul class="dropdown">
+                        <?php foreach($templateParams['taglieprodottofiltri'] as $marca): ?>
+                            <li><p><?php echo ucfirst(htmlspecialchars($taglia['taglia']));?></p></li>
+                        <?php endforeach; ?>
+                </ul>
         </div>
 
         <div class="wrapper">

@@ -91,7 +91,7 @@ class DatabaseHelper{
              JOIN CATEGORIA c ON s.categoria = c.nome
              WHERE c.nome = ?"
              );
-            $statement->bind_param("s", $categoria); // Manca questa riga nel tuo codice
+            $statement->bind_param("s", $categoria); 
             $statement->execute();
             $result = $statement->get_result();
             return $result->fetch_all(MYSQLI_ASSOC);
@@ -107,10 +107,39 @@ class DatabaseHelper{
              JOIN CATEGORIA c ON s.categoria = c.nome
              WHERE c.nome = ?"
              );
-            $statement->bind_param("s", $categoria); // Manca questa riga nel tuo codice
+            $statement->bind_param("s", $categoria); 
             $statement->execute();
             $result = $statement->get_result();
             return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+
+    public function getSize($categoria){
+        $statement= $this->db->prepare(
+            "SELECT d.taglia
+             FROM DISPONIBILITà d
+             JOIN PRODOTTO p ON d.IDprodotto = p.IDprodotto
+             JOIN SOTTOCATEGORIA s On p.sottocategoria= s.nome
+             JOIN CATEGORIA c ON s.categoria = c.nome
+             WHERE c.nome= ?"
+        );
+
+        if (!$statement) {
+        // Log errore (opzionale)
+        return [];
+        }
+        $statement->bind_param("s", $categoria);
+        if (!$statement->execute()) {
+        // Log errore (opzionale)
+        return [];
+        }
+        
+        $statement->execute();
+
+        
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
 }
