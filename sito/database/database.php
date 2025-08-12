@@ -201,11 +201,11 @@ class DatabaseHelper{
             FROM prodotto p
             WHERE p.IDprodotto IN (
                 SELECT pr.IDprodotto
-                FROM preferito pr, acquirente a
-                WHERE a.username = ?
+                FROM preferito pr
+                WHERE pr.usernameAcquirente = ?
             )
         ");
-        $statement->bind_param("s", $id);
+        $statement->bind_param("s", $idUtente);
         $statement->execute();
 
         $result = $statement->get_result();
