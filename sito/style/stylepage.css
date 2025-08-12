@@ -52,7 +52,7 @@ button img{
    
 }
 
-.prodotti_categoria h2 {
+.prodotti_categoria h2, .prodotti_wishlist h2 {
     position: absolute; /* Posiziona il testo sopra l'immagine */
     top: 25%; /* Centra verticalmente il testo */
     left: 50px; /* Distanza dal lato sinistro */
@@ -74,14 +74,14 @@ button img{
 
 
 
-.prodotti_categoria .elenco_prodotti {
+.prodotti_categoria .elenco_prodotti, .prodotti_wishlist .elenco_prodotti {
     display: flex;
     flex-wrap: wrap;/*se non c'è spazio i prodotti vanno a capo*/
     justify-content: center; /*distribuisce i prodotti in modo uniforme.*/
     gap: 70px;
 }
 
-.prodotti_categoria  .prodotto {
+.prodotti_categoria  .prodotto, .prodotti_categoria .prodotto {
     width: 270px;
     height: 370px; /* altezza fissa */
     background-color: white;
@@ -91,13 +91,13 @@ button img{
     text-align: center;
 }
 
-.prodotti_categoria .prodotto img {
+.prodotti_categoria .prodotto img, .prodotti_wishlist .prodotto img {
     width: 200px;
     height: 200px;
     object-fit: cover;
 }
 
-.prodotti_categoria .prodotto h3 {
+.prodotti_categoria .prodotto h3, .prodotti_wishlist .prodotto h3 {
     font-size: 18px;
     color: #333;
 }
