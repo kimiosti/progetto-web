@@ -6,7 +6,7 @@
             echo $templateParams["info"];
         }
     ?></p>
-    <div class="elenco_prodotti">
+    <div class="prodotti_wishlist"><div class="elenco_prodotti">
         <?php
             foreach ($templateParams["prodotti"] as $prodotto) {
                 echo "<div class='prodotto'>";
@@ -17,5 +17,5 @@
                 echo "</div>";
             }
         ?>
-    </div>
+    </div></div>
 </section>
