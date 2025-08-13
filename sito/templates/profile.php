@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="style/profile.css"/>
+<link rel="stylesheet" type="text/css" href="style/multioption.css"/>
 <section>
     <h1>Pagina personale</h1>
     <nav>
