@@ -18,4 +18,5 @@
             }
         ?>
     </div></div>
+    <a href="profile.php"><button>Torna indietro</button></a>
 </section>
