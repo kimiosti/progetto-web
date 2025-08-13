@@ -2,6 +2,10 @@ body > main > section > p > span {
     font-weight: bold;
 }
 
+body > main > section > nav > ul {
+    text-align: center;
+}
+
 body > main > section > nav > ul > li {
     background-color: white;
     color: black;
