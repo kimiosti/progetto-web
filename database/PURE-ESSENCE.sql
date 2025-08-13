@@ -27,7 +27,7 @@ create table ACQUIRENTE (
      constraint IDACQUIRENTE primary key (username));
 
 create table PRODOTTO (
-     IDprodotto int not null,
+     IDprodotto int not null auto_increment,
      nome varchar(100) not null,
      didascalia varchar(300) not null,
      descrizione varchar(1500) not null,
