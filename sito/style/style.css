@@ -105,6 +105,26 @@ body > main p {
     line-height: 150%;
 }
 
+body > main > section > a > button {
+    display: block;
+    margin: auto;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #8b92a7;
+    width: 30%;
+    padding: 5px 0;
+    background-color: white;
+    color: black;
+    font-size: 10pt;
+    font-weight: 600;
+}
+
+body > main > section > a > button:hover {
+    cursor: pointer;
+    background-color: #f6f6f6;
+    color: #417c64;
+}
+
 body > footer {
     margin-top: 20px;
     background-color: #f6f6f6;
@@ -193,5 +213,9 @@ body > footer > p {
 
     body > main {
         margin-top: 122.5px;
+    }
+
+    body > main > section > a > button {
+        width: 15%;
     }
 }
