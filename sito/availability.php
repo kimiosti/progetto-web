@@ -8,6 +8,8 @@ if (!isset($_SESSION["idutente"])) {
     $templateParams["categorie"] = $dbh->getCategories();
     $templateParams["titoloMessaggio"] = "Accesso negato";
     $templateParams["corpoMessaggio"] = "Solamente i venditori possono gestire la disponibilità dei prodotti.";
+    $templateParams["linkBottone"] = "profile.php";
+    $templateParams["testoBottone"] = "Torna al profilo";
 
     $templateParams["main"] = "templates/message.php";
     require 'templates/base.php';
