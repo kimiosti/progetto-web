@@ -16,6 +16,8 @@ Garantiamo inoltre transazioni protette grazie all'uso delle più moderne tecnol
 sui tuoi metodi di pagamento per farti acquistare in tutta tranquillità.<br />
 Scegli il metodo che preferisci e completa il tuo ordine in pochi semplici passaggi!
 EOD;
+$templateParams["linkBottone"] = "index.php";
+$templateParams["testoBottone"] = "Torna alla home";
 
 require 'templates/base.php';
 ?>
