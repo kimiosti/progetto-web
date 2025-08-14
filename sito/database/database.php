@@ -20,8 +20,8 @@ class DatabaseHelper{
 
     public function getDescriptionByCategories($categoria){
         $statement= $this->db->prepare(
-        "SELECT descrizione 
-         FROM categoria  
+        "SELECT descrizione
+         FROM categoria
          WHERE nome= ?"
          );
 
@@ -29,28 +29,61 @@ class DatabaseHelper{
         $statement->execute();
         $result = $statement->get_result();
         $row = $result->fetch_assoc();
-    
+
         // Restituisci solo la descrizione, non l'intero array
         return $row ? $row['descrizione'] : null;
-        
+
     }
 
 
 
-    public function getProductByCategories($categoria){
-        $statement = $this->db->prepare(
-            "SELECT p.* 
-             FROM PRODOTTO p
-             JOIN SOTTOCATEGORIA s ON p.sottocategoria = s.nome
-             JOIN CATEGORIA c ON s.categoria = c.nome
-             WHERE c.nome = ?" 
-            );
-        $statement->bind_param("s", $categoria);
-        $statement->execute();
-        $result = $statement->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+    public function getProductByCategories($categoria, $marca = '', $sottocategoria = '', $taglia = '', $prezzo = '') {
+    $query = "SELECT DISTINCT p.*, d.taglia, d.prezzo, d.IDdisponibilità
+              FROM PRODOTTO p
+              JOIN SOTTOCATEGORIA s ON p.sottocategoria = s.nome
+              JOIN CATEGORIA c ON s.categoria = c.nome
+              LEFT JOIN DISPONIBILITÀ d ON p.IDprodotto = d.IDprodotto
+              WHERE c.nome = ?";
+
+    $params = [$categoria];
+    $types = "s";
+
+    if (!empty($marca)) {
+        $query .= " AND p.marca = ?";
+        $params[] = $marca;
+        $types .= "s";
     }
-    
+
+    if (!empty($sottocategoria)) {
+        $query .= " AND p.sottocategoria = ?";
+        $params[] = $sottocategoria;
+        $types .= "s";
+    }
+
+    if (!empty($taglia)) {
+        $query .= " AND d.taglia = ?";
+        $params[] = $taglia;
+        $types .= "s";
+    }
+
+    if (!empty($prezzo)) {
+        $query .= " AND d.prezzo = ?";
+        $params[] = $prezzo;
+        $types .= "d";
+    }
+
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param($types, ...$params);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+
+
+
+
+
+
     public function addUser($username, $password, $email) {
         $statement = $this->db->prepare("INSERT INTO acquirente(username, password, email) VALUES (?,?,?)");
         $statement->bind_param("sss", $username, $password, $email);
@@ -85,13 +118,13 @@ class DatabaseHelper{
 
     public function getBrand($categoria){
         $statement= $this->db->prepare(
-            "SELECT DISTINCT p.marca 
+            "SELECT DISTINCT p.marca
              FROM PRODOTTO p
              JOIN SOTTOCATEGORIA s ON p.sottocategoria = s.nome
              JOIN CATEGORIA c ON s.categoria = c.nome
              WHERE c.nome = ?"
              );
-            $statement->bind_param("s", $categoria); 
+            $statement->bind_param("s", $categoria);
             $statement->execute();
             $result = $statement->get_result();
             return $result->fetch_all(MYSQLI_ASSOC);
@@ -107,7 +140,7 @@ class DatabaseHelper{
              JOIN CATEGORIA c ON s.categoria = c.nome
              WHERE c.nome = ?"
              );
-            $statement->bind_param("s", $categoria); 
+            $statement->bind_param("s", $categoria);
             $statement->execute();
             $result = $statement->get_result();
             return $result->fetch_all(MYSQLI_ASSOC);
@@ -115,32 +148,42 @@ class DatabaseHelper{
 
 
     public function getSize($categoria){
-        $statement= $this->db->prepare(
-            "SELECT d.taglia
-             FROM DISPONIBILITà d
-             JOIN PRODOTTO p ON d.IDprodotto = p.IDprodotto
-             JOIN SOTTOCATEGORIA s On p.sottocategoria= s.nome
-             JOIN CATEGORIA c ON s.categoria = c.nome
-             WHERE c.nome= ?"
-        );
+    $query = "SELECT DISTINCT d.taglia
+              FROM DISPONIBILITÀ d
+              JOIN PRODOTTO p ON d.IDprodotto = p.IDprodotto
+              JOIN SOTTOCATEGORIA s ON p.sottocategoria = s.nome
+              JOIN CATEGORIA c ON s.categoria = c.nome
+              WHERE c.nome = ?";
 
-        if (!$statement) {
-        // Log errore (opzionale)
-        return [];
-        }
-        $statement->bind_param("s", $categoria);
-        if (!$statement->execute()) {
-        // Log errore (opzionale)
-        return [];
-        }
-        
-        $statement->execute();
+    $stmt = $this->db->prepare($query);
+    if (!$stmt) return [];
 
-        
+    $stmt->bind_param("s", $categoria);
+    if (!$stmt->execute()) return [];
 
-        $result = $statement->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+
+public function getPrice($categoria){
+    $query = "SELECT DISTINCT d.prezzo
+              FROM DISPONIBILITÀ d
+              JOIN PRODOTTO p ON d.IDprodotto = p.IDprodotto
+              JOIN SOTTOCATEGORIA s ON p.sottocategoria = s.nome
+              JOIN CATEGORIA c ON s.categoria = c.nome
+              WHERE c.nome = ?";
+
+    $stmt = $this->db->prepare($query);
+    if (!$stmt) return [];
+
+    $stmt->bind_param("s", $categoria);
+    if (!$stmt->execute()) return [];
+
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+
+
 
 }
 
