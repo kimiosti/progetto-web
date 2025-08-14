@@ -1,18 +1,20 @@
 <link rel="stylesheet" type="text/css" href="style/form.css"/>
 <section>
-    <form action="actions/profile/<?php
+    <form action="actions/<?php
         if ($templateParams["tipoForm"] == "registrazione") {
-            echo "register.php";
+            echo "profile/register.php";
         } else if ($templateParams["tipoForm"] == "cambiaEmail") {
-            echo "change-email.php";
+            echo "profile/change-email.php";
         } else if ($templateParams["tipoForm"] == "cambiaPass") {
-            echo "change-pass.php";
+            echo "profile/change-pass.php";
         } else if ($templateParams["tipoForm"] == "cambiaTelefono") {
-            echo "change-phone.php";
+            echo "profile/change-phone.php";
         } else if ($templateParams["tipoForm"] == "rimuoviAccount") {
-            echo "delete-account.php";
-        } else {
-            echo "login.php";
+            echo "profile/delete-account.php";
+        } else if ($templateParams["tipoForm"] == "nuovoProdotto") {
+            echo "product/add-new.php";
+        }else {
+            echo "profile/login.php";
         }
     ?>" method="post">
         <h1><?php
@@ -26,6 +28,8 @@
                 echo "Cambia numero di telefono";
             } else if ($templateParams["tipoForm"] == "rimuoviAccount") {
                 echo "Conferma rimozione dell'account";
+            } else if ($templateParams["tipoForm"] == "nuovoProdotto") {
+                echo "Aggiungi nuovo prodotto";
             } else {
                 echo "Login";
             }
@@ -111,7 +115,41 @@
                             <input type="submit" name="submit" value="Rimuovi account" />
                         </li>
                     EOD;
-                } else {
+                } else if ($templateParams["tipoForm"] == "nuovoProdotto") {
+                    $html =  <<<EOD
+                        <li>
+                            <label for="marca">Marca:</label><input type="text" id="marca" name="marca" />
+                        </li>
+                        <li>
+                            <label for="nome">Nome:</label><input type="text" id="nome" name="nome" />
+                        </li>
+                        <li>
+                            <label for="didascalia">Didascalia:</label><textarea id="didascalia" name="didascalia" maxlength="300">Inserire qui il testo da visualizzare nell'anteprima del prodotto.</textarea>
+                        </li>
+                        <li>
+                            <label for="descrizione">Descrizione:</label><textarea id="descrizione" name="descrizione" maxlength="1500">Inserire qui il testo da visualizzare nella pagina di dettaglio del prodotto.</textarea>
+                        </li>
+                        <li>
+                            <label for="categoria">Categoria:</label><select id="categoria" name="categoria">
+                    EOD;
+                    foreach ($templateParams["categorie"] as $categoria) {
+                        $html = $html . '<option value="' . strtolower($categoria["nome"]) . '">'
+                                . strtoupper($categoria["nome"]) . '</option>';
+                    }
+                    $html = $html . <<<EOD
+                        </select></li>
+                        <li>
+                            <label for="sottocategoria">Sottocategoria:</label><input type="text" id="sottocategoria" name="sottocategoria" />
+                        </li>
+                        <li>
+                            <label for="immagine">Immagine:</label><input type="file" id="immagine" name="immagine" accept="image/*" />
+                        </li>
+                        <li>
+                            <input type="submit" name="submit" value="Inserisci" />
+                        </li>
+                    EOD;
+                    echo $html;
+                }else {
                     echo <<<EOD
                         <li>
                             <label for="username">Username:</label><input type="text" id="username" name="username" />
@@ -144,6 +182,8 @@
             || $templateParams["tipoForm"] == "rimuoviAccount"
         ) {
             echo '<a href="handle-profile.php"><button>Torna indietro</button></a>';
-        } 
+        } else if ($templateParams["tipoForm"] == "nuovoProdotto") {
+            echo '<a href="availability.php"><button>Torna indietro</button></a>';
+        }
     ?>
 </section>
