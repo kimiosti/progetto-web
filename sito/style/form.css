@@ -51,7 +51,7 @@ body > main > section > a > button {
     margin-top: 5px;
 }
 
-body > main > section > form > ul > li:last-child > input, body > main > section > a > button {
+body > main > section > form > ul > li:last-child > input {
     width: 30%;
     padding: 5px 0;
     white-space: normal;
@@ -62,7 +62,7 @@ body > main > section > form > ul > li:last-child > input, body > main > section
     font-weight: 600;
 }
 
-body > main > section > form > ul > li:last-child > input:hover, body > main > section > a > button:hover {
+body > main > section > form > ul > li:last-child > input:hover {
     cursor: pointer;
     background-color: #f6f6f6;
     color: #417c64;
@@ -87,7 +87,7 @@ body > main > section > form > p > a > span {
         width: 20%;
     }
 
-    body > main > section > form > ul > li:last-child > input, body > main > section > a > button {
+    body > main > section > form > ul > li:last-child > input {
         width: 15%;
     }
 }
