@@ -124,10 +124,16 @@
                             <label for="nome">Nome:</label><input type="text" id="nome" name="nome" />
                         </li>
                         <li>
-                            <label for="didascalia">Didascalia:</label><textarea id="didascalia" name="didascalia" maxlength="300">Inserire qui il testo da visualizzare nell'anteprima del prodotto.</textarea>
+                            <label for="didascalia">Didascalia:</label><textarea id="didascalia" name="didascalia" maxlength="300">
+                    EOD;
+                    $html = $html . PRODUCT_CAPTION_DEFAULT . <<<EOD
+                    </textarea>
                         </li>
                         <li>
-                            <label for="descrizione">Descrizione:</label><textarea id="descrizione" name="descrizione" maxlength="1500">Inserire qui il testo da visualizzare nella pagina di dettaglio del prodotto.</textarea>
+                            <label for="descrizione">Descrizione:</label><textarea id="descrizione" name="descrizione" maxlength="1500">
+                    EOD;
+                    $html = $html . PRODUCT_DESCRIPTION_DEFAULT . <<<EOD
+                    </textarea>
                         </li>
                         <li>
                             <label for="categoria">Categoria:</label><select id="categoria" name="categoria">
