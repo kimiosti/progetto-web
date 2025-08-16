@@ -62,10 +62,25 @@ body > main > section > form > ul > li:last-child > input {
     font-weight: 600;
 }
 
-body > main > section > form > ul > li:last-child > input:hover {
+body > main > section > form > ul > li:last-child > input:hover,
+body > main > section > form > ul > li > input[type=file]::file-selector-button:hover {
     cursor: pointer;
     background-color: #f6f6f6;
     color: #417c64;
+}
+
+body > main > section > form > ul > li > input[type=file]::file-selector-button {
+    box-sizing: border-box;
+    width: fit-content;
+    height: 100%;
+    border: 0px transparent;
+    border-right: 1px solid #8b92a7;
+    border-radius: 5px;
+    font-size: small;
+    font-weight: 600;
+    font-family: "Montserrat";
+    background-color: white;
+    color: black;
 }
 
 body > main > section > form > p {
