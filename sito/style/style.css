@@ -105,6 +105,10 @@ body > main p {
     line-height: 150%;
 }
 
+body > main > section > a {
+    display: contents;
+}
+
 body > main > section > a > button {
     display: block;
     margin: auto;
