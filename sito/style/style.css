@@ -117,6 +117,7 @@ body > main > section > a > button {
     color: black;
     font-size: 10pt;
     font-weight: 600;
+    font-family: "Montserrat";
 }
 
 body > main > section > a > button:hover {
