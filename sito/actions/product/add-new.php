@@ -25,6 +25,8 @@ if (isset($_SESSION["idutente"]) && isset($_SESSION["tipoUtente"])) {
         $_SESSION["mess"] = "Inserire un'immagine.";
     } else if ($_FILES["immagine"]["error"] != UPLOAD_ERR_OK ) {
         $_SESSION["mess"] = "Errore nel caricamento dell'immagine.";
+    } else if ($dbh->sameProductExists($_POST["nome"], $_POST["marca"], $_POST["sottocategoria"])) {
+        $_SESSION["mess"] = "Prodotto già esistente. Gestirne la disponibilità nell'apposita pagina.";
     } else {
         $dest_dir = "../../" . UPLOAD_DIR 
                     . strtolower(str_replace(" ", "_", $_POST["marca"])) 
