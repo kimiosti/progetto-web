@@ -16,7 +16,11 @@
         }else {
             echo "profile/login.php";
         }
-    ?>" method="post">
+    ?>" method="post" <?php 
+        if ($templateParams["tipoForm"] == "nuovoProdotto") {
+            echo 'enctype="multipart/form-data"';
+        }
+    ?>>
         <h1><?php
             if ($templateParams["tipoForm"] == "registrazione") {
                 echo "Registrazione";
