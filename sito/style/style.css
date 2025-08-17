@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 body {
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', sans-serif;
 }
 
 body, header, h1, h2 {
@@ -121,7 +121,7 @@ body > main > section > a > button {
     color: black;
     font-size: 10pt;
     font-weight: 600;
-    font-family: "Montserrat";
+    font-family: "Montserrat", sans-serif;
 }
 
 body > main > section > a > button:hover {

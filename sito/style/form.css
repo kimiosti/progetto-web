@@ -27,7 +27,7 @@ body > main > section > form > ul > li > select {
     border-radius: 5px;
     border: 1px solid #8b92a7;
     height: 30px;
-    font-family: "Montserrat";
+    font-family: "Montserrat", sans-serif;
     font-size: small;
     vertical-align: middle;
 }
@@ -78,7 +78,7 @@ body > main > section > form > ul > li > input[type=file]::file-selector-button 
     border-radius: 5px;
     font-size: small;
     font-weight: 600;
-    font-family: "Montserrat";
+    font-family: "Montserrat", sans-serif;
     background-color: white;
     color: black;
 }
