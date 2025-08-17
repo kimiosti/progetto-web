@@ -210,6 +210,18 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function sameProductExists($name, $brand, $subcategory) {
+        $statement = $this->db->prepare("SELECT * FROM prodotto WHERE nome = ? AND marca = ? AND sottocategoria = ?");
+        $name = strtolower($name);
+        $brand = strtolower($brand);
+        $subcategory = strtolower($subcategory);
+        $statement->bind_param("sss", $name, $brand, $subcategory);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return mysqli_num_rows($result) != 0;
+    }
+
     public function brandExists($brand) {
         $statement = $this->db->prepare("SELECT * FROM marca WHERE nome = ?");
         $brand = strtolower($brand);
