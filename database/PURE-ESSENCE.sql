@@ -31,7 +31,7 @@ create table PRODOTTO (
      nome varchar(100) not null,
      didascalia varchar(300) not null,
      descrizione varchar(1500) not null,
-     URLimmagine varchar(50) not null,
+     URLimmagine varchar (256) not null,
      marca varchar(80) not null,
      sottocategoria varchar(50) not null,
      constraint IDPRODOTTO primary key (IDprodotto));
