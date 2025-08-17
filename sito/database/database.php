@@ -35,8 +35,6 @@ class DatabaseHelper{
         
     }
 
-
-
     public function getProductByCategories($categoria){
         $statement = $this->db->prepare(
             "SELECT p.* 
@@ -210,6 +208,69 @@ class DatabaseHelper{
 
         $result = $statement->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function brandExists($brand) {
+        $statement = $this->db->prepare("SELECT * FROM marca WHERE nome = ?");
+        $brand = strtolower($brand);
+        $statement->bind_param("s", $brand);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return mysqli_num_rows($result) != 0;
+    }
+
+    public function createBrand($brand) {
+        $statement = $this->db->prepare("INSERT INTO marca(nome) VALUES(?)");
+        $brand = strtolower($brand);
+        $statement->bind_param("s", $brand);
+        try {
+            $statement->execute();
+            return true;
+        } catch (Exception $th) {
+            return false;
+        }
+    }
+
+    public function subcategoryExists($category, $subname) {
+        $statement = $this->db->prepare("SELECT * FROM sottocategoria WHERE nome = ? AND categoria = ?");
+        $category = strtolower($category);
+        $subname = strtolower($subname);
+        $statement->bind_param("ss", $subname, $category);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return mysqli_num_rows($result) != 0;
+    }
+
+    public function createSubcategory($category, $subname) {
+        $statement = $this->db->prepare("INSERT INTO sottocategoria(nome, categoria) VALUES(?, ?)");
+        $category = strtolower($category);
+        $subname = strtolower($subname);
+        $statement->bind_param("ss", $subname, $category);
+        try {
+            $statement->execute();
+            return true;
+        } catch (Exception $th) {
+            return false;
+        }
+    }
+
+    public function addProduct($name, $brand, $caption, $description, $image, $subcategory) {
+        $statement = $this->db->prepare("
+            INSERT INTO prodotto(nome, marca, didascalia, descrizione, URLimmagine, sottocategoria)
+            VALUES (?, ?, ?, ?, ?, ?)
+        ");
+        $name = strtolower($name);
+        $brand = strtolower($brand);
+        $subcategory = strtolower($subcategory);
+        $statement->bind_param("ssssss", $name, $brand, $caption, $description, $image, $subcategory);
+        try {
+            $statement->execute();
+            return true;
+        } catch (Exception $th) {
+            return false;
+        }
     }
 }
 ?>
