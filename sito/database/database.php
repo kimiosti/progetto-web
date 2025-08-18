@@ -349,7 +349,6 @@ class DatabaseHelper{
         }
     }
 
-
     public function getSize($categoria) {
         $query = "SELECT DISTINCT d.taglia FROM DISPONIBILITÀ d JOIN PRODOTTO p ON d.IDprodotto = p.IDprodotto JOIN SOTTOCATEGORIA s ON p.sottocategoria = s.nome JOIN CATEGORIA c ON s.categoria = c.nome WHERE c.nome = ?";
         $stmt = $this->db->prepare($query);
@@ -368,6 +367,23 @@ class DatabaseHelper{
         if (!$stmt->execute()) return [];
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function hasUnreadNotifications($username, $user_type) {
+        $table = $user_type == "venditore" ? "`NOTIFICA-VENDITORE`" : "`NOTIFICA-ACQUIRENTE`";
+        $param = $user_type == "venditore" ? "usernameVenditore" : "usernameAcquirente";
+        $statement = $this->db->prepare(
+            "SELECT * FROM "
+            . $table
+            . " WHERE "
+            . $param
+            . " = ? AND letto = 'false'"
+        );
+        $statement->bind_param("s", $username);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return mysqli_num_rows($result) != 0;
     }
 }
 ?>
