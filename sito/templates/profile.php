@@ -16,4 +16,3 @@
     </nav>
     <a href="actions/profile/logout.php"><button>Logout</button></a>
 </section>
-<script src="scripts/profile.js"></script>
