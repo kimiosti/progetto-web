@@ -114,26 +114,6 @@ create table `NOTIFICA-VENDITORE` (
      usernameVenditore varchar(50) not null,
      constraint `IDNOTIFICA-ORDINE-VENDITORE` primary key (IDnotifica));
 
-create table `NOTIFICA-DISPONIBILITÀ-ACQUIRENTE` (
-     IDnotifica int not null auto_increment,
-     titolo varchar(50) not null,
-     contenuto varchar(256) not null,
-     letto boolean not null default false,
-     data date not null,
-     IDdisponibilità int not null,
-     usernameAcquirente varchar(50) not null,
-     constraint `IDNOTIFICA-ORDINE-VENDITORE` primary key (IDnotifica));
-
-create table `NOTIFICA-DISPONIBILITÀ-VENDITORE` (
-     IDnotifica int not null auto_increment,
-     titolo varchar(50) not null,
-     contenuto varchar(256) not null,
-     letto boolean not null default false,
-     data date not null,
-     IDdisponibilità int not null,
-     usernameVenditore varchar(50) not null,
-     constraint `IDNOTIFICA-ORDINE-VENDITORE` primary key (IDnotifica));
-
 
 -- Constraints Section
 -- ___________________ 
