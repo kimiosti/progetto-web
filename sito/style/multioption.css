@@ -1,16 +1,9 @@
-body > main > section > a > button {
-    width: 30%;
-    height: 30px;
-    background-color: white;
-    color: black;
-    font-size: 10pt;
-    font-weight: 600;
+body > main > section > p > span {
+    font-weight: bold;
 }
 
-body > main > section > a > button:hover {
-    cursor: pointer;
-    background-color: #f6f6f6;
-    color: #417c64;
+body > main > section > nav > ul {
+    text-align: center;
 }
 
 body > main > section > nav > ul > li {
@@ -44,20 +37,7 @@ body > main > section > nav > ul > li > a > div > h2 {
     margin-bottom: 10px;
 }
 
-body > main > section > a > button {
-    display: block;
-    margin: auto;
-    box-sizing: border-box;
-    border-radius: 5px;
-    border: 1px solid #8b92a7;
-    height: 30px;
-}
-
 @media screen and (min-width: 992px) {
-    body > main > section > a > button {
-        width: 10%;
-    }
-
     body > main > section > nav > ul > li {
         width: 19%;
     }

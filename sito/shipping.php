@@ -16,6 +16,8 @@ completo sotto forma di buono sconto in caso di prodotto difettoso.<br />
 Sono considerati lavorativi per i tempi di consegna e reso tutti i giorni in cui il Campus è aperto.<br />
 Grazie per aver scelto PureEssence, e buona spesa!
 EOD;
+$templateParams["linkBottone"] = "index.php";
+$templateParams["testoBottone"] = "Torna alla home";
 
 require 'templates/base.php';
 ?>

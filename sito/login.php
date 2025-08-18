@@ -8,18 +8,13 @@ if (isset($_SESSION["idutente"])) {
     $templateParams["categorie"] = $dbh->getCategories();
 
     $templateParams["main"] = "templates/form.php";
-    $templateParams["tipoForm"] = 0;
+    $templateParams["tipoForm"] = "login";
 
     if (isset($_SESSION["logErr"])) {
-        if ($_SESSION["logErr"] == "emptyFields") {
-            $templateParams["erroreLogin"] = "Inserire uno username e una password.";
-        } else if ($_SESSION["logErr"] == "wrongCredentials") {
-            $templateParams["erroreLogin"] = "Username o password errati.";
-        }
-
+        $templateParams["messaggioForm"] = $_SESSION["logErr"];
         unset($_SESSION["logErr"]);
     } else if (isset($_SESSION["logout"]) && $_SESSION["logout"] == true) {
-        $templateParams["erroreLogin"] = "Logout effettuato con successo";
+        $templateParams["messaggioForm"] = "Logout effettuato con successo";
         unset($_SESSION["logout"]);
     }
 }

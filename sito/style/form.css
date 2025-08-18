@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 body > main > section > form {
     text-align: center;
 }
 
 body > main > section > form > ul {
-    line-height: 250%;
+    line-height: 100%;
+    margin-bottom: 0;
 }
 
 body > main > section > form > ul > li > label {
@@ -13,35 +16,76 @@ body > main > section > form > ul > li > label {
     font-size: 12pt;
     font-weight: normal;
     display: inline-block;
+    vertical-align: middle;
 }
 
-body > main > section > form > ul > li > input {
+body > main > section > form > ul > li > input, body > main > section > form > ul > li > textarea,
+body > main > section > form > ul > li > select {
     box-sizing: border-box;
+    margin: 5px 0;
     width: 50%;
     border-radius: 5px;
     border: 1px solid #8b92a7;
     height: 30px;
+    font-family: "Montserrat", sans-serif;
+    font-size: small;
+    vertical-align: middle;
+}
+
+body > main > section > form > ul > li > select {
+    background-color: white;
+    color: black;
+}
+
+body > main > section > form > ul > li > textarea {
+    resize: none;
+    vertical-align: middle;
+    height: 6em;
+}
+
+body > main > section > a > button {
+    border-radius: 5px;
+    border: 1px solid #8b92a7;
+    display: block;
+    margin: auto;
+    margin-top: 5px;
 }
 
 body > main > section > form > ul > li:last-child > input {
     width: 30%;
-    height: 30px;
+    padding: 5px 0;
+    white-space: normal;
+    height: auto;
     background-color: white;
     color: black;
     font-size: 10pt;
     font-weight: 600;
 }
 
-body > main > section > form > ul > li:last-child > input:hover {
+body > main > section > form > ul > li:last-child > input:hover,
+body > main > section > form > ul > li > input[type=file]::file-selector-button:hover {
     cursor: pointer;
     background-color: #f6f6f6;
     color: #417c64;
 }
 
+body > main > section > form > ul > li > input[type=file]::file-selector-button {
+    box-sizing: border-box;
+    width: fit-content;
+    height: 100%;
+    border: 0px transparent;
+    border-right: 1px solid #8b92a7;
+    border-radius: 5px;
+    font-size: small;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    background-color: white;
+    color: black;
+}
+
 body > main > section > form > p {
     font-size: 10pt;
     font-weight: normal;
-    color: #cc0003;
 }
 
 body > main > section > form > p > a > span {
@@ -53,11 +97,12 @@ body > main > section > form > p > a > span {
         width: 15%;
     }
 
-    body > main > section > form > ul > li > input {
+    body > main > section > form > ul > li > input, body > main > section > form > ul > li > textarea,
+    body > main > section > form > ul > li > select {
         width: 20%;
     }
 
-    body > main > section > form > ul > li:last-child > input, body > main > section > a > button {
-        width: 10%;
+    body > main > section > form > ul > li:last-child > input {
+        width: 15%;
     }
 }

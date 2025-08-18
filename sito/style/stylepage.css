@@ -1,6 +1,33 @@
 /* Prodotti Categoria - specifico per la pagina prodotti_categoria.php */
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
+div {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+
+.filtri{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 150px;
+    margin-bottom: 50px;
+}
+
+
+.filtri button{
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    background-color: white;
+    border: 1.5px solid #a6a6a6;
+    width:220px;
+    height: 50px;
+    text-align: left;
+}
+
 button img{
     position: absolute;
     width: 18px;
@@ -25,7 +52,7 @@ button img{
 
 }
 
-.prodotti_categoria h2 {
+.prodotti_categoria h2, .prodotti_wishlist h2 {
     position: absolute;
     top: 25%;
     left: 50px;
@@ -45,8 +72,7 @@ button img{
     text-align: justify;
 }
 
-
-.prodotti_categoria .elenco_prodotti {
+.prodotti_categoria .elenco_prodotti, .prodotti_wishlist .elenco_prodotti {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -68,7 +94,7 @@ button img{
     overflow: hidden;
 }
 
-.prodotti_categoria .prodotto img {
+.prodotti_categoria .prodotto img, .prodotti_wishlist .prodotto img {
     width: 220px;
     height: 220px;
     display: block;
@@ -78,7 +104,7 @@ button img{
 
 }
 
-.prodotti_categoria .prodotto h3 {
+.prodotti_categoria .prodotto h3, .prodotti_wishlist .prodotto h3 {
     font-size: 18px;
     color: #333;
     line-height: 1.3;

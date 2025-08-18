@@ -15,6 +15,8 @@ Abbiamo inoltre come politica aziendale quella di non salvare nessun dato di pag
 cautela nel salvataggio delle password con cifratura per proteggere il tuo account da eventuali attacchi malevoli.<br />
 Goditi il tuo shopping in sicurezza sul nostro sito!
 EOD;
+$templateParams["linkBottone"] = "index.php";
+$templateParams["testoBottone"] = "Torna alla home";
 
 require 'templates/base.php';
 ?>

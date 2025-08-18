@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="style/stylepage.css"/>
 <link rel="stylesheet" type="text/css" href="style/stylefilter.css"/>
-
 <script src="script/filterpage.js"></script>
+
 <div class="prodotti_categoria">
     <h2><?php echo strtoupper(htmlspecialchars($templateParams['categoriaSelezionata'])); ?></h2>
     <div class="intro">
