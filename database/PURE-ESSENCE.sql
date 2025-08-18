@@ -1,14 +1,3 @@
--- *********************************************
--- * SQL MySQL generation                      
--- *--------------------------------------------
--- * DB-MAIN version: 11.0.2              
--- * Generator date: Sep 14 2021              
--- * Generation date: Tue Mar 18 17:23:34 2025 
--- * LUN file: C:\xampp\htdocs\progetto-web\database\PURE-ESSENCE.lun 
--- * Schema: DATABASE/2 
--- ********************************************* 
-
-
 -- Database Section
 -- ________________ 
 
@@ -44,17 +33,17 @@ create table VENDITORE (
      constraint IDVENDITORE primary key (username));
 
 create table DISPONIBILITÀ (
-     IDdisponibilità int not null,
+     IDdisponibilità int not null auto_increment,
      taglia varchar(5) not null,
-     prezzo float(1) not null,
+     prezzo float not null,
      quantità int not null,
      IDprodotto int not null,
      usernameVenditore varchar(50) not null,
      constraint IDDISPONIBILITÀ primary key (IDdisponibilità));
 
 create table ORDINE (
-     IDordine int not null,
-     stato varchar(20) not null,
+     IDordine int not null auto_increment,
+     stato enum('carrello', 'pagato', 'pronto', 'in consegna', 'consegnato') not null default 'carrello',
      usernameAcquirente varchar(50) not null,
      constraint IDORDINE primary key (IDordine));
 
@@ -66,21 +55,9 @@ create table INCLUSIONE (
 
 create table PAGAMENTO (
      IDordine int not null,
-     usernameAcquirente varchar(50) not null,
      data date not null,
      prezzo float(1) not null,
-     constraint IDPAGAMENTO primary key (usernameAcquirente, IDordine),
-     constraint FKFINALITÀ_ID unique (IDordine));
-
-create table `NOTIFICA-ACQUIRENTE` (
-     titolo varchar(20) not null,
-     testo varchar(100) not null,
-     constraint `IDNOTIFICA-ACQUIRENTE` primary key (titolo));
-
-create table `NOTIFICA-VENDITORE` (
-     titolo varchar(20) not null,
-     testo varchar(100) not null,
-     constraint `IDNOTIFICA-VENDITORE` primary key (titolo));
+     constraint IDPAGAMENTO primary key (IDordine));
 
 create table PREFERITO (
      usernameAcquirente varchar(50) not null,
@@ -93,12 +70,12 @@ create table CATEGORIA (
      constraint IDCATEGORIA primary key (nome));
 
 create table OFFERTA (
-     IDofferta int not null,
+     IDofferta int not null auto_increment,
      URLcopertina varchar(50) not null,
      didascalia varchar(100) not null,
      descrizione varchar(1500) not null,
      percentuale int not null,
-     spedizioneGratis char not null,
+     spedizioneGratis boolean not null,
      inizio date not null,
      fine date not null,
      usernameVenditore varchar(50) not null,
@@ -113,21 +90,49 @@ create table MARCA (
 create table SOTTOCATEGORIA (
      nome varchar(50) not null,
      categoria varchar(50) not null,
-     constraint IDSOTTOCATEGORIA primary key (nome));
+     constraint IDSOTTOCATEGORIA primary key (nome, categoria));
 
-create table `RICEZIONE-ACQUIRENTE` (
+create table `NOTIFICA-ACQUIRENTE` (
+     IDnotifica int not null auto_increment,
+     titolo varchar(50) not null,
+     contenuto varchar(256) not null,
+     letto boolean not null default false,
+     data date not null,
+     IDordine int,
+     IDdisponibilità int,
      usernameAcquirente varchar(50) not null,
-     titoloNotifica varchar(20) not null,
-     data date not null,
-     letto char not null,
-     constraint `IDRICEZIONE-ACQUIRENTE` primary key (usernameAcquirente, titoloNotifica));
+     constraint `IDNOTIFICA-ORDINE-ACQUIRENTE` primary key (IDnotifica));
 
-create table `RICEZIONE-VENDITORE` (
-     usernameVenditore varchar(50) not null,
-     titoloNotifica varchar(20) not null,
+create table `NOTIFICA-VENDITORE` (
+     IDnotifica int not null auto_increment,
+     titolo varchar(50) not null,
+     contenuto varchar(256) not null,
+     letto boolean not null default false,
      data date not null,
-     letto char not null,
-     constraint `IDRICEZIONE-VENDITORE` primary key (usernameVenditore, titoloNotifica));
+     IDordine int,
+     IDdisponibilità int,
+     usernameVenditore varchar(50) not null,
+     constraint `IDNOTIFICA-ORDINE-VENDITORE` primary key (IDnotifica));
+
+create table `NOTIFICA-DISPONIBILITÀ-ACQUIRENTE` (
+     IDnotifica int not null auto_increment,
+     titolo varchar(50) not null,
+     contenuto varchar(256) not null,
+     letto boolean not null default false,
+     data date not null,
+     IDdisponibilità int not null,
+     usernameAcquirente varchar(50) not null,
+     constraint `IDNOTIFICA-ORDINE-VENDITORE` primary key (IDnotifica));
+
+create table `NOTIFICA-DISPONIBILITÀ-VENDITORE` (
+     IDnotifica int not null auto_increment,
+     titolo varchar(50) not null,
+     contenuto varchar(256) not null,
+     letto boolean not null default false,
+     data date not null,
+     IDdisponibilità int not null,
+     usernameVenditore varchar(50) not null,
+     constraint `IDNOTIFICA-ORDINE-VENDITORE` primary key (IDnotifica));
 
 
 -- Constraints Section
@@ -161,10 +166,6 @@ alter table INCLUSIONE add constraint FKRELAZIONE
      foreign key (IDdisponibilità)
      references DISPONIBILITÀ (IDdisponibilità);
 
-alter table PAGAMENTO add constraint FKEFFETTUAZIONE
-     foreign key (usernameAcquirente)
-     references ACQUIRENTE (username);
-
 alter table PAGAMENTO add constraint FKFINALITÀ_FK
      foreign key (IDordine)
      references ORDINE (IDordine);
@@ -193,19 +194,26 @@ alter table SOTTOCATEGORIA add constraint FKINCLUSIONE
      foreign key (categoria)
      references CATEGORIA (nome);
 
-alter table `RICEZIONE-ACQUIRENTE` add constraint FKnotifica
-     foreign key (titoloNotifica)
-     references `NOTIFICA-ACQUIRENTE` (titolo);
+alter table `NOTIFICA-ACQUIRENTE` add constraint FKNOTIFICAORDINEACQUIRENTE
+     foreign key (IDordine)
+     references ORDINE (IDordine);
 
-alter table `RICEZIONE-ACQUIRENTE` add constraint FKusernameAcquirente
+alter table `NOTIFICA-ACQUIRENTE` add constraint FKNOTIFICAACQUIRENTEACQUIRENTE
      foreign key (usernameAcquirente)
      references ACQUIRENTE (username);
 
-alter table `RICEZIONE-VENDITORE` add constraint FKRIC_NOT
-     foreign key (titoloNotifica)
-     references `NOTIFICA-VENDITORE` (titolo);
+alter table `NOTIFICA-ACQUIRENTE` add constraint FKNOTIFICADISPONIBILITÀACQUIRENTE
+     foreign key (IDdisponibilità)
+     references DISPONIBILITÀ (IDdisponibilità);
 
-alter table `RICEZIONE-VENDITORE` add constraint FKRIC_VEN
+alter table `NOTIFICA-VENDITORE` add constraint FKNOTIFICAORDINEVENDITORE
+     foreign key (IDordine)
+     references ORDINE (IDordine);
+
+alter table `NOTIFICA-VENDITORE` add constraint FKNOTIFICAVENDITOREVENDITORE
      foreign key (usernameVenditore)
      references VENDITORE (username);
 
+alter table `NOTIFICA-VENDITORE` add constraint FKNOTIFICADISPONIBILITÀVENDITORE
+     foreign key (IDdisponibilità)
+     references DISPONIBILITÀ (IDdisponibilità);
