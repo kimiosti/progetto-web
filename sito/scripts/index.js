@@ -1,5 +1,5 @@
 function refresh() {
-    fetch("actions/profile/check-notifications.php", {
+    fetch("actions/notifications/check.php", {
         method: "POST"
     }).then(res => {
         return res.json();
