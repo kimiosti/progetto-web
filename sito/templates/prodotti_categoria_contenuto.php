@@ -1,22 +1,23 @@
 <link rel="stylesheet" type="text/css" href="style/stylepage.css"/>
 <link rel="stylesheet" type="text/css" href="style/stylefilter.css"/>
+
 <script src="script/filterpage.js"></script>
 
 <div class="prodotti_categoria">
     <h2><?php echo strtoupper(htmlspecialchars($templateParams['categoriaSelezionata'])); ?></h2>
-    <div class="intro">
+    <section class="intro">
         <img src="img/banner.png" alt="#">
         <h3><?php echo htmlspecialchars($templateParams["descrizioneCategoria"]); ?> </h3>
-    </div>
+    </section>
 
-    <div class="breadcrumb-wrapper">
-        <div class="breadcrumb-left">
+    <section class="breadcrumb-wrapper">
+        <section class="breadcrumb-left">
             <nav class="breadcrumb">
                 <a href="index.php">Home</a> /
                 <span><?php echo ucfirst(htmlspecialchars($templateParams['categoriaSelezionata'])); ?></span>
             </nav>
             <h3 class="titoletto">Filtri</h3>
-        </div>
+        </section>
 
         <form class="form">
             <input type="hidden" name="categoria" value="<?php echo htmlspecialchars($templateParams['categoriaSelezionata']); ?>">
@@ -28,10 +29,10 @@
                 <img class="decor" src="img/reset-icon.svg">
             </button>
         </form>
-    </div>
+    </section>
 
-    <div class="filtri">
-        <div class="wrapper">
+    <section class="filtri">
+        <section class="wrapper">
             <button class="click">Marca <img class="arrow" src="img/arrow-up.png"></button>
             <ul class="dropdown">
                 <?php
@@ -54,9 +55,9 @@
                     <li><a href="<?php echo $url; ?>" class="<?php echo $classeAttiva; ?>"><?php echo ucfirst(htmlspecialchars($marcaCorrente)); ?></a></li>
                 <?php endforeach; ?>
             </ul>
-        </div>
+        </section>
 
-        <div class="wrapper">
+        <section class="wrapper">
             <button class="click">Tipologia di prodotto <img class="arrow" src="img/arrow-up.png"></button>
             <ul class="dropdown">
                 <?php
@@ -79,9 +80,9 @@
                     <li><a href="<?php echo $url; ?>" class="<?php echo $classeAttiva; ?>"><?php echo ucfirst(htmlspecialchars($sottocategoriaCorrente)); ?></a></li>
                 <?php endforeach; ?>
             </ul>
-        </div>
+        </section>
 
-        <div class="wrapper">
+        <section class="wrapper">
             <button class="click">Taglia <img class="arrow" src="img/arrow-up.png"></button>
             <ul class="dropdown">
                 <?php
@@ -104,9 +105,9 @@
                     <li><a href="<?php echo $url; ?>" class="<?php echo $classeAttiva; ?>"><?php echo htmlspecialchars($tagliaCorrente); ?></a></li>
                 <?php endforeach; ?>
             </ul>
-        </div>
+        </section>
 
-        <div class="wrapper">
+        <section class="wrapper">
             <button class="click">Prezzo <img class="arrow" src="img/arrow-up.png"></button>
             <ul class="dropdown">
                 <?php
@@ -129,10 +130,10 @@
                     <li><a href="<?php echo $url; ?>" class="<?php echo $classeAttiva; ?>"><?php echo htmlspecialchars($prezzoCorrente); ?> €</a></li>
                 <?php endforeach; ?>
             </ul>
-        </div>
-    </div>
+        </section>
+    </section>
 
-    <div class="filtri-attivi-container">
+    <section class="filtri-attivi-container">
     <?php
     $filtri = ['marca', 'sottocategoria', 'taglia', 'prezzo'];
     $filtriAttivi = array_intersect_key($_GET, array_flip($filtri));
@@ -161,9 +162,9 @@
         }
     }
     ?>
-</div>
+    </section>
 
-    <div class="elenco_prodotti">
+    <section class="elenco_prodotti">
         <?php
         if (empty($templateParams["prodotti"])) {
             echo "<p>Nessun prodotto trovato.</p>";
@@ -173,7 +174,7 @@
 
                 echo "<div class='prodotto'>";
                 echo "<h3>" . htmlspecialchars($prodotto['marca']) . "</h3>";
-                echo "<img src='" . htmlspecialchars($prodotto['URLimmagine']) . "' alt='" . htmlspecialchars($prodotto['nome']) . "' />";
+                echo "<img src='img/" . htmlspecialchars($prodotto['URLimmagine']) . "' alt='" . htmlspecialchars($prodotto['nome']) . "' />";
                 echo "<h3>" . htmlspecialchars($prodotto['nome']) . "</h3>";
                 echo "<p>" . htmlspecialchars($prodotto['didascalia']) . "</p>";
                 echo "<div class='prodotto-bottom'>";
@@ -186,5 +187,5 @@
             }
         }
         ?>
-    </div>
+    </section>
 </div>
