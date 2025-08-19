@@ -6,7 +6,11 @@
 <header><h1>Notifiche</h1></header>
 <?php
 if (empty($templateParams["notifiche"])) {
-    echo '<p class="errore">Non ci sono notifiche da leggere.</p>';
+    if (isset($_GET["read"]) && $_GET["read"] == "true") {
+        echo '<p class="errore">Troverai qui le tue notifiche dopo averle visualizzate.</p>';
+    } else {
+        echo '<p class="errore">Non hai nuove notifiche.</p>';
+    }
 }
 ?>
 <?php foreach ($templateParams["notifiche"] as $notifica): ?>
@@ -19,9 +23,21 @@ if ($notifica["IDordine"] != null) {
 } else if ($notifica["IDdisponibilità"] != null) {
     echo '<a href="#"><button>Visualizza disponibilità</button></a>';
 }
-?><a href="actions/notifications/toggle_read.php?id=<?php echo $notifica["IDnotifica"]; ?>"><button>Segna come letta</button></a>
+?><a href="actions/notifications/toggle_read.php?id=<?php
+echo $notifica["IDnotifica"];
+?>&read=<?php
+echo (isset($_GET["read"]) && $_GET["read"] == "true") ? "true" : "false";
+?>"><button><?php
+echo $notifica["letto"] == 1 ? 'Segna come non letta' : 'Segna come letta';
+?></button></a>
 </section>
 </div>
 <?php endforeach ?>
-<a href="notifications.php"><button>Vedi già lette</button></a>
+<?php
+if (isset($_GET["read"]) && $_GET["read"] == "true") {
+    echo '<a href="notifications.php"><button>Vedi non lette</button></a>';
+} else {
+    echo '<a href="notifications.php?read=true"><button>Vedi già lette</button></a>';
+}
+?>
 </section>
