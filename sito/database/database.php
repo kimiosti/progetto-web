@@ -97,7 +97,7 @@ class DatabaseHelper{
     }
 
     public function getProductById($id) {
-        $query = "SELECT p.*, d.taglia, d.prezzo, d.IDdisponibilità
+        $query = "SELECT p.*, d.taglia, d.prezzo, p.ingredienti, p.istruzioni_per_luso, d.IDdisponibilità
                   FROM PRODOTTO p
                   LEFT JOIN DISPONIBILITÀ d ON p.IDprodotto = d.IDprodotto
                   WHERE p.IDprodotto = ?";
