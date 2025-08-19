@@ -1,0 +1,62 @@
+body > main > section > nav {
+    margin-bottom: 20px;
+    font-size: 8pt;
+    color: #545454;
+}
+
+body > main > section > nav > a {
+    color: #545454;
+}
+
+body > main > section > a > button {
+    margin-bottom: 10px;
+}
+
+body > main > section > div {
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+}
+
+body > main > section > div > header > a > h2 {
+    display: contents;
+    font-size: 16pt;
+    font-weight: 600;
+}
+
+body > main > section > div > section > a {
+    display: contents;
+}
+
+body > main > section > div > section button {
+    margin: 5px 5%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #8b92a7;
+    width: 40%;
+    padding: 5px 0;
+    background-color: white;
+    color: black;
+    font-size: 10pt;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+}
+
+body > main > section > div > section button:hover {
+    cursor: pointer;
+    background-color: #f6f6f6;
+    color: #417c64;
+}
+
+@media screen and (min-width: 922px) {
+    body > main > section > nav {
+        margin-top: 10px;
+        font-size: 10pt;
+    }
+
+    body > main > section > div > section button {
+        width: 20%;
+        margin-right: 0;
+    }
+}
