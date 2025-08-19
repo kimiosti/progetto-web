@@ -6,7 +6,11 @@ if (!isset($_GET["id"])) {
     die();
 } else {
     $dbh->toggleNotificationRead($_SESSION["tipoUtente"], $_GET["id"]);
-    header("Location: ../../notifications.php");
+    if (isset($_GET["read"]) && $_GET["read"] == "true") {
+        header("Location: ../../notifications.php?read=true");
+    } else {
+        header("Location: ../../notifications.php");
+    }
     die();
 }
 
