@@ -386,19 +386,34 @@ class DatabaseHelper{
         return mysqli_num_rows($result) != 0;
     }
 
-    public function getAllNotifications($username, $user_type, $onlyUnread) {
+    public function getAllNotifications($username, $user_type, $read) {
         $table = $user_type == "venditore" ? "`NOTIFICA-VENDITORE`" : "`NOTIFICA-ACQUIRENTE`";
         $param = $user_type == "venditore" ? "usernameVenditore" : "usernameAcquirente";
-        $query = "SELECT * FROM " . $table . " WHERE " . $param . " = ?";
-        if ($onlyUnread) {
-            $query = $query . " AND letto = false";
-        }
+        $query = "SELECT * FROM " . $table . " WHERE " . $param . " = ? AND LETTO = ?";
         $statement = $this->db->prepare($query);
-        $statement->bind_param("s", $username);
+        $statement->bind_param("si", $username, $read);
         $statement->execute();
 
         $result = $statement->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function toggleNotificationRead($user_type, $notificationID) {
+        $table = $user_type == "venditore" ? "`NOTIFICA-VENDITORE`" : "`NOTIFICA-ACQUIRENTE`";
+        $checkQuery = "SELECT * FROM " . $table . "WHERE IDnotifica = ?";
+        $setQuery = "UPDATE " . $table . " SET letto = ? WHERE IDnotifica = ?";
+        
+        $checkStatement = $this->db->prepare($checkQuery);
+        $checkStatement->bind_param("i", $notificationID);
+        $checkStatement->execute();
+        $check = $checkStatement->get_result()->fetch_all(MYSQLI_ASSOC);
+        $checkStatement->close();
+
+        $newRead = $check[0]["letto"] == 0 ? 1 : 0;
+        $setStatement = $this->db->prepare($setQuery);
+        $setStatement->bind_param("ii", $newRead, $notificationID);
+        $setStatement->execute();
+        $setStatement->close();
     }
 }
 ?>
