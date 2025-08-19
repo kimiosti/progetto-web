@@ -11,6 +11,7 @@ if ($_SESSION["tipoUtente"] == "acquirente") {
 }
 ?>
 <section>
+    <nav><a href="index.php">Home</a><span>/</span><a href="profile.php">Pagina personale</a><span>/Anagrafica del profilo</span></nav>
     <h1>Anagrafica del profilo</h1>
     <?php
         if ($email == "") {
@@ -31,5 +32,4 @@ if ($_SESSION["tipoUtente"] == "acquirente") {
         </li><li><a href="set-phone.php"><div><img src="<?php echo LOCAL_IMG_DIR."telephone.svg"; ?>" alt="Cambia telefono" /><h2>Cambia telefono</h2></div></a>
         </li><li><a href="delete-account.php"><div><img src="<?php echo LOCAL_IMG_DIR."x.svg"; ?>" alt="Rimuovi account" /><h2>Rimuovi account<h2></div></a>
     </ul></nav>
-    <a href="profile.php"><button>Torna indietro</button></a>
 </section>

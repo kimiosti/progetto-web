@@ -1,5 +1,6 @@
-<link rel="stylesheet" type="text/css" href="style/stylepage.css" />
+<link rel="stylesheet" type="text/css" href="style/wishlist.css" />
 <section>
+<nav><a href="index.php">Home</a><span>/</span><a href="profile.php">Pagina personale</a><span>/Lista dei desideri</a></nav>
     <header><h1><?php echo $templateParams["titoloPagina"]; ?></h1></header>
     <p class="errore"><?php
         if (isset($templateParams["info"])) {
@@ -18,5 +19,4 @@
             }
         ?>
     </div></div>
-    <a href="profile.php"><button>Torna indietro</button></a>
 </section>

@@ -4,6 +4,7 @@
         <title> <?php echo $templateParams["titolo"]; ?> </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8" />
         <link rel="stylesheet" type="text/css" href="style/style.css"/>
+        <script src="scripts/index.js"></script>
     </head>
 
     <body>
@@ -13,8 +14,9 @@
             </div><nav><ul>
                 <li><a href="#" <?php if(isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {echo 'hidden="true"';} ?>><img src="<?php echo LOCAL_IMG_DIR."search.svg"; ?>" alt="Cerca" /></a>
                 </li><li><a href="wishlist.php"  <?php if(isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {echo 'hidden="true"';} ?>><img src="<?php echo LOCAL_IMG_DIR."heart.svg"; ?>" alt="Preferiti" /></a>
+                </li><li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."handbag.svg"; ?>" <?php if(isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {echo 'hidden="true"';} ?> alt="Carrello" /></a>
                 </li><li><a href="profile.php"><img src="<?php echo LOCAL_IMG_DIR."person.svg"; ?>" alt="Profilo" /></a>
-                </li><li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."handbag.svg"; ?>" alt="Carrello" /></a></li>
+                </li><li><a href="notifications.php"><img src="" alt="Notifiche" /></a></li>
         </ul></nav>
         </header>
 
