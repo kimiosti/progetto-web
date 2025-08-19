@@ -49,9 +49,8 @@ body > main > section > div > section button:hover {
     color: #417c64;
 }
 
-@media screen and (min-width: 922px) {
+@media screen and (min-width: 992px) {
     body > main > section > nav {
-        margin-top: 10px;
         font-size: 10pt;
     }
 
