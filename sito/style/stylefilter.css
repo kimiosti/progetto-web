@@ -1,7 +1,6 @@
 /*filtri*/
 .filtri{
     column-gap: 150px;
-    row-gap: 30px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -22,12 +21,11 @@
 .prodotti_categoria .filtri-attivi-container {
     display: flex;
     margin-left: 95px;
-    margin-top: auto;
     flex-wrap: wrap;
     gap: 12px;
     width: 100%;
     clear: both;
-    padding: 20px;
+    padding-bottom: 40px;
 }
 
 /* Stile base per tutte le pillole */
