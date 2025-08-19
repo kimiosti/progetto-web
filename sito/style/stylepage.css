@@ -149,7 +149,16 @@ button img{
 }
 
 .breadcrumb {
-  font-size: 16px;
+  font-size: 8pt;
+  color: #545454;
+}
+
+.breadcrumb > a {
+  color: #545454;
+}
+
+.breadcrumb > a:hover {
+  color: #417c64;
 }
 
 .titoletto {
@@ -157,4 +166,10 @@ button img{
 
   font-size: 30px;
   margin: 0;
+}
+
+@media screen and (min-width: 922px) {
+    .breadcrumb {
+        font-size: 10pt;
+    }
 }
