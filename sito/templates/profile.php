@@ -1,5 +1,6 @@
 <link rel="stylesheet" type="text/css" href="style/multioption.css"/>
 <section>
+    <nav><a href="index.php">Home</a><span>/Pagina personale</span></nav>
     <h1>Pagina personale</h1>
     <nav>
         <ul>

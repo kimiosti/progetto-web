@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="style/multioption.css" type="text/css" />
 <section>
+    <nav><a href="index.php">Home</a><span>/</span><a href="profile.php">Pagina personale</a><span>/Gestione disponibilità</span></nav>
     <header><h1>Gestione disponibilità</h1></header>
     <nav>
         <ul>
@@ -7,5 +8,4 @@
         </li><li><a href="#"><div><img src="<?php echo LOCAL_IMG_DIR."pencil.svg"; ?>" alt="Aggiorna disponibilità" /><h2>Aggiorna disponibilità</h2></div></a>
     </li></ul>
     </nav>
-    <a href="profile.php"><button>Torna indietro</button></a>
 </section>
