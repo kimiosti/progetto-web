@@ -12,6 +12,7 @@ if (isset($_SESSION["idutente"])) {
     $obj->hasNotifications = $dbh->hasUnreadNotifications($_SESSION["idutente"], $_SESSION["tipoUtente"]);
 }
 
+header("Content-Type: application/json");
 echo json_encode($obj);
 
 ?>
