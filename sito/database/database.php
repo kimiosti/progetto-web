@@ -385,5 +385,20 @@ class DatabaseHelper{
         $result = $statement->get_result();
         return mysqli_num_rows($result) != 0;
     }
+
+    public function getAllNotifications($username, $user_type, $onlyUnread) {
+        $table = $user_type == "venditore" ? "`NOTIFICA-VENDITORE`" : "`NOTIFICA-ACQUIRENTE`";
+        $param = $user_type == "venditore" ? "usernameVenditore" : "usernameAcquirente";
+        $query = "SELECT * FROM " . $table . " WHERE " . $param . " = ?";
+        if ($onlyUnread) {
+            $query = $query . " AND letto = false";
+        }
+        $statement = $this->db->prepare($query);
+        $statement->bind_param("s", $username);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
