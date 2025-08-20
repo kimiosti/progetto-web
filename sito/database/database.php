@@ -415,5 +415,14 @@ class DatabaseHelper{
         $setStatement->execute();
         $setStatement->close();
     }
+
+    public function getAvailabilities($productID) {
+        $statement = $this->db->prepare("SELECT * FROM disponibilità WHERE IDprodotto = ? AND quantità != 0 ORDER BY prezzo ASC");
+        $statement->bind_param("i", $productID);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
