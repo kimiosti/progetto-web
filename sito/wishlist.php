@@ -10,6 +10,8 @@ if (!isset($_SESSION["idutente"])) {
     if ($_SESSION["tipoUtente"] == "venditore") {
         $templateParams["titoloMessaggio"] = "Wishlist non disponibile";
         $templateParams["corpoMessaggio"] = "La Wishlist non può essere visualizzata dal venditore.";
+        $templateParams["linkBottone"] = "profile.php";
+        $templateParams["testoBottone"] = "Torna al profilo";
 
         $templateParams["main"] = "templates/message.php";
     } else {
