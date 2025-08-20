@@ -20,7 +20,8 @@ body > main > section > nav > ul > li {
     background-color: white;
     color: black;
     display: inline-block;
-    width: 45%;
+    width: 40%;
+    margin: 0 5%;
     box-sizing: border-box;
     margin-bottom: 20px;
     text-align: center;
@@ -28,10 +29,6 @@ body > main > section > nav > ul > li {
     aspect-ratio: 1.618;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-body > main > section > nav > ul > li:nth-child(odd) {
-    margin-right: 10%;
 }
 
 body > main > section > nav > ul > li > a > div > img {
@@ -53,10 +50,7 @@ body > main > section > nav > ul > li > a > div > h2 {
     }
 
     body > main > section > nav > ul > li {
-        width: 19%;
-    }
-
-    body > main > section > nav > ul > li:not(:last-child) {
-        margin-right: 8%;
+        width: 20%;
+        margin: 0 2.5%;
     }
 }
