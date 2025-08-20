@@ -19,6 +19,16 @@ if (!isset($_SESSION["idutente"])) {
         $templateParams["prodotti"] = $dbh->getWishlist($_SESSION["idutente"]);
         if (empty($templateParams["prodotti"])) {
             $templateParams["info"] = "Non hai ancora aggiunto prodotti alla tua Lista dei desideri.";
+        } else {
+            for ($i = 0; $i < count($templateParams["prodotti"]); $i++) {
+                $availabilities = $dbh->getAvailabilities($templateParams["prodotti"][$i]["IDprodotto"]);
+                if (empty($availabilities)) {
+                    $templateParams["prodotti"][$i]["prezzo"] = -1;
+                } else {
+                    $templateParams["prodotti"][$i]["prezzo"] = $availabilities[0]["prezzo"];
+                    $templateParams["prodotti"][$i]["taglia"] = $availabilities[0]["taglia"];
+                }
+            }
         }
         $templateParams["main"] = "templates/wishlist.php";
     }
