@@ -12,8 +12,57 @@ body > main > section > nav > a:hover {
     color: #417c64;
 }
 
+body > main > section > section > a {
+    display: contents;
+}
+
+body > main > section > section > a > div {
+    display: inline-block;
+    vertical-align: top;
+    width: 40%;
+    aspect-ratio: 1 / 2.3;
+    margin: 10px 5%;
+    padding: 10px 2%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+body > main > section > section > a > div > header {
+    font-size: 12pt;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+body > main > section > section > a > div > div {
+    margin: 0 10%;
+}
+
+body > main > section > section > a > div > div > img {
+    width: 100%;
+    aspect-ratio: 1;
+    vertical-align: middle;
+}
+
+body > main > section > section > a > div > section > h3 {
+    font-size: 10pt;
+    font-weight: 600;
+}
+
+body > main > section > section > a > div > section > p {
+    font-size: 10pt;
+    font-weight: 400;
+}
+
 @media screen and (min-width: 992px) {
     body > main > section > nav {
         font-size: 10pt;
+    }
+
+    body > main > section > section > a > div {
+        width: 20%;
+        margin: 10px 2.5%;
+        aspect-ratio: 1 / 1.5;
     }
 }
