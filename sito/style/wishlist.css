@@ -14,13 +14,18 @@ body > main > section > nav > a:hover {
 
 body > main > section > section > a {
     display: contents;
+    color: #333;
+}
+
+body > main > section > section > a:hover {
+    color: #417c64;
 }
 
 body > main > section > section > a > div {
     display: inline-block;
     vertical-align: top;
     width: 40%;
-    aspect-ratio: 1 / 2.3;
+    aspect-ratio: 1 / 2.6;
     margin: 10px 5%;
     padding: 10px 2%;
     box-sizing: border-box;
@@ -55,6 +60,18 @@ body > main > section > section > a > div > section > p {
     font-weight: 400;
 }
 
+body > main > section > section > a > div > footer > h4 {
+    font-weight: 600;
+    font-size: 10pt;
+    margin: 0;
+}
+
+body > main > section > section > a > div > footer > p {
+    font-size: 10pt;
+    font-weight: 400;
+    margin: 0;
+}
+
 @media screen and (min-width: 992px) {
     body > main > section > nav {
         font-size: 10pt;
@@ -63,6 +80,6 @@ body > main > section > section > a > div > section > p {
     body > main > section > section > a > div {
         width: 20%;
         margin: 10px 2.5%;
-        aspect-ratio: 1 / 1.5;
+        aspect-ratio: 1 / 1.618;
     }
 }
