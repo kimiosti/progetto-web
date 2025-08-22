@@ -23,7 +23,7 @@ if (!isset($_SESSION["idutente"]) || !isset($_SESSION["tipoUtente"])) {
     $templateParams["testoBottone"] = "Gestisci disponibilità";
     require "templates/base.php";
 } else {
-    $availabilities = $dbh->getAvailabilityByID($_GET["id"]);
+    $availabilities = $dbh->getAvailabilityByID($_GET["id"], $_SESSION["idutente"]);
     $availability = empty($availabilities) ? null : $availabilities[0];
     $templateParams["titolo"] = "PureEssence - Aggiornamento disponibilità";
     $templateParams["categorie"] = $dbh->getCategories();
