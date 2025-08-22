@@ -7,7 +7,6 @@ body {
 body, header, h1, h2 {
     margin: 0;
     padding: 0;
-    
 }
 
 ul {
@@ -65,7 +64,6 @@ body > header > div > a > img{
     margin-left: auto;
     margin-right: auto;
     height: 30px;
-    
 }
 
 body > header > nav > ul {
@@ -131,7 +129,6 @@ body > main > section > a > button:hover {
 }
 
 body > footer {
-    margin-top: 20px;
     background-color: #f6f6f6;
 }
 
@@ -175,6 +172,41 @@ body > footer > p {
     margin-bottom: 0;
     padding-bottom: 20px;
 }
+
+body > header > nav:last-of-type > ul > li:first-child .search-input {
+    width: 100%;
+    max-width: 0;
+    opacity: 0;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    outline: none;
+    font-size: 7px;
+    font-family: "Montserrat", sans-serif;
+    transition: width 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 20px;
+    box-sizing: border-box;
+}
+
+body > header > nav:last-of-type > ul > li:first-child .search-btn {
+    background: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+
+body > header > nav:last-of-type > ul > li:first-child.active .search-input {
+    max-width: 83px;
+    opacity: 1;
+    padding: 5px 45px 5px 15px;
+    border: 1px solid #8b92a7;
+}
+
 
 @media screen and (min-width: 992px) {
     body > header > nav:first-child {
@@ -222,5 +254,40 @@ body > footer > p {
 
     body > main > section > a > button {
         width: 15%;
+    }
+
+    body > header > nav:last-of-type > ul > li:first-child .search-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    body > header > nav:last-of-type > ul > li:first-child .search-btn img {
+        width: 18px;
+        height: 18px;
+    }
+
+    body > header > nav:last-of-type > ul > li:first-child .search-input {
+        width: 100%;
+        max-width: 0;
+        opacity: 0;
+        padding: 0;
+        border: 1px solid transparent;
+        border-radius: 20px;
+        outline: none;
+        font-size: 14px;
+        font-family: "Montserrat", sans-serif;
+        transition: width 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
+        position: absolute;
+        right: 25px;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 33px;
+        box-sizing: border-box;
+    }
+
+    body > header > nav:last-of-type > ul >li:first-child.active .search-input {
+        max-width: 26vw;
+        opacity: 1;
+        padding: 5px 45px 5px 15px;
     }
 }
