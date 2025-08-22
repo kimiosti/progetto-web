@@ -74,7 +74,6 @@
 
 .wrapper{
     width: 220px;
-
 }
 
 .dropdown {
@@ -187,3 +186,29 @@ input:not(:placeholder-shown) ~ .reset {
   visibility: visible;
 }
 
+
+@media screen and (max-width: 991px) {
+  .filtri {
+      gap: 20px 10px;
+      margin: 0 10px 30px;
+    }
+
+    .filtri .wrapper {
+      width: calc(50% - 10px);
+    }
+
+    .filtri .wrapper button {
+      width: 100%;
+      font-size: 12px;
+    }
+
+    .prodotti_categoria .filtri-attivi-container {
+      margin-left: 20px;
+      width: 90%;
+
+    }
+
+    .dropdown {
+      width: 44.1%;
+    }
+}
