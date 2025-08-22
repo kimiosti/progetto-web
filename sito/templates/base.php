@@ -21,7 +21,7 @@
                     </form>
                     <button class="search-btn">
                         <img src="<?php echo LOCAL_IMG_DIR."search.svg"; ?>" alt="Cerca" />
-                    </button>
+                    </button></a>
                 </li><li><a href="wishlist.php"  <?php if(isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {echo 'hidden="true"';} ?>><img src="<?php echo LOCAL_IMG_DIR."heart.svg"; ?>" alt="Preferiti" /></a>
                 </li><li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."handbag.svg"; ?>" <?php if(isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {echo 'hidden="true"';} ?> alt="Carrello" /></a>
                 </li><li><a href="profile.php"><img src="<?php echo LOCAL_IMG_DIR."person.svg"; ?>" alt="Profilo" /></a>
