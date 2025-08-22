@@ -13,7 +13,9 @@
             echo "profile/delete-account.php";
         } else if ($templateParams["tipoForm"] == "nuovoProdotto") {
             echo "product/add-new.php";
-        }else {
+        } else if ($templateParams["tipoForm"] == "aggiornaDisponibilità") {
+            echo "availability/add-new.php";
+        } else {
             echo "profile/login.php";
         }
     ?>" method="post" <?php 
@@ -34,6 +36,8 @@
                 echo "Conferma rimozione dell'account";
             } else if ($templateParams["tipoForm"] == "nuovoProdotto") {
                 echo "Aggiungi nuovo prodotto";
+            } else if ($templateParams["tipoForm"] == "aggiornaDisponibilità") {
+                echo "Aggiorna disponibilità";
             } else {
                 echo "Login";
             }
@@ -172,7 +176,23 @@
                         </li>
                     EOD;
                     echo $html;
-                }else {
+                } else if ($templateParams["tipoForm"] == "aggiornaDisponibilità") {
+                    echo '
+                        <li><input type="hidden" id="id" name="id" value="' . $_GET["id"]
+                        . '"/>
+                        </li>
+                        <li>
+                            <label for="prezzo">Nuovo prezzo:</label><input type="number" id="prezzo" name="prezzo" step="0.01" value="'
+                        . $templateParams["prezzoBase"]
+                        . '" />
+                        </li>
+                        <li>
+                            <label for="quantità">Quantità aggiunta:</label><input type="number" id="quantità" name="quantità" value="0" />
+                        </li>
+                        <li>
+                            <input type="submit" name="submit" value="Aggiorna" />
+                        </li>';
+                } else {
                     echo <<<EOD
                         <li>
                             <label for="username">Username:</label><input type="text" id="username" name="username" />
