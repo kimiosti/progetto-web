@@ -2,17 +2,26 @@
 <html lang="it">
     <head>
         <title> <?php echo $templateParams["titolo"]; ?> </title>
+        <link rel="icon" type="images/png" href="img/favicon.png">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8" />
         <link rel="stylesheet" type="text/css" href="style/style.css"/>
         <script src="scripts/index.js"></script>
+        <script src="script/search.js"></script>
+
     </head>
 
     <body>
-        <header>
+        <header class="site-header">
             <nav><a href="#"><img src="<?php echo LOCAL_IMG_DIR."list.svg"; ?>" alt="Categorie" /></a>
             </nav><div><a href="index.php"><img src="<?php echo LOCAL_IMG_DIR."logo.png"; ?> " alt="Home Page" /></a>
             </div><nav><ul>
-                <li><a href="#" <?php if(isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {echo 'hidden="true"';} ?>><img src="<?php echo LOCAL_IMG_DIR."search.svg"; ?>" alt="Cerca" /></a>
+                <li><a href="#" <?php if(isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {echo 'hidden="true"';} ?>>
+                    <form action="index.php" method="get">
+                        <input type="text" name="q" placeholder="Cerca..." class="search-input" />
+                    </form>
+                    <button class="search-btn">
+                        <img src="<?php echo LOCAL_IMG_DIR."search.svg"; ?>" alt="Cerca" />
+                    </button>
                 </li><li><a href="wishlist.php"  <?php if(isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {echo 'hidden="true"';} ?>><img src="<?php echo LOCAL_IMG_DIR."heart.svg"; ?>" alt="Preferiti" /></a>
                 </li><li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."handbag.svg"; ?>" <?php if(isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {echo 'hidden="true"';} ?> alt="Carrello" /></a>
                 </li><li><a href="profile.php"><img src="<?php echo LOCAL_IMG_DIR."person.svg"; ?>" alt="Profilo" /></a>
