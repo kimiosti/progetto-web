@@ -18,9 +18,12 @@ create table ACQUIRENTE (
 create table PRODOTTO (
      IDprodotto int not null auto_increment,
      nome varchar(100) not null,
-     didascalia varchar(300) not null,
-     descrizione varchar(1500) not null,
-     URLimmagine varchar (256) not null,
+     didascalia varchar(64) not null,
+     descrizione text not null,
+     istruzioni text not null,
+     ingredienti text not null,
+     avvertenze text not null,
+     URLimmagine tinytext not null,
      marca varchar(80) not null,
      sottocategoria varchar(50) not null,
      constraint IDPRODOTTO primary key (IDprodotto));
