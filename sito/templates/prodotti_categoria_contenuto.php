@@ -1,11 +1,11 @@
+
 <link rel="stylesheet" type="text/css" href="style/stylepage.css"/>
 <link rel="stylesheet" type="text/css" href="style/stylefilter.css"/>
-
 <script src="script/filterpage.js"></script>
 
 <div class="prodotti_categoria">
-    <h2><?php echo strtoupper(htmlspecialchars($templateParams['categoriaSelezionata'])); ?></h2>
     <section class="intro">
+        <h2><?php echo strtoupper(htmlspecialchars($templateParams['categoriaSelezionata'])); ?></h2>
         <img src="img/banner.png" alt="#">
         <h3><?php echo htmlspecialchars($templateParams["descrizioneCategoria"]); ?> </h3>
     </section>
