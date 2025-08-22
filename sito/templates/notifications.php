@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="style/notifications.css">
+<link rel="stylesheet" type="text/css" href="style/info_list.css">
 <section>
 <nav>
 <a href="index.php">Home</a><span>/</span><a href="profile.php">Pagina personale</a><span>/</span><span>Notifiche</span>
@@ -15,7 +15,7 @@ if (empty($templateParams["notifiche"])) {
 ?>
 <?php foreach ($templateParams["notifiche"] as $notifica): ?>
 <div>
-<header><a href="#"><h2><?php echo $notifica["titolo"]; ?></h2></a></header>
+<header><h2><?php echo $notifica["titolo"]; ?></h2></header>
 <p><?php echo $notifica["contenuto"] ?></p>
 <section><?php
 if ($notifica["IDordine"] != null) {
