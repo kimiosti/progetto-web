@@ -26,6 +26,8 @@ class DatabaseHelper{
         return $row ? $row['descrizione'] : null;
     }
 
+
+
     public function getProductByCategories($categoria, $marche = [], $sottocategorie = [], $taglie = [], $prezzi = [], $search = '') {
         $query = "SELECT DISTINCT p.*, d.taglia, d.prezzo, d.IDdisponibilità
                   FROM PRODOTTO p
@@ -402,7 +404,7 @@ class DatabaseHelper{
         $table = $user_type == "venditore" ? "`NOTIFICA-VENDITORE`" : "`NOTIFICA-ACQUIRENTE`";
         $checkQuery = "SELECT * FROM " . $table . "WHERE IDnotifica = ?";
         $setQuery = "UPDATE " . $table . " SET letto = ? WHERE IDnotifica = ?";
-        
+
         $checkStatement = $this->db->prepare($checkQuery);
         $checkStatement->bind_param("i", $notificationID);
         $checkStatement->execute();
@@ -423,6 +425,38 @@ class DatabaseHelper{
 
         $result = $statement->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+
+    public function getCategoryBySearch($term) {
+        $like = "%" . $term . "%";
+
+        $q = $this->db->prepare("SELECT nome FROM CATEGORIA WHERE nome LIKE ? LIMIT 1");
+        $q->bind_param("s", $like);
+        $q->execute();
+        $res = $q->get_result()->fetch_assoc();
+        if ($res) return $res["nome"];
+
+        $q = $this->db->prepare("SELECT DISTINCT S.categoria
+                                FROM PRODOTTO P
+                                JOIN SOTTOCATEGORIA S ON P.sottocategoria = S.nome
+                                WHERE P.marca LIKE ? LIMIT 1");
+        $q->bind_param("s", $like);
+        $q->execute();
+        $res = $q->get_result()->fetch_assoc();
+        if ($res) return $res["categoria"];
+
+
+        $q = $this->db->prepare("SELECT DISTINCT S.categoria
+                                FROM PRODOTTO P
+                                JOIN SOTTOCATEGORIA S ON P.sottocategoria = S.nome
+                                WHERE P.nome LIKE ? LIMIT 1");
+        $q->bind_param("s", $like);
+        $q->execute();
+        $res = $q->get_result()->fetch_assoc();
+        if ($res) return $res["categoria"];
+
+        return null;
     }
 }
 ?>

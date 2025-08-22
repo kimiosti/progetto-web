@@ -1,6 +1,6 @@
 use pureessence;
 -- Categories
--- _____________ 
+-- _____________
 
 insert into CATEGORIA(nome, descrizione)
 values (
@@ -37,3 +37,7 @@ values (
 
 insert into VENDITORE(username, password, email, telefono)
 values ("pureessence", "c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec", "admin@pureessence.it", "");
+
+INSERT INTO `marca` (`nome`) VALUES ('CHANEL');
+INSERT INTO `sottocategoria` (`nome`, `categoria`) VALUES ('Donna', 'profumi');
+INSERT INTO `prodotto` (`IDprodotto`, `nome`, `didascalia`, `descrizione`, `URLimmagine`, `marca`, `sottocategoria`, `istruzioni_per_luso`, `ingredienti`, `avvertenze`) VALUES ('6', 'N°5', 'Eau De Parfum', 'N°5, UN essenza stessa della femminilità.\r\nUn bouquet fiorito-aldeidato, sublimato in un flacone iconico dalle linee minimaliste. Un profumo mitico e intramontabile. Eau de Parfum siispira all’Estratto, con il quale condivide la firma fiorito-aldeidata. Questo bouquet fiorito, declinato intorno alla rosa di maggio e al gelsomino, è allegro e vivace grazie alle note di testa esperidate.', 'profumi/Donna/chanel/4243.jpg', 'CHANEL', 'Donna', 'L’Eau de Parfum in versione vaporizzatore, per una gestualità ampia e semplice, sulla pelle o sui vestiti.', 'ALCOHOL | AQUA (WATER) | PARFUM (FRAGRANCE) | BENZYL ALCOHOL | BENZYL BENZOATE | BENZYL CINNAMATE | BENZYL SALICYLATE | CINNAMYL ALCOHOL | CITRAL | CITRONELLOL | COUMARIN | EUGENOL | FARNESOL | GERANIOL | HYDROXYCITRONELLAL | ISOEUGENOL | LIMONENE | LINALOOL | ALPHA-ISOMETHYL IONONE', 'Nessuna avvertenza.');
