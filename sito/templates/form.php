@@ -128,15 +128,28 @@
                             <label for="nome">Nome:</label><input type="text" id="nome" name="nome" />
                         </li>
                         <li>
-                            <label for="didascalia">Didascalia:</label><textarea id="didascalia" name="didascalia" maxlength="300">
-                    EOD;
-                    $html = $html . PRODUCT_CAPTION_DEFAULT . <<<EOD
+                            <label for="didascalia">Didascalia:</label><textarea id="didascalia" name="didascalia" maxlength="64">
+                    EOD . PRODUCT_CAPTION_DEFAULT . <<<EOD
                     </textarea>
                         </li>
                         <li>
-                            <label for="descrizione">Descrizione:</label><textarea id="descrizione" name="descrizione" maxlength="1500">
-                    EOD;
-                    $html = $html . PRODUCT_DESCRIPTION_DEFAULT . <<<EOD
+                            <label for="descrizione">Descrizione:</label><textarea id="descrizione" name="descrizione" maxlength="65535">
+                    EOD . PRODUCT_DESCRIPTION_DEFAULT . <<<EOD
+                    </textarea>
+                        </li>
+                        <li>
+                            <label for="istruzioni">Istruzioni:</label><textarea id="istruzioni" name="istruzioni" maxlength="65535">
+                    EOD . PRODUCT_INSTRUCTIONS_DEFAULT . <<<EOD
+                    </textarea>
+                        </li>
+                        <li>
+                            <label for="ingredienti">Ingredienti:</label><textarea id="ingredienti" name="ingredienti" maxlength="65535">
+                    EOD . PRODUCT_INGREDIENTS_DEFAULT . <<<EOD
+                    </textarea>
+                        </li>
+                        <li>
+                            <label for="avvertenze">Avvertenze:</label><textarea id="avvertenze" name="avvertenze" maxlength="65535">
+                    EOD . PRODUCT_WARNINGS_DEFAULT . <<<EOD
                     </textarea>
                         </li>
                         <li>
