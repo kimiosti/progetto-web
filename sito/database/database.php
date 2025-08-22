@@ -458,5 +458,14 @@ class DatabaseHelper{
 
         return null;
     }
+
+    public function getAvailabilitiesBySeller($productID, $username) {
+        $statement = $this->db->prepare("SELECT * FROM disponibilità WHERE IDprodotto = ? AND usernameVenditore = ?");
+        $statement->bind_param("is", $productID, $username);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
