@@ -334,15 +334,15 @@ class DatabaseHelper{
         }
     }
 
-    public function addProduct($name, $brand, $caption, $description, $image, $subcategory) {
+    public function addProduct($name, $brand, $caption, $description, $instructions, $ingredients, $warnings, $image, $subcategory) {
         $statement = $this->db->prepare("
-            INSERT INTO prodotto(nome, marca, didascalia, descrizione, URLimmagine, sottocategoria)
-            VALUES (?, ?, ?, ?, ?, ?)
+            INSERT INTO prodotto(nome, marca, didascalia, descrizione, URLimmagine, istruzioni, ingredienti, avvertenze, sottocategoria)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
         ");
         $name = strtolower($name);
         $brand = strtolower($brand);
         $subcategory = strtolower($subcategory);
-        $statement->bind_param("ssssss", $name, $brand, $caption, $description, $image, $subcategory);
+        $statement->bind_param("sssssssss", $name, $brand, $caption, $description, $image, $instructions, $ingredients, $warnings, $subcategory);
         try {
             $statement->execute();
             return true;
