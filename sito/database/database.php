@@ -467,5 +467,14 @@ class DatabaseHelper{
         $result = $statement->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getAvailabilityByID($availabilityID, $username) {
+        $statement = $this->db->prepare("SELECT * FROM disponibilità WHERE IDdisponibilità = ? AND usernameVenditore = ?");
+        $statement->bind_param("is", $availabilityID, $username);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
