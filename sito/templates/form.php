@@ -14,7 +14,7 @@
         } else if ($templateParams["tipoForm"] == "nuovoProdotto") {
             echo "product/add-new.php";
         } else if ($templateParams["tipoForm"] == "aggiornaDisponibilità") {
-            echo "availability/add-new.php";
+            echo "availability/modify.php";
         } else {
             echo "profile/login.php";
         }
