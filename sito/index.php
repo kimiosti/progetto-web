@@ -12,6 +12,11 @@ if (isset($_GET["q"]) && !empty(trim($_GET["q"]))) {
         // passo il termine come search alla pagina categoria
         header("Location: prodotti_categoria.php?categoria=" . urlencode($categoria) . "&search=" . urlencode($term));
         exit;
+    }else{
+        $templateParams["titolo"] = "PureEssence - Risultati ricerca";
+        $templateParams["search_term"] = $term;
+        $templateParams["main"] = 'templates/search-result.php'; // Nuovo template per il messaggio
+
     }
 } else {
     // Home page
