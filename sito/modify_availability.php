@@ -13,12 +13,12 @@ if (!isset($_SESSION["idutente"]) || !isset($_SESSION["tipoUtente"])) {
     $templateParams["linkBottone"] = "profile.php";
     $templateParams["testoBottone"] = "Torna al profilo";
     require 'templates/base.php';
-} else if (!isset($_GET["id"])) {
+} else if (!isset($_GET["id"]) || !isset($_GET["categoria"])) {
     $templateParams["main"] = "templates/message.php";
     $templateParams["categorie"] = $dbh->getCategories();
     $templateParams["titolo"] = "PureEssence - Aggiornamento disponibilità";
     $templateParams["titoloMessaggio"] = "Errore nella richiesta";
-    $templateParams["corpoMessaggio"] = "Per completare l'azione richiesta, è necessario indicare l'ID della disponibilità da modificare.";
+    $templateParams["corpoMessaggio"] = "Per completare l'azione richiesta, è necessario indicare l'ID della disponibilità da modificare e la categoria del prodotto.";
     $templateParams["linkBottone"] = "availability.php";
     $templateParams["testoBottone"] = "Gestisci disponibilità";
     require "templates/base.php";
@@ -40,6 +40,12 @@ if (!isset($_SESSION["idutente"]) || !isset($_SESSION["tipoUtente"])) {
         $templateParams["main"] = "templates/form.php";
         $templateParams["tipoForm"] = "aggiornaDisponibilità";
         $templateParams["prezzoBase"] = $availability["prezzo"];
+        if (isset($_SESSION["mess"])) {
+            $templateParams["messaggioForm"] = $_SESSION["mess"];
+            unset($_SESSION["mess"]);
+        }
+        $templateParams["IDprodotto"] = $availability["IDprodotto"];
+        $templateParams["categoria"] = $_GET["categoria"];
 
         require "templates/base.php";
     }
