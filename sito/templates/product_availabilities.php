@@ -3,14 +3,16 @@
 <section>
     <nav><a href="index.php">Home</a><span>/</span><a href="profile.php">Pagina personale</a><span>/</span><a href="availability.php">Gestione disponibilità</a><span>/</span><?php
     if ($templateParams["prodotto"] != null) {
-        echo '<a href="prodotti_categoria.php?categoria="' . urlencode($templateParams["categoria"]) . '>'
+        echo '<a href="prodotti_categoria.php?categoria=' . $templateParams["categoria"] . '">'
             . ucfirst($templateParams["categoria"]) . '</a>';
     }
     ?><span>/Singolo prodotto</span></nav>
 
     <?php
     if ($templateParams["prodotto"] == null) {
-        echo '<p class="errore">Nessun prodotto corrisponde all\'ID indicato.';
+        echo '<p class="errore">Nessun prodotto corrisponde all\'ID indicato.</p>';
+    } else if (empty($templateParams["disponibilita"])) {
+        echo '<p class="errore">Nessuna disponibilità presente per il prodotto.</p>';
     }
     ?>
 
