@@ -177,7 +177,7 @@
         } else {
             foreach ($templateParams["prodotti"] as $prodotto) {
                 $link = isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore" ? "handle_availability.php" : "product_detail.php";
-                echo '<a href="' . $link . '?id=' . $prodotto['IDprodotto'] . ($_SESSION["tipoUtente"] == "venditore" ? ('&categoria=' . $templateParams["categoriaSelezionata"]) : '') . '" class="prodotto-link">';
+                echo '<a href="' . $link . '?id=' . $prodotto['IDprodotto'] . (isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore" ? ('&categoria=' . $templateParams["categoriaSelezionata"]) : '') . '" class="prodotto-link">';
 
                 echo "<div class='prodotto'>";
                 echo "<h3>" . htmlspecialchars($prodotto['marca']) . "</h3>";
