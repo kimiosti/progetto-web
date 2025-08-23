@@ -7,7 +7,7 @@
             echo $templateParams["info"];
         }
     ?></p>
-    <section><?php foreach ($templateParams["prodotti"] as $prodotto): ?><a href="product_detail.php?id=<?php echo $prodotto["IDprodotto"]; ?>"><div>
+    <nav><ul><?php foreach ($templateParams["prodotti"] as $prodotto): ?><li><a href="product_detail.php?id=<?php echo $prodotto["IDprodotto"]; ?>">
                 <header><h2><?php echo htmlspecialchars($prodotto["marca"]); ?></h2></header>
                 <div><img src="<?php echo $prodotto["URLimmagine"]; ?>" alt="<?php echo htmlspecialchars($prodotto["nome"]); ?>" /></div>
                 <section><h3><?php echo htmlspecialchars($prodotto["nome"]); ?></h3><p><?php echo htmlspecialchars($prodotto["didascalia"]); ?></p></section>
@@ -19,5 +19,5 @@
                         echo '<p>' . htmlspecialchars($prodotto["taglia"]) . '</p>';
                     }
                 ?></footer>
-            </div></a><?php endforeach; ?></section>
+            </a></li><?php endforeach; ?></ul></nav>
 </section>

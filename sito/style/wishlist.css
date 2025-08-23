@@ -12,21 +12,24 @@ body > main > section > nav > a:hover {
     color: #417c64;
 }
 
-body > main > section > section > a {
-    display: contents;
+body > main > section > nav > ul {
+    text-align: center;
+}
+
+body > main > section > nav > ul > li > a {
     color: #333;
 }
 
-body > main > section > section > a:hover {
+body > main > section > nav > ul > li > a:hover {
     color: #417c64;
 }
 
-body > main > section > section > a > div {
+body > main > section > nav > ul > li {
     display: inline-block;
     vertical-align: top;
     width: 40%;
     aspect-ratio: 1 / 2.6;
-    margin: 10px 5%;
+    margin: 10px 5% 20px 5%;
     padding: 10px 2%;
     box-sizing: border-box;
     border-radius: 5px;
@@ -34,39 +37,39 @@ body > main > section > section > a > div {
     text-align: center;
 }
 
-body > main > section > section > a > div > header {
+body > main > section > nav > ul > li > a > header {
     font-size: 12pt;
     font-weight: 600;
     margin: 10px 0;
 }
 
-body > main > section > section > a > div > div {
+body > main > section > nav > ul > li > a > div {
     margin: 0 10%;
 }
 
-body > main > section > section > a > div > div > img {
+body > main > section > nav > ul > li > a > div > img {
     width: 100%;
     aspect-ratio: 1;
     vertical-align: middle;
 }
 
-body > main > section > section > a > div > section > h3 {
+body > main > section > nav > ul > li > a > section > h3 {
     font-size: 10pt;
     font-weight: 600;
 }
 
-body > main > section > section > a > div > section > p {
+body > main > section > nav > ul > li > a > section > p {
     font-size: 10pt;
     font-weight: 400;
 }
 
-body > main > section > section > a > div > footer > h4 {
+body > main > section > nav > ul > li > a > footer > h4 {
     font-weight: 600;
     font-size: 10pt;
     margin: 0;
 }
 
-body > main > section > section > a > div > footer > p {
+body > main > section > nav > ul > li > a > footer > p {
     font-size: 10pt;
     font-weight: 400;
     margin: 0;
@@ -77,9 +80,9 @@ body > main > section > section > a > div > footer > p {
         font-size: 10pt;
     }
 
-    body > main > section > section > a > div {
+    body > main > section > nav > ul > li {
         width: 20%;
-        margin: 10px 2.5%;
+        margin: 10px 2.5% 20px 2.5%;
         aspect-ratio: 1 / 1.618;
     }
 }
