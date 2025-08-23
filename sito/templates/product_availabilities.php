@@ -19,7 +19,7 @@
         <header><h2><?php echo $templateParams["prodotto"]["marca"] . ' ' . $templateParams["prodotto"]["nome"] . ' - ' . htmlspecialchars($availability["taglia"]); ?></h2></header>
         <p>Disponibilità rimasta: <?php echo $availability["quantità"] ?></p>
         <p>Prezzo applicato: €<?php echo number_format($availability['prezzo'], 2, ',', '') ?></p>
-        <section><a href="modify_availability.php?id=<?php echo $availability["IDdisponibilità"]; ?>"><button>Modifica disponibilità</button></a></section>
+        <section><a href="modify_availability.php?id=<?php echo $availability["IDdisponibilità"]; ?>&categoria=<?php echo $_GET["categoria"]; ?>"><button>Modifica disponibilità</button></a></section>
         </div>
     <?php endforeach; ?>
 
