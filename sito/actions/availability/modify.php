@@ -41,7 +41,7 @@ if (!isset($_SESSION["idutente"]) || !isset($_SESSION["tipoUtente"])) {
                     $dbh->notifyBuyers(
                         $dbh->getInterestedBuyers($_POST["id"]),
                         ucfirst($product["marca"]) . " " . ucfirst($product["nome"]) . " è tornato disponibile.",
-                        ucfirst($_SESSION["idutente"]) . " ha appena aggiunto una disponibilità per" . ucfirst($product["marca"]) . " " . ucfirst($product["nome"]) . " da " . strtolower($availability["taglia"]) . ". Acquistalo ora prima che sia troppo tardi!",
+                        ucfirst($_SESSION["idutente"]) . " ha appena aggiunto una disponibilità per " . ucfirst($product["marca"]) . " " . ucfirst($product["nome"]) . " da " . strtolower($availability["taglia"]) . ". Acquistalo ora prima che sia troppo tardi!",
                         availabilityID: $_POST["id"]
                     );
                 }
