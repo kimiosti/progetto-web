@@ -4,7 +4,7 @@
 <script src="script/filterpage.js"></script>
 
 <div class="prodotti_categoria">
-    <section class="intro">
+    <section class="intro" <?php if(isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") { echo 'hidden="true"'; } ?>>
         <h2><?php echo strtoupper(htmlspecialchars($templateParams['categoriaSelezionata'])); ?></h2>
         <img src="img/banner.png" alt="#">
         <h3><?php echo htmlspecialchars($templateParams["descrizioneCategoria"]); ?> </h3>
@@ -13,8 +13,14 @@
     <section class="breadcrumb-wrapper">
         <section class="breadcrumb-left">
             <nav class="breadcrumb">
-                <a href="index.php">Home</a> /
-                <span><?php echo ucfirst(htmlspecialchars($templateParams['categoriaSelezionata'])); ?></span>
+                <a href="index.php">Home</a>/<?php
+                    if (isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {
+                        echo '<a href="profile.php">Pagina personale</a>'
+                            . '<span>/</span>'
+                            . '<a href="availability.php">Gestione disponibilità</a>'
+                            . '<span>/</span>';
+                    }
+                ?><span><?php echo ucfirst(htmlspecialchars($templateParams['categoriaSelezionata'])); ?></span>
             </nav>
             <h3 class="titoletto">Filtri</h3>
         </section>
@@ -170,19 +176,22 @@
             echo "<p>Nessun prodotto trovato.</p>";
         } else {
             foreach ($templateParams["prodotti"] as $prodotto) {
-                echo '<a href="product_detail.php?id=' . $prodotto['IDprodotto'] . '" class="prodotto-link">';
+                $link = isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore" ? "handle_availability.php" : "product_detail.php";
+                echo '<a href="' . $link . '?id=' . $prodotto['IDprodotto'] . ($_SESSION["tipoUtente"] == "venditore" ? ('&categoria=' . $templateParams["categoriaSelezionata"]) : '') . '" class="prodotto-link">';
 
                 echo "<div class='prodotto'>";
                 echo "<h3>" . htmlspecialchars($prodotto['marca']) . "</h3>";
                 echo "<img src='img/" . htmlspecialchars($prodotto['URLimmagine']) . "' alt='" . htmlspecialchars($prodotto['nome']) . "' />";
                 echo "<h3>" . htmlspecialchars($prodotto['nome']) . "</h3>";
                 echo "<p>" . htmlspecialchars($prodotto['didascalia']) . "</p>";
-                echo "<div class='prodotto-bottom'>";
-                echo "<p class='prezzo'>€ " . number_format($prodotto['prezzo'], 2, ',', '') . "</p>";
-                echo "<p class='taglia'>" . htmlspecialchars($prodotto['taglia']) . "</p>";
-                echo "</div>";
-                echo "</div>";
 
+                if (!isset($_SESSION["tipoUtente"]) || $_SESSION["tipoUtente"] != "venditore") {
+                    echo "<div class='prodotto-bottom'>";
+                    echo "<p class='prezzo'>€ " . number_format($prodotto['prezzo'], 2, ',', '') . "</p>";
+                    echo "<p class='taglia'>" . htmlspecialchars($prodotto['taglia']) . "</p>";
+                    echo "</div>";
+                }
+                echo "</div>";
                 echo '</a>';
             }
         }
