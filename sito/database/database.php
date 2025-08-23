@@ -476,5 +476,66 @@ class DatabaseHelper{
         $result = $statement->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function updateAvailabilityPrice($availabilityID, $price) {
+        $statement = $this->db->prepare("UPDATE disponibilità SET prezzo = ? WHERE IDdisponibilità = ?");
+        $statement->bind_param("di", $price, $availabilityID);
+        
+        try {
+            $statement->execute();
+            return true;
+        } catch (Exception $th) {
+            return false;
+        }
+    }
+
+    public function updateAvailabilityQuantity($availabilityID, $quantity) {
+        $statement = $this->db->prepare("UPDATE disponibilità SET quantità = ? WHERE IDdisponibilità = ?");
+        $statement->bind_param("ii", $quantity, $availabilityID);
+
+        try {
+            $statement->execute();
+            return true;
+        } catch (Exception $th) {
+            return false;
+        }
+    }
+
+    public function notifyBuyers($users, $title, $content, $orderID = null, $availabilityID = null) {
+        foreach ($users as $user) {
+            $statement = $this->db->prepare("
+                INSERT INTO `notifica-acquirente` (usernameAcquirente, titolo, contenuto, data, IDordine, IDdisponibilità)
+                VALUES (?, ?, ?, CURDATE(), ?, ?)
+            ");
+            $statement->bind_param("sssii", $user["username"], $title, $content, $orderID, $availabilityID);
+            $statement->execute();
+            $statement->close();
+        }
+    }
+
+    public function notifySellers($users, $title, $content, $orderID = null, $availabilityID = null) {
+        foreach ($users as $user) {
+            $statement = $this->db->prepare("
+                INSERT INTO `notifica-venditore` (usernameVenditore, titolo, contenuto, data, IDordine, IDdisponibilità)
+                VALUES (?, ?, ?, CURDATE(), ?, ?)
+            ");
+            $statement->bind_param("sssii", $user["username"], $title, $content, $orderID, $availabilityID);
+            $statement->execute();
+            $statement->close();
+        }
+    }
+
+    public function getInterestedBuyers($availabilityID) {
+        $statement = $this->db->prepare("
+            SELECT a.*
+            FROM acquirente a, disponibilità d, preferito p
+            WHERE p.IDprodotto = d.IDprodotto
+            AND p.usernameAcquirente = a.username
+        ");
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
