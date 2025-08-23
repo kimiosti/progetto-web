@@ -179,15 +179,18 @@
                 } else if ($templateParams["tipoForm"] == "aggiornaDisponibilità") {
                     echo '
                         <li><input type="hidden" id="id" name="id" value="' . $_GET["id"]
-                        . '"/>
+                        . '" />
                         </li>
                         <li>
-                            <label for="prezzo">Nuovo prezzo:</label><input type="number" id="prezzo" name="prezzo" step="0.01" value="'
+                            <input type="hidden" id="categoria" name="categoria" value="' . $_GET["categoria"]
+                        . '" /></li>
+                        <li>
+                            <label for="prezzo">Nuovo prezzo:</label><input type="number" id="prezzo" name="prezzo" step="0.01" min="0" value="'
                         . $templateParams["prezzoBase"]
                         . '" />
                         </li>
                         <li>
-                            <label for="quantità">Quantità aggiunta:</label><input type="number" id="quantità" name="quantità" value="0" />
+                            <label for="quantità">Quantità aggiunta:</label><input type="number" id="quantità" name="quantità" min="0" value="0" />
                         </li>
                         <li>
                             <input type="submit" name="submit" value="Aggiorna" />
@@ -227,6 +230,9 @@
             echo '<a href="handle-profile.php"><button>Torna indietro</button></a>';
         } else if ($templateParams["tipoForm"] == "nuovoProdotto") {
             echo '<a href="availability.php"><button>Torna indietro</button></a>';
+        } else if ($templateParams["tipoForm"] == "aggiornaDisponibilità") {
+            echo '<a href="handle_availability.php?id=' . $templateParams["IDprodotto"] . '&categoria='
+                . $templateParams["categoria"] . '"><button>Torna indietro</button></a>';
         }
     ?>
 </section>
