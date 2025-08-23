@@ -531,7 +531,25 @@ class DatabaseHelper{
             FROM acquirente a, disponibilità d, preferito p
             WHERE p.IDprodotto = d.IDprodotto
             AND p.usernameAcquirente = a.username
+            AND d.IDdisponibilità = ?
         ");
+        $statement->bind_params("i", $availabilityID);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getProductByAvailability($availabilityID) {
+        $statement = $this->db->prepare("
+            SELECT p.*, c.nome
+            FROM disponibilità d, prodotto p, sottocategoria s, categoria c
+            WHERE p.IDprodotto = d.IDprodotto
+            AND s.nome = p.sottocategoria
+            AND s.categoria = c.nome
+            AND d.IDdisponibilità = ?
+        ");
+        $statement->bind_param("i", $availabilityID);
         $statement->execute();
 
         $result = $statement->get_result();
