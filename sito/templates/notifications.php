@@ -17,11 +17,18 @@ if (empty($templateParams["notifiche"])) {
 <div>
 <header><h2><?php echo $notifica["titolo"]; ?></h2></header>
 <p><?php echo $notifica["contenuto"] ?></p>
+<p><?php echo "Data: " . $notifica["data"] ?></p>
 <section><?php
 if ($notifica["IDordine"] != null) {
     echo '<a href="#"><button>Visualizza ordine</button></a>';
 } else if ($notifica["IDdisponibilità"] != null) {
-    echo '<a href="#"><button>Visualizza disponibilità</button></a>';
+    $products = $dbh->getProductByAvailability($notifica["IDdisponibilità"]);
+    $product = empty($products) ? null : $products[0];
+    echo '<a href="'
+        . (isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore"
+            ? "handle_availability.php?id=" . $product["IDprodotto"] . "&categoria=" . $product["nome"]
+            : "product_detail.php?id=" . $product["IDprodotto"])
+        . '"><button>Visualizza disponibilità</button></a>';
 }
 ?><a href="actions/notifications/toggle_read.php?id=<?php
 echo $notifica["IDnotifica"];
