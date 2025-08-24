@@ -16,7 +16,7 @@
             </nav><div><a href="index.php"><img src="<?php echo LOCAL_IMG_DIR."logo.png"; ?> " alt="Home Page" /></a>
             </div><nav><ul>
                 <li><a href="#" <?php if(isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {echo 'hidden="true"';} ?>>
-                    <form action="index.php" method="get">
+                    <form action="research.php" method="get">
                         <input type="text" name="q" placeholder="Cerca..." class="search-input" />
                     </form>
                     <button class="search-btn">
