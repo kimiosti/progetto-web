@@ -533,7 +533,7 @@ class DatabaseHelper{
             AND p.usernameAcquirente = a.username
             AND d.IDdisponibilità = ?
         ");
-        $statement->bind_params("i", $availabilityID);
+        $statement->bind_param("i", $availabilityID);
         $statement->execute();
 
         $result = $statement->get_result();
@@ -554,6 +554,40 @@ class DatabaseHelper{
 
         $result = $statement->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function sameAvailabilityExists($productID, $size) {
+        $statement = $this->db->prepare("SELECT * FROM disponibilità WHERE IDprodotto = ? AND taglia = ?");
+        $statement->bind_param("is", $productID, $size);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return mysqli_num_rows($result) != 0;
+    }
+
+    public function recordAvailability($productID, $size, $price, $quantity, $seller) {
+        $statement = $this->db->prepare("
+            INSERT INTO disponibilità (IDprodotto, taglia, prezzo, quantità, usernameVenditore)
+            VALUES (?, ?, ?, ?, ?)
+        ");
+        $statement->bind_param("isdis", $productID, $size, $price, $quantity, $seller);
+        try {
+            $statement->execute();
+        } catch (Exception $th) {
+            return -1;
+        }
+        $statement->close();
+
+        $returnStatement = $this->db->prepare("SELECT * FROM disponibilità WHERE IDprodotto = ? AND taglia = ?");
+        $returnStatement->bind_param("is", $productID, $size);
+        $returnStatement->execute();
+        $result = $returnStatement->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        if (empty($result)) {
+            return -1;
+        } else {
+            return $result[0]["IDdisponibilità"];
+        }
     }
 }
 ?>
