@@ -15,6 +15,8 @@
             echo "product/add-new.php";
         } else if ($templateParams["tipoForm"] == "aggiornaDisponibilità") {
             echo "availability/modify.php";
+        } else if ($templateParams["tipoForm"] == "nuovaDisponibilità") {
+            echo "availability/add.php";
         } else {
             echo "profile/login.php";
         }
@@ -38,6 +40,8 @@
                 echo "Aggiungi nuovo prodotto";
             } else if ($templateParams["tipoForm"] == "aggiornaDisponibilità") {
                 echo "Aggiorna disponibilità";
+            } else if ($templateParams["tipoForm"] == "nuovaDisponibilità") {
+                echo "Aggiungi disponibilità";
             } else {
                 echo "Login";
             }
@@ -195,6 +199,25 @@
                         <li>
                             <input type="submit" name="submit" value="Aggiorna" />
                         </li>';
+                } else if ($templateParams["tipoForm"] == "nuovaDisponibilità") {
+                    echo '<li>
+                            <input type="hidden" id="id" name="id" value="' . $_GET["id"] .'" />
+                        </li>
+                        <li>
+                            <input type="hidden" id="categoria" name="categoria" value="' . $_GET["categoria"] .'" />
+                        </li>
+                        <li>
+                            <label for="taglia">Taglia:</label><input type="text" id="taglia" name="taglia" maxlength="5" />
+                        </li>
+                        <li>
+                            <label for="prezzo">Prezzo:</label><input type="number" id="prezzo" name="prezzo" step="0.01" min="0" />
+                        </li>
+                        <li>
+                            <label for="quantità">Quantità:</label><input type="number" id="quantità" name="quantità" min="0" />
+                        </li>
+                        <li>
+                            <input type="submit" name="submit" value="Crea disponibilità" />
+                        </li>';
                 } else {
                     echo <<<EOD
                         <li>
@@ -230,7 +253,8 @@
             echo '<a href="handle-profile.php"><button>Torna indietro</button></a>';
         } else if ($templateParams["tipoForm"] == "nuovoProdotto") {
             echo '<a href="availability.php"><button>Torna indietro</button></a>';
-        } else if ($templateParams["tipoForm"] == "aggiornaDisponibilità") {
+        } else if ($templateParams["tipoForm"] == "aggiornaDisponibilità" 
+                   || $templateParams["tipoForm"] == "nuovaDisponibilità") {
             echo '<a href="handle_availability.php?id=' . $templateParams["IDprodotto"] . '&categoria='
                 . $templateParams["categoria"] . '"><button>Torna indietro</button></a>';
         }
