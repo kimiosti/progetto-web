@@ -1,0 +1,185 @@
+.about-us-container {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.about-hero {
+    position: relative;
+    height: 50vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #333;
+    overflow: hidden;
+}
+
+.about-hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    opacity: 0.8;
+}
+
+.about-hero-content {
+    position: relative;
+    z-index: 2;
+    padding-left: 10%;
+}
+
+.hero-title-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.hero-title-group h1 {
+    font-size: 60px;
+    margin-bottom: 1%;
+    font-weight: 600;
+}
+
+.hero-title-group img {
+    height: 600px;
+    width: auto;
+}
+
+.about-story {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 5rem 5%;
+    background-color: #f6f6f6;
+}
+
+.about-story-visual {
+    flex-basis: 40%;
+}
+
+.about-story-visual img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.about-story-narrative {
+    flex-basis: 55%;
+    padding-left: 4rem;
+}
+
+.about-story-narrative h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.about-story-narrative p {
+    text-align: justify;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.founder-signature {
+    font-style: italic;
+    font-weight: 600;
+    color: #555;
+}
+
+.about-philosophy {
+    padding: 5rem 10%;
+    text-align: center;
+    background-color: #fff;
+}
+
+.about-philosophy h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.philosophy-grid {
+    display: flex;
+    gap: 2rem;
+    text-align: center;
+}
+
+.philosophy-card {
+    flex: 1;
+}
+
+.philosophy-card img {
+    height: 90px;
+    margin-bottom: 1rem;
+}
+
+.philosophy-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.philosophy-card p {
+    line-height: 1.6;
+    color: #555;
+}
+
+.about-call-to-action {
+    padding: 5rem 10%;
+    background-color: #f4e8dd;
+    text-align: center;
+}
+
+.about-call-to-action h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.about-call-to-action p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+.button-primary {
+    display: inline-block;
+    background-color: #333;
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.button-primary:hover {
+    background-color: #555;
+}
+
+@media screen and (max-width: 768px) {
+    .about-hero h1 {
+        font-size: 60px;
+    }
+
+    .about-story {
+        flex-direction: column;
+        padding: 3rem 5%;
+    }
+
+    .about-story-narrative {
+        padding-left: 0;
+    }
+
+    .philosophy-grid {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .about-philosophy,
+    .about-call-to-action {
+        padding: 3rem 5%;
+    }
+
+    .about-story h2,
+    .about-philosophy h2,
+    .about-call-to-action h2 {
+        font-size: 2rem;
+    }
+}
