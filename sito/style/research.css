@@ -1,0 +1,71 @@
+body > main > section > nav {
+    font-size: 8pt;
+    color: #545454;
+    margin-bottom: 20px;
+}
+
+body > main > section > nav > a {
+    color: #545454;
+}
+
+body > main > section > h1 {
+    text-align: center;
+}
+
+body > main > section > form {
+    text-align: center;
+    font-size: 12pt;
+}
+
+body > main > section > form > label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+body > main > section > form > div {
+    margin: 10px 0;
+}
+
+body > main > section > form > div > input {
+    width: 60%;
+    border: 1px solid #8b92a7;
+    height: 30px;
+    font-family: "Montserrat", sans-serif;
+    font-size: small;
+    border-radius: 15px;
+    font-size: 10pt;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+body > main > section > form > div > input[type=submit] {
+    border-radius: 5px;
+    width: 30%;
+    padding: 5px 0;
+    white-space: normal;
+    height: auto;
+    background-color: white;
+    color: black;
+    font-size: 10pt;
+    font-weight: 600;
+}
+
+body > main > section > form > div > input[type=submit]:hover {
+    cursor: pointer;
+    background-color: #f6f6f6;
+    color: #417c64;
+}
+
+@media screen and (min-width: 992px) {
+    body > main > section > nav {
+        font-size: 10pt;
+    }
+
+    body > main > section > form > div > input {
+        width: 40%;
+    }
+
+    body > main > section > form > div > input[type=submit] {
+        width: 15%;
+    }
+}
