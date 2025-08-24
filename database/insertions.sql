@@ -38,11 +38,6 @@ values (
 insert into VENDITORE(username, password, email, telefono)
 values ("pureessence", "c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec", "admin@pureessence.it", "");
 
-ALTER TABLE prodotto
-ADD istruzioni_per_luso VARCHAR(300),
-ADD ingredienti VARCHAR(300),
-ADD avvertenze VARCHAR(150);
-
 INSERT INTO `marca` (`nome`) VALUES
 ('CHANEL'),
 ('K18'),
@@ -55,7 +50,7 @@ INSERT INTO `sottocategoria` (`nome`, `categoria`) VALUES
 ('Donna', 'profumi');
 
 
-INSERT INTO `prodotto` (`IDprodotto`, `nome`, `didascalia`, `descrizione`, `URLimmagine`, `marca`, `sottocategoria`, `istruzioni_per_luso`, `ingredienti`, `avvertenze`) VALUES
+INSERT INTO `prodotto` (`IDprodotto`, `nome`, `didascalia`, `descrizione`, `URLimmagine`, `marca`, `sottocategoria`, `istruzioni`, `ingredienti`, `avvertenze`) VALUES
 (1, 'No.3 Hair Perfector™', 'Trattamento Settimanale Per Capelli', 'Un potente trattamento pre-shampoo dall’efficacia clinicamente testata, che rende i capelli 3 volte più forti dopo un solo utilizzo', 'capelli/trattamenti/olaplex/001.jpg', 'OLAPLEX', 'Trattamenti Capelli', NULL, NULL, NULL),
 (2, 'ONE UNITED', 'Spray Leave-In per tutti i tipi di capelli ', 'Trattamento spray per capelli con 25 benefici che aumentano la maneggiabilità, la protezione e la bellezza. Offre benefici legati al trattamento per aumentarne la maneggiabilità, la protezione e la bellezza. Ammorbidisce la texture dei prodotti per la piega. Idrata e nutre il capello, contribuisce a levigare i capelli porosi, riduce la disidratazione dei capelli, li rende più lisci e scioglie i nodi.', 'capelli/trattamenti/redken/003.jpg', 'REDKEN', 'Trattamenti Capelli', 'Dopo lo shampoo, spruzzare uniformemente sui capelli umidi o tamponati con un asciugamano. Non risciacquare per ottenere un effetto condizionante profondo. Risciacquare dopo 1-2 minuti per un effetto condizionante leggero.', 'Aqua / Water / Eau, Cocos Nucifera Oil / Coconut Oil, Amodimethicone, Polyquaternium-37, Phenoxyethanol, Propylene Glycol Dicaprylate / Dicaprate, Parfum / Fragrance, Acetamide MEA, Lactamide MEA, Dimethicone PEG-7 Phosphate, PPG-1 Trideceth-6, Trideceth-6, Behentrimonium Chloride, Xylose', 'In caso di contatto con gli occhi, sciacquarli immediatamente e abbondantemente.'),
 (3, 'Genesis Serum', 'Siero anti caduta temporanea', 'Siero fortificante anti-caduta occasionale per capelli indeboliti e propensi alla caduta da usare quotidianamente. Aumenta la resistenza del capello minimizzando la caduta occasionale, e rende i capelli più splendenti.', 'capelli/trattamenti/kerastase/002.jpg', 'KERASTASE', 'Trattamenti Capelli', NULL, NULL, NULL),

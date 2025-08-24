@@ -13,7 +13,11 @@
             echo "profile/delete-account.php";
         } else if ($templateParams["tipoForm"] == "nuovoProdotto") {
             echo "product/add-new.php";
-        }else {
+        } else if ($templateParams["tipoForm"] == "aggiornaDisponibilità") {
+            echo "availability/modify.php";
+        } else if ($templateParams["tipoForm"] == "nuovaDisponibilità") {
+            echo "availability/add.php";
+        } else {
             echo "profile/login.php";
         }
     ?>" method="post" <?php 
@@ -34,6 +38,10 @@
                 echo "Conferma rimozione dell'account";
             } else if ($templateParams["tipoForm"] == "nuovoProdotto") {
                 echo "Aggiungi nuovo prodotto";
+            } else if ($templateParams["tipoForm"] == "aggiornaDisponibilità") {
+                echo "Aggiorna disponibilità";
+            } else if ($templateParams["tipoForm"] == "nuovaDisponibilità") {
+                echo "Aggiungi disponibilità";
             } else {
                 echo "Login";
             }
@@ -128,15 +136,28 @@
                             <label for="nome">Nome:</label><input type="text" id="nome" name="nome" />
                         </li>
                         <li>
-                            <label for="didascalia">Didascalia:</label><textarea id="didascalia" name="didascalia" maxlength="300">
-                    EOD;
-                    $html = $html . PRODUCT_CAPTION_DEFAULT . <<<EOD
+                            <label for="didascalia">Didascalia:</label><textarea id="didascalia" name="didascalia" maxlength="64">
+                    EOD . PRODUCT_CAPTION_DEFAULT . <<<EOD
                     </textarea>
                         </li>
                         <li>
-                            <label for="descrizione">Descrizione:</label><textarea id="descrizione" name="descrizione" maxlength="1500">
-                    EOD;
-                    $html = $html . PRODUCT_DESCRIPTION_DEFAULT . <<<EOD
+                            <label for="descrizione">Descrizione:</label><textarea id="descrizione" name="descrizione" maxlength="65535">
+                    EOD . PRODUCT_DESCRIPTION_DEFAULT . <<<EOD
+                    </textarea>
+                        </li>
+                        <li>
+                            <label for="istruzioni">Istruzioni:</label><textarea id="istruzioni" name="istruzioni" maxlength="65535">
+                    EOD . PRODUCT_INSTRUCTIONS_DEFAULT . <<<EOD
+                    </textarea>
+                        </li>
+                        <li>
+                            <label for="ingredienti">Ingredienti:</label><textarea id="ingredienti" name="ingredienti" maxlength="65535">
+                    EOD . PRODUCT_INGREDIENTS_DEFAULT . <<<EOD
+                    </textarea>
+                        </li>
+                        <li>
+                            <label for="avvertenze">Avvertenze:</label><textarea id="avvertenze" name="avvertenze" maxlength="65535">
+                    EOD . PRODUCT_WARNINGS_DEFAULT . <<<EOD
                     </textarea>
                         </li>
                         <li>
@@ -159,7 +180,45 @@
                         </li>
                     EOD;
                     echo $html;
-                }else {
+                } else if ($templateParams["tipoForm"] == "aggiornaDisponibilità") {
+                    echo '
+                        <li><input type="hidden" id="id" name="id" value="' . $_GET["id"]
+                        . '" />
+                        </li>
+                        <li>
+                            <input type="hidden" id="categoria" name="categoria" value="' . $_GET["categoria"]
+                        . '" /></li>
+                        <li>
+                            <label for="prezzo">Nuovo prezzo:</label><input type="number" id="prezzo" name="prezzo" step="0.01" min="0" value="'
+                        . $templateParams["prezzoBase"]
+                        . '" />
+                        </li>
+                        <li>
+                            <label for="quantità">Quantità aggiunta:</label><input type="number" id="quantità" name="quantità" min="0" value="0" />
+                        </li>
+                        <li>
+                            <input type="submit" name="submit" value="Aggiorna" />
+                        </li>';
+                } else if ($templateParams["tipoForm"] == "nuovaDisponibilità") {
+                    echo '<li>
+                            <input type="hidden" id="id" name="id" value="' . $_GET["id"] .'" />
+                        </li>
+                        <li>
+                            <input type="hidden" id="categoria" name="categoria" value="' . $_GET["categoria"] .'" />
+                        </li>
+                        <li>
+                            <label for="taglia">Taglia:</label><input type="text" id="taglia" name="taglia" maxlength="5" />
+                        </li>
+                        <li>
+                            <label for="prezzo">Prezzo:</label><input type="number" id="prezzo" name="prezzo" step="0.01" min="0" />
+                        </li>
+                        <li>
+                            <label for="quantità">Quantità:</label><input type="number" id="quantità" name="quantità" min="0" />
+                        </li>
+                        <li>
+                            <input type="submit" name="submit" value="Crea disponibilità" />
+                        </li>';
+                } else {
                     echo <<<EOD
                         <li>
                             <label for="username">Username:</label><input type="text" id="username" name="username" />
@@ -194,6 +253,10 @@
             echo '<a href="handle-profile.php"><button>Torna indietro</button></a>';
         } else if ($templateParams["tipoForm"] == "nuovoProdotto") {
             echo '<a href="availability.php"><button>Torna indietro</button></a>';
+        } else if ($templateParams["tipoForm"] == "aggiornaDisponibilità" 
+                   || $templateParams["tipoForm"] == "nuovaDisponibilità") {
+            echo '<a href="handle_availability.php?id=' . $templateParams["IDprodotto"] . '&categoria='
+                . $templateParams["categoria"] . '"><button>Torna indietro</button></a>';
         }
     ?>
 </section>

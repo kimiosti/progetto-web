@@ -16,12 +16,12 @@
             </nav><div><a href="index.php"><img src="<?php echo LOCAL_IMG_DIR."logo.png"; ?> " alt="Home Page" /></a>
             </div><nav><ul>
                 <li><a href="#" <?php if(isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {echo 'hidden="true"';} ?>>
-                    <form action="index.php" method="get">
+                    <form action="research.php" method="get">
                         <input type="text" name="q" placeholder="Cerca..." class="search-input" />
                     </form>
                     <button class="search-btn">
                         <img src="<?php echo LOCAL_IMG_DIR."search.svg"; ?>" alt="Cerca" />
-                    </button>
+                    </button></a>
                 </li><li><a href="wishlist.php"  <?php if(isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {echo 'hidden="true"';} ?>><img src="<?php echo LOCAL_IMG_DIR."heart.svg"; ?>" alt="Preferiti" /></a>
                 </li><li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."handbag.svg"; ?>" <?php if(isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {echo 'hidden="true"';} ?> alt="Carrello" /></a>
                 </li><li><a href="profile.php"><img src="<?php echo LOCAL_IMG_DIR."person.svg"; ?>" alt="Profilo" /></a>

@@ -19,10 +19,14 @@ body > main > section > div {
     margin: 20px 0;
 }
 
-body > main > section > div > header > a > h2 {
+body > main > section > div > header > h2 {
     display: contents;
     font-size: 16pt;
     font-weight: 600;
+}
+
+body > main > section > div > p {
+    line-height: 100%;
 }
 
 body > main > section > div > section > a {

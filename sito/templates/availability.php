@@ -5,7 +5,7 @@
     <nav>
         <ul>
             <li><a href="add-product.php"><div><img src="<?php echo LOCAL_IMG_DIR."plus.svg"; ?>" alt="Aggiungi prodotto" /><h2>Aggiungi prodotto</h2></div></a>
-        </li><li><a href="#"><div><img src="<?php echo LOCAL_IMG_DIR."pencil.svg"; ?>" alt="Aggiorna disponibilità" /><h2>Aggiorna disponibilità</h2></div></a>
+        </li><li><a href="research.php"><div><img src="<?php echo LOCAL_IMG_DIR."pencil.svg"; ?>" alt="Aggiorna disponibilità" /><h2>Aggiorna disponibilità</h2></div></a>
     </li></ul>
     </nav>
 </section>

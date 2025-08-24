@@ -71,7 +71,7 @@ if (empty($immagini) && !empty($prodotto['URLimmagine'])) {
                         <img src="img/arrow-up.png" class="accordion-arrow" alt="Apri sezione">
                 </button>
                 <div class="accordion-panel">
-                     <p><?php echo isset($prodotto['istruzioni_per_luso']) ? nl2br(htmlspecialchars($prodotto['istruzioni_per_luso'])) : 'Nessun ingrediente specificato.'; ?></p>
+                     <p><?php echo !empty($prodotto['istruzioni']) ? nl2br(htmlspecialchars($prodotto['istruzioni'])) : 'Istruzioni per l\'uso assenti.'; ?></p>
                 </div>
             </div>
 
@@ -81,7 +81,7 @@ if (empty($immagini) && !empty($prodotto['URLimmagine'])) {
                         <img src="img/arrow-up.png" class="accordion-arrow" alt="Apri sezione">
                 </button>
                 <div class="accordion-panel">
-                     <p><?php echo isset($prodotto['ingredienti']) ? nl2br(htmlspecialchars($prodotto['ingredienti'])) : 'Nessun ingrediente specificato.'; ?></p>
+                     <p><?php echo !empty($prodotto['ingredienti']) ? nl2br(htmlspecialchars($prodotto['ingredienti'])) : 'Nessun ingrediente specificato.'; ?></p>
                 </div>
             </div>
 
@@ -91,7 +91,7 @@ if (empty($immagini) && !empty($prodotto['URLimmagine'])) {
                         <img src="img/arrow-up.png" class="accordion-arrow" alt="Apri sezione">
                 </button>
                 <div class="accordion-panel">
-                    <p><?php echo nl2br(htmlspecialchars($prodotto['avvertenze'])); ?></p>
+                    <p><?php echo !empty($prodotto["avvertenze"]) ? nl2br(htmlspecialchars($prodotto['avvertenze'])) : "Nessuna avvertenza di sicurezza."; ?></p>
                 </div>
             </div>
         </div>

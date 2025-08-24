@@ -1,5 +1,14 @@
 <link rel="stylesheet" type="text/css" href="style/search_result.css"/>
 
+<nav><a href="index.php">Home</a><span>/</span><?php
+    if (isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {
+        echo '<a href="profile.php">Pagina personale</a><span>/</span>'
+            . '<a href="availability.php">Gestione disponibilità</a>'
+            . '<span>/Ricerca</span>';
+    } else {
+        echo '<span>Ricerca</span>';
+    }
+?></nav>
 <div class="empty-result">
     <h2>Nessun risultato</h2>
 
@@ -12,8 +21,8 @@
     <?php endif; ?>
 
     <p>
-        Prova a usare termini di ricerca diversi oppure torna alla pagina principale.
+        Prova a usare termini di ricerca diversi oppure esplora le pagine delle categorie.
     </p>
 
-    <a href="index.php" class="btn-home">Torna alla Home</a>
+    <a href="research.php" class="btn-home">Continua a cercare</a>
 </div>

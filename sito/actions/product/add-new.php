@@ -45,15 +45,21 @@ if (isset($_SESSION["idutente"]) && isset($_SESSION["tipoUtente"])) {
         ) {
             $_SESSION["mess"] = "Errore nella registrazione della sottocategoria.";
         } else {
-            $image = substr($dest_file, 6);
+            $image = substr($dest_file, 10);
             $caption = ($_POST["didascalia"] == PRODUCT_CAPTION_DEFAULT) ? "" : $_POST["didascalia"];
             $description = ($_POST["descrizione"] == PRODUCT_DESCRIPTION_DEFAULT) ? "" : $_POST["descrizione"];
+            $instructions = ($_POST["istruzioni"] == PRODUCT_INSTRUCTIONS_DEFAULT) ? "" : $_POST["istruzioni"];
+            $ingredients = $_POST["ingredienti"] == PRODUCT_INGREDIENTS_DEFAULT ? "" : $_POST["ingredienti"];
+            $warnings = $_POST["avvertenze"] == PRODUCT_WARNINGS_DEFAULT ? "" : $_POST["avvertenze"];
             if ($dbh->addProduct(
                     $_POST["nome"],
                     $_POST["marca"],
                     $caption,
                     $description,
-                    $image, 
+                    $instructions,
+                    $ingredients,
+                    $warnings,
+                    $image,
                     $_POST["sottocategoria"])
             ) {
                 $_SESSION["mess"] = "Prodotto inserito correttamente.";
