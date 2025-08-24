@@ -25,5 +25,5 @@
         </div>
     <?php endforeach; ?>
 
-    <a href="add_availability.php?id=<?php echo $availability["IDprodotto"]; ?>"><button>Aggiungi disponibilità</button></a>
+    <a href="add_availability.php?id=<?php echo $_GET["id"]; ?>&categoria=<?php echo $_GET["categoria"] ?>"><button>Aggiungi disponibilità</button></a>
 </section>
