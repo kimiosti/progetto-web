@@ -18,9 +18,11 @@
             <section>
                 <a href="order_detail.php?id=<?php echo $ordine["IDordine"]; ?>"><button>Visualizza dettaglio</button></a>
                 <?php
-                    if ($_SESSION["tipoUtente"] == "venditore") {
-                        echo '<a href="actions/order/advance.php?id="'
+                    if ($_SESSION["tipoUtente"] == "venditore" && $ordine["stato"] != "consegnato") {
+                        echo '<a href="actions/order/advance.php?id='
                             . $ordine["IDordine"]
+                            . '&username='
+                            . $ordine["usernameAcquirente"]
                             . '"><button>Avanza stato</button></a>';
                     }
                 ?>
