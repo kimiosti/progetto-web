@@ -52,6 +52,12 @@
                     <li><a href="payments.php">Metodi di pagamento</a></li>
                 </ul></nav>
             </section><section>
+                <header><h2>A proposito di PureEssence</h2></header>
+                <nav><ul>
+                    <li><a href="about.php">About us</a></li>
+                    <li><a href="contacts.php">Contatti</a></li>
+                </ul></nav>
+            </section><section>
                 <header><h2>I nostri social</h2></header>
                 <nav><ul>
                     <li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."instagram.svg"; ?>" alt="Instagram" /></a>

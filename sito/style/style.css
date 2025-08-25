@@ -135,7 +135,7 @@ body > footer {
 body > footer > section {
     margin-left: 10%;
     box-sizing: border-box;
-    width: 40%;
+    width: 23%;
     display: inline-block;
     vertical-align: top;
     padding-top: 20px;
@@ -156,7 +156,7 @@ body > footer > section > nav > ul > li {
     line-height: 200%;
 }
 
-body > footer > section:nth-child(2) > nav > ul > li {
+body > footer > section:nth-child(3) > nav > ul > li {
     display: inline-block;
     width: 15%;
 }

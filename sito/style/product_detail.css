@@ -160,6 +160,7 @@ body {
     border-radius: 8px;
     overflow: hidden;
     height: 48px;
+    align-items: center;
 }
 
 .qty-btn {
@@ -172,14 +173,18 @@ body {
     user-select: none;
 }
 
-#quantity {
+#quantity,
+[data-js="quantity"] {
     width: 60px;
+    height: 100%;
     border: none;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
     text-align: center;
     font-size: 1rem;
     font-family: 'Montserrat', sans-serif;
     -moz-appearance: textfield;
-    appearance: none;
+    appearance: textfield;
 }
 
 .product-buttons {
