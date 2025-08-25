@@ -12,8 +12,11 @@ if (!isset($_SESSION["idutente"]) || !isset($_SESSION["tipoUtente"])) {
     $templateParams["corpoMessaggio"] = PERMISSION_DENIED_MESSAGE;
     $templateParams["linkBottone"] = "profile.php";
     $templateParams["testoBottone"] = "Torna al profilo";
+
+    require "templates/base.php";
 } else if (!isset($_GET["id"]) || !isset($_GET["categoria"])) {
-    //redirect alla generica pagina di ricerca delle disponibilità da gestire.
+    header("Location: research.php");
+    die();
 } else {
     $templateParams["categorie"] = $dbh->getCategories();
     $templateParams["titolo"] = "PureEssence - Gestione disponibilità";
