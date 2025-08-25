@@ -29,86 +29,101 @@ class DatabaseHelper{
 
 
     public function getProductByCategories($categoria, $marche = [], $sottocategorie = [], $taglie = [], $prezzi = [], $search = '') {
-        $query = "SELECT DISTINCT p.*, d.taglia, d.prezzo, d.IDdisponibilità
-                  FROM PRODOTTO p
-                  JOIN SOTTOCATEGORIA s ON p.sottocategoria = s.nome
-                  JOIN CATEGORIA c ON s.categoria = c.nome
-                  LEFT JOIN DISPONIBILITÀ d ON p.IDprodotto = d.IDprodotto
-                  WHERE c.nome = ?";
+    $query = "SELECT p.*, MIN(d.prezzo) as prezzo,
+              SUBSTRING_INDEX(GROUP_CONCAT(d.taglia ORDER BY d.prezzo ASC), ',', 1) as taglia
+              FROM PRODOTTO p
+              JOIN SOTTOCATEGORIA s ON p.sottocategoria = s.nome
+              JOIN CATEGORIA c ON s.categoria = c.nome
+              LEFT JOIN DISPONIBILITÀ d ON p.IDprodotto = d.IDprodotto
+              WHERE c.nome = ?";
 
-        $params = [$categoria];
-        $types = "s";
+    $params = [$categoria];
+    $types = "s";
 
-        if (!empty($marche)) {
-            $placeholders = implode(',', array_fill(0, count($marche), '?'));
-            $query .= " AND p.marca IN (" . $placeholders . ")";
-            foreach ($marche as $marca) { $params[] = $marca; }
-            $types .= str_repeat('s', count($marche));
-        }
-        if (!empty($sottocategorie)) {
-            $placeholders = implode(',', array_fill(0, count($sottocategorie), '?'));
-            $query .= " AND p.sottocategoria IN (" . $placeholders . ")";
-            foreach ($sottocategorie as $sottocategoria) { $params[] = $sottocategoria; }
-            $types .= str_repeat('s', count($sottocategorie));
-        }
-        if (!empty($taglie)) {
-            $placeholders = implode(',', array_fill(0, count($taglie), '?'));
-            $query .= " AND d.taglia IN (" . $placeholders . ")";
-            foreach ($taglie as $taglia) { $params[] = $taglia; }
-            $types .= str_repeat('s', count($taglie));
-        }
-        if (!empty($prezzi)) {
-            $placeholders = implode(',', array_fill(0, count($prezzi), '?'));
-            $query .= " AND d.prezzo IN (" . $placeholders . ")";
-            foreach ($prezzi as $prezzo) { $params[] = $prezzo; }
-            $types .= str_repeat('d', count($prezzi));
-        }
+    if (!empty($marche)) {
+        $placeholders = implode(',', array_fill(0, count($marche), '?'));
+        $query .= " AND p.marca IN (" . $placeholders . ")";
+        foreach ($marche as $marca) { $params[] = $marca; }
+        $types .= str_repeat('s', count($marche));
+    }
+    if (!empty($sottocategorie)) {
+        $placeholders = implode(',', array_fill(0, count($sottocategorie), '?'));
+        $query .= " AND p.sottocategoria IN (" . $placeholders . ")";
+        foreach ($sottocategorie as $sottocategoria) { $params[] = $sottocategoria; }
+        $types .= str_repeat('s', count($sottocategorie));
+    }
+    if (!empty($taglie)) {
+        $placeholders = implode(',', array_fill(0, count($taglie), '?'));
+        $query .= " AND d.taglia IN (" . $placeholders . ")";
+        foreach ($taglie as $taglia) { $params[] = $taglia; }
+        $types .= str_repeat('s', count($taglie));
+    }
+    if (!empty($prezzi)) {
+        $placeholders = implode(',', array_fill(0, count($prezzi), '?'));
+        $query .= " AND d.prezzo IN (" . $placeholders . ")";
+        foreach ($prezzi as $prezzo) { $params[] = $prezzo; }
+        $types .= str_repeat('d', count($prezzi));
+    }
 
-        if (!empty($search)) {
-            $search_is_filter = false;
-            foreach ($marche as $marca) {
-                if (strcasecmp($marca, $search) == 0) {
+    if (!empty($search)) {
+        $search_is_filter = false;
+        foreach ($marche as $marca) {
+            if (strcasecmp($marca, $search) == 0) {
+                $search_is_filter = true;
+                break;
+            }
+        }
+        if (!$search_is_filter) {
+            foreach ($sottocategorie as $sottocategoria) {
+                if (strcasecmp($sottocategoria, $search) == 0) {
                     $search_is_filter = true;
                     break;
                 }
             }
-            if (!$search_is_filter) {
-                foreach ($sottocategorie as $sottocategoria) {
-                    if (strcasecmp($sottocategoria, $search) == 0) {
-                        $search_is_filter = true;
-                        break;
-                    }
-                }
-            }
-
-            if (!$search_is_filter) {
-                $query .= " AND (p.nome LIKE ? OR p.marca LIKE ? OR p.didascalia LIKE ?)";
-                $searchTerm = "%" . $search . "%";
-                $params[] = $searchTerm;
-                $params[] = $searchTerm;
-                $params[] = $searchTerm;
-                $types .= "sss";
-            }
         }
 
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param($types, ...$params);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        if (!$search_is_filter) {
+            $query .= " AND (p.nome LIKE ? OR p.marca LIKE ? OR p.didascalia LIKE ?)";
+            $searchTerm = "%" . $search . "%";
+            $params[] = $searchTerm;
+            $params[] = $searchTerm;
+            $params[] = $searchTerm;
+            $types .= "sss";
+        }
     }
 
-    public function getProductById($id) {
-        $query = "SELECT p.*, d.taglia, d.prezzo, p.ingredienti, p.istruzioni, d.IDdisponibilità
-                  FROM PRODOTTO p
-                  LEFT JOIN DISPONIBILITÀ d ON p.IDprodotto = d.IDprodotto
-                  WHERE p.IDprodotto = ?";
+    $query .= " GROUP BY p.IDprodotto";
 
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param($types, ...$params);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+
+    public function getProductById($id) {
+    $queryProdotto = "SELECT * FROM PRODOTTO WHERE IDprodotto = ?";
+    $stmtProdotto = $this->db->prepare($queryProdotto);
+    $stmtProdotto->bind_param("i", $id);
+    $stmtProdotto->execute();
+    $resultProdotto = $stmtProdotto->get_result();
+    $prodotto = $resultProdotto->fetch_assoc();
+
+    if (!$prodotto) {
+        return null;
+    }
+
+    $queryDisponibilita = "SELECT IDdisponibilità, taglia, prezzo FROM DISPONIBILITÀ WHERE IDprodotto = ? ORDER BY prezzo ASC";
+    $stmtDisponibilita = $this->db->prepare($queryDisponibilita);
+    $stmtDisponibilita->bind_param("i", $id);
+    $stmtDisponibilita->execute();
+    $resultDisponibilita = $stmtDisponibilita->get_result();
+    $disponibilita = $resultDisponibilita->fetch_all(MYSQLI_ASSOC);
+
+    return [
+        'prodotto' => $prodotto,
+        'disponibilita' => $disponibilita
+    ];
     }
 
     public function addUser($username, $password, $email, $phone) {
@@ -480,7 +495,6 @@ class DatabaseHelper{
     public function updateAvailabilityPrice($availabilityID, $price) {
         $statement = $this->db->prepare("UPDATE disponibilità SET prezzo = ? WHERE IDdisponibilità = ?");
         $statement->bind_param("di", $price, $availabilityID);
-        
         try {
             $statement->execute();
             return true;
