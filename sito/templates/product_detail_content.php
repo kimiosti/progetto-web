@@ -47,7 +47,7 @@ if (empty($immagini) && !empty($prodotto['URLimmagine'])) {
                 </section>
             </section>
 
-            <form action="gestisci_preferiti.php" method="POST" style="display: inline;">
+            <form action="#" method="POST" style="display: inline;">
                 <input type="hidden" name="IDprodotto" value="<?php echo htmlspecialchars($prodotto['IDprodotto']); ?>">
                 <section type="submit" class="btn-wishlist" title="Aggiungi ai preferiti">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
@@ -57,7 +57,7 @@ if (empty($immagini) && !empty($prodotto['URLimmagine'])) {
             </form>
         </section>
 
-        <form action="carrello.php" method="POST" class="actions">
+        <form action="cart.php" method="POST" class="actions">
             <section class="quantity-selector">
                 <button type="button" class="qty-btn" data-js="decrease">-</button>
                 <input type="number" data-js="quantity" value="1" min="1" readonly>
