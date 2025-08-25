@@ -624,5 +624,39 @@ class DatabaseHelper{
         $result = $statement->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function advanceOrderState($orderID) {
+        $statement = $this->db->prepare("UPDATE ordine SET stato = stato + 1 WHERE IDordine = ?");
+        $statement->bind_param("i", $orderID);
+        try {
+            $statement->execute();
+            return true;
+        } catch (Exception $th) {
+            return false;
+        }
+    }
+
+    public function getOrderByID($orderID) {
+        $statement = $this->db->prepare("SELECT * FROM ordine WHERE IDordine = ?");
+        $statement->bind_param("i", $orderID);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getOrderAuthor($orderID) {
+        $statement = $this->db->prepare("
+            SELECT a.*
+            FROM ordine o, acquirente a
+            WHERE o.usernameAcquirente = a.username
+            AND o.IDordine = ?
+        ");
+        $statement->bind_param("i", $orderID);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
