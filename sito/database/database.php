@@ -589,5 +589,40 @@ class DatabaseHelper{
             return $result[0]["IDdisponibilità"];
         }
     }
+
+    public function getCustomerOrders($username) {
+        $statement = $this->db->prepare('
+            SELECT *
+            FROM ordine o, pagamento p
+            WHERE o.IDordine = p.IDordine
+            AND o.usernameAcquirente = ?
+            AND o.stato != "carrello"
+        ');
+        $statement->bind_param("s", $username);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getOrdersToSeller($username) {
+        $statement = $this->db->prepare('
+            SELECT o.*, p.*
+            FROM ordine o, pagamento p
+            WHERE o.IDordine = p.IDordine
+            AND o.stato != "carrello"
+            AND o.IDordine IN (
+                SELECT i.IDordine
+                FROM inclusione i, disponibilità d
+                WHERE i.IDdisponibilità = d.IDdisponibilità
+                AND d.usernameVenditore = ?
+            )
+        ');
+        $statement->bind_param("s", $username);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
