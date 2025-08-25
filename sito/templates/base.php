@@ -25,7 +25,7 @@
                 </li><li><a href="wishlist.php"  <?php if(isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {echo 'hidden="true"';} ?>><img src="<?php echo LOCAL_IMG_DIR."heart.svg"; ?>" alt="Preferiti" /></a>
                 </li><li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."handbag.svg"; ?>" <?php if(isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {echo 'hidden="true"';} ?> alt="Carrello" /></a>
                 </li><li><a href="profile.php"><img src="<?php echo LOCAL_IMG_DIR."person.svg"; ?>" alt="Profilo" /></a>
-                </li><li><a href="notifications.php"><img src="" alt="Notifiche" /></a></li>
+                </li><li><a href="notifications.php"><img src="<?php echo LOCAL_IMG_DIR."bell.svg"; ?>" alt="Notifiche" /></a></li>
         </ul></nav>
         </header>
 
