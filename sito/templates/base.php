@@ -15,9 +15,9 @@
             <nav><a href="#"><img src="<?php echo LOCAL_IMG_DIR."list.svg"; ?>" alt="Categorie" /></a>
             </nav><div><a href="index.php"><img src="<?php echo LOCAL_IMG_DIR."logo.png"; ?> " alt="Home Page" /></a>
             </div><nav><ul>
-                <li><a href="#" <?php if(isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {echo 'hidden="true"';} ?>>
+                <li><a href="#" title="Cerca" <?php if(isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {echo 'hidden="true"';} ?>>
                     <form action="research.php" method="get">
-                        <input type="text" name="q" placeholder="Cerca..." class="search-input" />
+                        <label for="cerca" hidden="true">Cerca</label><input type="text" id="cerca" name="q" placeholder="Cerca..." class="search-input" />
                     </form>
                     <button class="search-btn">
                         <img src="<?php echo LOCAL_IMG_DIR."search.svg"; ?>" alt="Cerca" />
