@@ -1,0 +1,89 @@
+body > main > section > nav {
+    margin-bottom: 20px;
+    font-size: 8pt;
+    color: #545454;
+}
+
+body > main > section > nav > a {
+    color: #545454;
+}
+
+body > main > section > section {
+    width: 100%;
+    text-align: center;
+}
+
+body > main > section > section > div {
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px 2.5%;
+    box-sizing: border-box;
+    width: 95%;
+    text-align: justify;
+    display: inline-block;
+}
+
+body > main > section > section > div > header > h2 {
+    display: contents;
+    font-size: 14pt;
+    font-weight: 600;
+}
+
+body > main > section > section > div > div > p {
+    font-size: 10pt;
+}
+
+body > main > section > section > div > div {
+    margin: 10px 5%;
+    width: 40%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+body > main > section > section > div > div > img {
+    width: 100%;
+    aspect-ratio: 1;
+}
+
+body > main > section > section > div > div > a {
+    display: contents;
+}
+
+body > main > section > section > div > div > a > button {
+    margin: 0;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #8b92a7;
+    width: 100%;
+    padding: 5px 0;
+    background-color: white;
+    color: black;
+    font-size: 10pt;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+}
+
+body > main > section > section > div > div > a > button:hover {
+    cursor: pointer;
+    background-color: #f6f6f6;
+    color: #417c64;
+}
+
+@media screen and (min-width: 992px) {
+    body > main > section > nav {
+        font-size: 10pt;
+    }
+
+    body > main > section > section > div {
+        width: 45%;
+    }
+
+    body > main > section > section > div > div > p {
+        font-size: 12pt;
+    }
+
+    body > main > section > section > div > header > h2 {
+        font-size: 16pt;
+    }
+}
