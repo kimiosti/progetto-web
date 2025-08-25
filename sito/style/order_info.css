@@ -50,7 +50,7 @@ body > main > section > section > div > div > a {
     display: contents;
 }
 
-body > main > section > section > div > div > a > button {
+body > main > section > section > div > div > a > button, body > main > section > footer > a > button {
     margin: 0;
     box-sizing: border-box;
     border-radius: 5px;
@@ -64,10 +64,23 @@ body > main > section > section > div > div > a > button {
     font-family: "Montserrat", sans-serif;
 }
 
-body > main > section > section > div > div > a > button:hover {
+body > main > section > section > div > div > a > button:hover, body > main > section > footer > a > button:hover {
     cursor: pointer;
     background-color: #f6f6f6;
     color: #417c64;
+}
+
+body > main > section > footer {
+    text-align: center;
+}
+
+body > main > section > footer > a {
+    display: contents;
+}
+
+body > main > section > footer > a > button {
+    margin: 10px 2.5%;
+    width: 40%;
 }
 
 @media screen and (min-width: 992px) {
@@ -85,5 +98,9 @@ body > main > section > section > div > div > a > button:hover {
 
     body > main > section > section > div > header > h2 {
         font-size: 16pt;
+    }
+
+    body > main > section > footer > a > button {
+        width: 20%
     }
 }
