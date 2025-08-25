@@ -53,7 +53,7 @@ if (empty($immagini) && !empty($prodotto['URLimmagine'])) {
             </button>
         </section>
 
-        <form action="cart.php" method="POST" class="actions">
+        <form action="actions/cart/add.php" method="POST" class="actions">
             <section class="quantity-selector">
                 <button type="button" class="qty-btn" data-js="decrease">-</button>
                 <input type="number" data-js="quantity" value="1" min="1" readonly>
