@@ -712,5 +712,22 @@ class DatabaseHelper{
             return false;
         }
     }
+
+    public function getCartContent($username) {
+        $statement = $this->db->prepare("
+            SELECT p.marca, p.nome, p.URLimmagine, d.taglia, d.prezzo, i.quantità, d.IDdisponibilità, o.IDordine
+            FROM ordine o, inclusione i, disponibilità d, prodotto p
+            WHERE o.IDordine = i.IDordine
+            AND i.IDdisponibilità = d.IDdisponibilità
+            AND d.IDprodotto = p.IDprodotto
+            AND o.stato = 'carrello'
+            AND o.usernameAcquirente = ?
+        ");
+        $statement->bind_param("s", $username);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
