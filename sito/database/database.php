@@ -658,5 +658,22 @@ class DatabaseHelper{
         $result = $statement->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getOrderedAvailabilities($orderID) {
+        $statement = $this->db->prepare("
+            SELECT p.nome, p.marca, p.URLimmagine, d.taglia, d.prezzo, i.quantità, o.stato, p.IDprodotto, pa.data
+            FROM ordine o, inclusione i, disponibilità d, prodotto p, pagamento pa
+            WHERE i.IDordine = o.IDordine
+            AND pa.IDordine = o.IDordine
+            AND i.IDdisponibilità = d.IDdisponibilità
+            AND d.IDprodotto = p.IDprodotto
+            AND o.IDordine = ?
+        ");
+        $statement->bind_param("i", $orderID);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
