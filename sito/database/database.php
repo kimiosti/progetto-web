@@ -689,5 +689,28 @@ class DatabaseHelper{
         $result = $statement->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function isFavorite($username, $productID) {
+        $statement = $this->db->prepare("SELECT * FROM preferito WHERE usernameAcquirente = ? AND IDprodotto = ?");
+        $statement->bind_param("si", $username, $productID);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return mysqli_num_rows($result) != 0;
+    }
+
+    public function toggleFavorite($username, $productID) {
+        $query = $this->isFavorite($username, $productID)
+            ? "DELETE FROM preferito WHERE usernameAcquirente = ? AND IDprodotto = ?"
+            : "INSERT INTO preferito(usernameAcquirente, IDprodotto) VALUES (?, ?)";
+        $statement = $this->db->prepare($query);
+        $statement->bind_param("si", $username, $productID);
+        try {
+            $statement->execute();
+            return true;
+        } catch (Exception $th) {
+            return false;
+        }
+    }
 }
 ?>
