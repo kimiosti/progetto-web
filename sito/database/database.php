@@ -715,7 +715,7 @@ class DatabaseHelper{
 
     public function getCartContent($username) {
         $statement = $this->db->prepare("
-            SELECT p.marca, p.nome, p.URLimmagine, d.taglia, d.prezzo, i.quantità, d.IDdisponibilità, o.IDordine
+            SELECT p.marca, p.nome, p.URLimmagine, d.taglia, d.prezzo, i.quantità, d.IDdisponibilità, o.IDordine, d.quantità as rimanenza
             FROM ordine o, inclusione i, disponibilità d, prodotto p
             WHERE o.IDordine = i.IDordine
             AND i.IDdisponibilità = d.IDdisponibilità
