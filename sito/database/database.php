@@ -729,5 +729,88 @@ class DatabaseHelper{
         $result = $statement->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function removeInclusion($orderID, $availabilityID) {
+        $statement = $this->db->prepare("DELETE FROM inclusione WHERE IDordine = ? AND IDdisponibilità = ?");
+        $statement->bind_param("ii", $orderID, $availabilityID);
+        try {
+            $statement->execute();
+            return true;
+        } catch (Exception $th) {
+            return false;
+        }
+    }
+
+    public function userHasOpenCart($username) {
+        $statement = $this->db->prepare("SELECT * FROM ordine WHERE stato = 'carrello' AND usernameAcquirente = ?");
+        $statement->bind_param("s", $username);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return mysqli_num_rows($result) != 0;
+    }
+
+    public function openCart($username) {
+        $statement = $this->db->prepare("INSERT INTO ordine(usernameAcquirente) VALUES (?)");
+        $statement->bind_param("s", $username);
+        try {
+            $statement->execute();
+            return true;
+        } catch (Exception $th) {
+            return false;
+        }
+    }
+
+    public function getUserCart($username) {
+        $statement = $this->db->prepare("SELECT * FROM ordine WHERE stato = 'carrello' AND usernameAcquirente = ?");
+        $statement->bind_param("s", $username);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getAvailabilityFromProductAndSize($productID, $size) {
+        $statement = $this->db->prepare("SELECT * FROM disponibilità WHERE IDprodotto = ? AND taglia = ?");
+        $statement->bind_param("is", $productID, $size);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function addToCart($orderID, $availabilityID, $quantity) {
+        $query = "";
+        if ($this->isInCart($orderID, $availabilityID)) {
+            $query = "
+                UPDATE inclusione
+                SET quantità = quantità + ?
+                WHERE IDordine = ?
+                AND IDdisponibilità = ?
+            ";
+        } else {
+            $query = "
+                INSERT INTO inclusione(quantità, IDordine, IDdisponibilità)
+                VALUES (?, ?, ?)
+            ";
+        }
+        $statement = $this->db->prepare($query);
+        $statement->bind_param("iii", $quantity, $orderID, $availabilityID);
+        try {
+            $statement->execute();
+            return true;
+        } catch (Exception $th) {
+            return false;
+        }
+    }
+
+    private function isInCart($orderID, $availabilityID) {
+        $statement = $this->db->prepare("SELECT * FROM inclusione WHERE IDordine = ? AND IDdisponibilità = ?");
+        $statement->bind_param("ii", $orderID, $availabilityID);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return mysqli_num_rows($result) != 0;
+    }
 }
 ?>
