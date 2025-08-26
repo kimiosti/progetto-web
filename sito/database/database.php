@@ -812,5 +812,69 @@ class DatabaseHelper{
         $result = $statement->get_result();
         return mysqli_num_rows($result) != 0;
     }
+
+    public function getConcernedSellers($orderID) {
+        $statement = $this->db->prepare("
+            SELECT DISTINCT v.username
+            FROM venditore v, disponibilità d, inclusione i, ordine o
+            WHERE v.username = d.usernameVenditore
+            AND d.IDdisponibilità = i.IDdisponibilità
+            AND i.IDordine = o.IDordine
+            AND o.IDordine = ?
+        ");
+        $statement->bind_param("i", $orderID);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getAvailabilitySeller($availabilityID) {
+        $statement = $this->db->prepare("
+            SELECT v.*
+            FROM venditore v, disponibilità d
+            WHERE v.username = d.usernameVenditore
+            AND d.IDdisponibilità = ?
+        ");
+        $statement->bind_param("i", $availabilityID);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function decrementAvailability($amount, $availabilityID) {
+        $statement = $this->db->prepare("
+            UPDATE disponibilità SET quantità = quantità - ?
+            WHERE IDdisponibilità = ?
+        ");
+        $statement->bind_param("ii", $amount, $availabilityID);
+        try {
+            $statement->execute();
+            return true;
+        } catch (Exception $th) {
+            return false;
+        }
+    }
+
+    public function getBuyerFromID($username) {
+        $statement = $this->db->prepare("SELECT * FROM acquirente WHERE username = ?");
+        $statement->bind_param("s", $username);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function recordPayment($orderID, $price) {
+        $statement = $this->db->prepare("INSERT INTO pagamento(IDordine, data, prezzo) VALUES (?, curdate(), ?)");
+        $statement->bind_param("ii", $orderID, $price);
+        try {
+            $statement->execute();
+            return true;
+        } catch (Exception $th) {
+            return false;
+        }
+    }
 }
 ?>
