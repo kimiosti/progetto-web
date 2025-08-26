@@ -12,8 +12,8 @@ if (!isset($_SESSION["idutente"]) || !isset($_SESSION["tipoUtente"])) {
     foreach ($cart as $item) {
         if ($item["rimanenza"] < $item["quantità"]) {
             $cartOk = false;
-            $price = $price + ($item["quantità"] * $item["prezzo"]);
         }
+        $price = $price + ($item["quantità"] * $item["prezzo"]);
     }
 
     if (empty($cart) || !$cartOk) {
