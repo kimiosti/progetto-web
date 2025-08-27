@@ -1,14 +1,5 @@
-
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi Siamo - PureEssence</title>
-    <link rel="stylesheet" type="text/css" href="style/about-us.css">
-</head>
-<body>
-    <main class="about-us-container">
+<link rel="stylesheet" type="text/css" href="style/about-us.css">
+<section class="about-us-container">
         <section class="about-hero">
             <img src="img/about-us-banner.jpg" alt="Scorcio di un campo di lavanda al tramonto" class="about-hero-background">
             <div class="about-hero-content">
@@ -61,6 +52,4 @@
             <a href="prodotti_categoria.php?categoria=viso" class="button-primary">Scopri la Collezione</a>
         </section>
 
-    </main>
-</body>
-</html>
+</section>

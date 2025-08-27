@@ -52,7 +52,7 @@
                     <li><a href="payments.php">Metodi di pagamento</a></li>
                 </ul></nav>
             </section><section>
-                <header><h2>A proposito di PureEssence</h2></header>
+                <header><h2>Chi siamo</h2></header>
                 <nav><ul>
                     <li><a href="about.php">About us</a></li>
                     <li><a href="contacts.php">Contatti</a></li>

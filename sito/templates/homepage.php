@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <link rel="stylesheet" type="text/css" href="style/home.css"/>
 <link rel="stylesheet" type="text/css" href="style/style.css"/>
 
@@ -10,4 +8,3 @@
         <a href="about.php" class="banner-btn">Scopri di più</a>
     </section>
 </div>
-</html>

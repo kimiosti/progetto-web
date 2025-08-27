@@ -1,4 +1,4 @@
-<main class="contact-page-container">
+<section class="contact-page-container">
     <link rel="stylesheet" type="text/css" href="style/contact.css">
     <section class="contact-hero">
         <img src="img/contact-background.png" alt="Spazio di lavoro sereno e luminoso" class="contact-hero__background">
@@ -47,4 +47,4 @@
 
         </div>
     </section>
-</main>
+</section>
