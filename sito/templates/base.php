@@ -15,17 +15,17 @@
             <nav><a href="#"><img src="<?php echo LOCAL_IMG_DIR."list.svg"; ?>" alt="Categorie" /></a>
             </nav><div><a href="index.php"><img src="<?php echo LOCAL_IMG_DIR."logo.png"; ?> " alt="Home Page" /></a>
             </div><nav><ul>
-                <li><a href="#" <?php if(isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {echo 'hidden="true"';} ?>>
+                <li><a href="#" title="Cerca" <?php if(isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {echo 'hidden="true"';} ?>>
                     <form action="research.php" method="get">
-                        <input type="text" name="q" placeholder="Cerca..." class="search-input" />
+                        <label for="cerca" hidden="true">Cerca</label><input type="text" id="cerca" name="q" placeholder="Cerca..." class="search-input" />
                     </form>
                     <button class="search-btn">
                         <img src="<?php echo LOCAL_IMG_DIR."search.svg"; ?>" alt="Cerca" />
                     </button></a>
                 </li><li><a href="wishlist.php"  <?php if(isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {echo 'hidden="true"';} ?>><img src="<?php echo LOCAL_IMG_DIR."heart.svg"; ?>" alt="Preferiti" /></a>
-                </li><li><a href="#"><img src="<?php echo LOCAL_IMG_DIR."handbag.svg"; ?>" <?php if(isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {echo 'hidden="true"';} ?> alt="Carrello" /></a>
+                </li><li><a href="cart.php"><img src="<?php echo LOCAL_IMG_DIR."handbag.svg"; ?>" <?php if(isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {echo 'hidden="true"';} ?> alt="Carrello" /></a>
                 </li><li><a href="profile.php"><img src="<?php echo LOCAL_IMG_DIR."person.svg"; ?>" alt="Profilo" /></a>
-                </li><li><a href="notifications.php"><img src="" alt="Notifiche" /></a></li>
+                </li><li><a href="notifications.php"><img src="<?php echo LOCAL_IMG_DIR."bell.svg"; ?>" alt="Notifiche" /></a></li>
         </ul></nav>
         </header>
 

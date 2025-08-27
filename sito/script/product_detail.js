@@ -94,3 +94,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+function refreshWishlistButton() {
+    wishlistButtonContent = document.querySelector(".btn-wishlist svg");
+
+    const queryString = window.location.search;
+    const params = new URLSearchParams(queryString);
+
+    fetch("actions/product/check-favorite.php", {
+        method: "POST",
+        body: JSON.stringify({
+            id: params.get("id")
+        }),
+        headers: {
+            "Content-type": "application/json"
+        }
+    }).then(res => {
+        return res.json();
+    }).then(data => {
+        if (data.isFavorite == true) {
+            wishlistButtonContent.setAttribute("fill", "black");
+        } else {
+            wishlistButtonContent.setAttribute("fill", "none");
+        }
+    });
+}
+
+wishlistButton = document.querySelector(".btn-wishlist");
+wishlistButton.addEventListener("click", function() {
+    const queryString = window.location.search;
+    const params = new URLSearchParams(queryString);
+
+    fetch("actions/product/toggle-favorite.php", {
+        method: "POST",
+        body: JSON.stringify({
+            id: params.get("id")
+        }),
+        headers: {
+            "Content-type": "application/json"
+        }
+    }).then(_res => {
+        refreshWishlistButton();
+    });
+});
+
+refreshWishlistButton();
+setInterval(refreshWishlistButton, 2000);

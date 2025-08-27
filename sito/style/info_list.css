@@ -16,17 +16,19 @@ body > main > section > div {
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 20px 0;
+    margin: 20px 2.5%;
+    text-align: justify;
 }
 
 body > main > section > div > header > h2 {
     display: contents;
-    font-size: 16pt;
+    font-size: 14pt;
     font-weight: 600;
 }
 
 body > main > section > div > p {
-    line-height: 100%;
+    line-height: 120%;
+    font-size: 10pt;
 }
 
 body > main > section > div > section > a {
@@ -61,5 +63,13 @@ body > main > section > div > section button:hover {
     body > main > section > div > section button {
         width: 20%;
         margin-right: 0;
+    }
+
+    body > main > section > div > p {
+        font-size: 12pt;
+    }
+
+    body > main > section > div > header > h2 {
+        font-size: 16pt;
     }
 }

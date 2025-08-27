@@ -46,18 +46,14 @@ if (empty($immagini) && !empty($prodotto['URLimmagine'])) {
                     <i class="fas fa-chevron-down"></i>
                 </section>
             </section>
-
-            <form action="#" method="POST" style="display: inline;">
-                <input type="hidden" name="IDprodotto" value="<?php echo htmlspecialchars($prodotto['IDprodotto']); ?>">
-                <section type="submit" class="btn-wishlist" title="Aggiungi ai preferiti">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
+            <button class="btn-wishlist" title="Aggiungi ai preferiti">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.61l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                    </svg>
-                </section>
-            </form>
+                </svg>
+            </button>
         </section>
 
-        <form action="cart.php" method="POST" class="actions">
+        <form action="actions/cart/add.php" method="POST" class="actions">
             <section class="quantity-selector">
                 <button type="button" class="qty-btn" data-js="decrease">-</button>
                 <input type="number" data-js="quantity" value="1" min="1" readonly>

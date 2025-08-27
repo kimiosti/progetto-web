@@ -4,7 +4,7 @@
     <h1>Pagina personale</h1>
     <nav>
         <ul>
-            <li><a href="#"><div><img src="<?php echo LOCAL_IMG_DIR."truck.svg"; ?>" alt="Ordini" /><h2>I tuoi ordini</h2></div>
+            <li><a href="orders.php"><div><img src="<?php echo LOCAL_IMG_DIR."truck.svg"; ?>" alt="Ordini" /><h2>I tuoi ordini</h2></div>
             </a></li><li><a href="notifications.php"><div><img src="<?php echo LOCAL_IMG_DIR."bell.svg"; ?>" alt="Notifiche" /><h2>Le tue notifiche</h2></div>
             </a></li><?php
                 if (isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "acquirente") {

@@ -20,7 +20,7 @@ if (empty($templateParams["notifiche"])) {
 <p><?php echo "Data: " . $notifica["data"] ?></p>
 <section><?php
 if ($notifica["IDordine"] != null) {
-    echo '<a href="#"><button>Visualizza ordine</button></a>';
+    echo '<a href="order_detail.php?id=' . $notifica["IDordine"] . '"><button>Visualizza ordine</button></a>';
 } else if ($notifica["IDdisponibilità"] != null) {
     $products = $dbh->getProductByAvailability($notifica["IDdisponibilità"]);
     $product = empty($products) ? null : $products[0];

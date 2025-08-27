@@ -635,5 +635,293 @@ class DatabaseHelper{
             return $result[0]["IDdisponibilità"];
         }
     }
+
+    public function getCustomerOrders($username) {
+        $statement = $this->db->prepare('
+            SELECT *
+            FROM ordine o, pagamento p
+            WHERE o.IDordine = p.IDordine
+            AND o.usernameAcquirente = ?
+            AND o.stato != "carrello"
+        ');
+        $statement->bind_param("s", $username);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getOrdersToSeller($username) {
+        $statement = $this->db->prepare('
+            SELECT o.*, p.*
+            FROM ordine o, pagamento p
+            WHERE o.IDordine = p.IDordine
+            AND o.stato != "carrello"
+            AND o.IDordine IN (
+                SELECT i.IDordine
+                FROM inclusione i, disponibilità d
+                WHERE i.IDdisponibilità = d.IDdisponibilità
+                AND d.usernameVenditore = ?
+            )
+        ');
+        $statement->bind_param("s", $username);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function advanceOrderState($orderID) {
+        $statement = $this->db->prepare("UPDATE ordine SET stato = stato + 1 WHERE IDordine = ?");
+        $statement->bind_param("i", $orderID);
+        try {
+            $statement->execute();
+            return true;
+        } catch (Exception $th) {
+            return false;
+        }
+    }
+
+    public function getOrderByID($orderID) {
+        $statement = $this->db->prepare("SELECT * FROM ordine WHERE IDordine = ?");
+        $statement->bind_param("i", $orderID);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getOrderAuthor($orderID) {
+        $statement = $this->db->prepare("
+            SELECT a.*
+            FROM ordine o, acquirente a
+            WHERE o.usernameAcquirente = a.username
+            AND o.IDordine = ?
+        ");
+        $statement->bind_param("i", $orderID);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getOrderedAvailabilities($orderID) {
+        $statement = $this->db->prepare("
+            SELECT p.nome, p.marca, p.URLimmagine, d.taglia, d.prezzo, i.quantità, o.stato, p.IDprodotto, pa.data
+            FROM ordine o, inclusione i, disponibilità d, prodotto p, pagamento pa
+            WHERE i.IDordine = o.IDordine
+            AND pa.IDordine = o.IDordine
+            AND i.IDdisponibilità = d.IDdisponibilità
+            AND d.IDprodotto = p.IDprodotto
+            AND o.IDordine = ?
+        ");
+        $statement->bind_param("i", $orderID);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function isFavorite($username, $productID) {
+        $statement = $this->db->prepare("SELECT * FROM preferito WHERE usernameAcquirente = ? AND IDprodotto = ?");
+        $statement->bind_param("si", $username, $productID);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return mysqli_num_rows($result) != 0;
+    }
+
+    public function toggleFavorite($username, $productID) {
+        $query = $this->isFavorite($username, $productID)
+            ? "DELETE FROM preferito WHERE usernameAcquirente = ? AND IDprodotto = ?"
+            : "INSERT INTO preferito(usernameAcquirente, IDprodotto) VALUES (?, ?)";
+        $statement = $this->db->prepare($query);
+        $statement->bind_param("si", $username, $productID);
+        try {
+            $statement->execute();
+            return true;
+        } catch (Exception $th) {
+            return false;
+        }
+    }
+
+    public function getCartContent($username) {
+        $statement = $this->db->prepare("
+            SELECT p.marca, p.nome, p.URLimmagine, d.taglia, d.prezzo, i.quantità, d.IDdisponibilità, o.IDordine, d.quantità as rimanenza
+            FROM ordine o, inclusione i, disponibilità d, prodotto p
+            WHERE o.IDordine = i.IDordine
+            AND i.IDdisponibilità = d.IDdisponibilità
+            AND d.IDprodotto = p.IDprodotto
+            AND o.stato = 'carrello'
+            AND o.usernameAcquirente = ?
+        ");
+        $statement->bind_param("s", $username);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function removeInclusion($orderID, $availabilityID) {
+        $statement = $this->db->prepare("DELETE FROM inclusione WHERE IDordine = ? AND IDdisponibilità = ?");
+        $statement->bind_param("ii", $orderID, $availabilityID);
+        try {
+            $statement->execute();
+            return true;
+        } catch (Exception $th) {
+            return false;
+        }
+    }
+
+    public function userHasOpenCart($username) {
+        $statement = $this->db->prepare("SELECT * FROM ordine WHERE stato = 'carrello' AND usernameAcquirente = ?");
+        $statement->bind_param("s", $username);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return mysqli_num_rows($result) != 0;
+    }
+
+    public function openCart($username) {
+        $statement = $this->db->prepare("INSERT INTO ordine(usernameAcquirente) VALUES (?)");
+        $statement->bind_param("s", $username);
+        try {
+            $statement->execute();
+            return true;
+        } catch (Exception $th) {
+            return false;
+        }
+    }
+
+    public function getUserCart($username) {
+        $statement = $this->db->prepare("SELECT * FROM ordine WHERE stato = 'carrello' AND usernameAcquirente = ?");
+        $statement->bind_param("s", $username);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getAvailabilityFromProductAndSize($productID, $size) {
+        $statement = $this->db->prepare("SELECT * FROM disponibilità WHERE IDprodotto = ? AND taglia = ?");
+        $statement->bind_param("is", $productID, $size);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function addToCart($orderID, $availabilityID, $quantity) {
+        $query = "";
+        if ($this->isInCart($orderID, $availabilityID)) {
+            $query = "
+                UPDATE inclusione
+                SET quantità = quantità + ?
+                WHERE IDordine = ?
+                AND IDdisponibilità = ?
+            ";
+        } else {
+            $query = "
+                INSERT INTO inclusione(quantità, IDordine, IDdisponibilità)
+                VALUES (?, ?, ?)
+            ";
+        }
+        $statement = $this->db->prepare($query);
+        $statement->bind_param("iii", $quantity, $orderID, $availabilityID);
+        try {
+            $statement->execute();
+            return true;
+        } catch (Exception $th) {
+            return false;
+        }
+    }
+
+    private function isInCart($orderID, $availabilityID) {
+        $statement = $this->db->prepare("SELECT * FROM inclusione WHERE IDordine = ? AND IDdisponibilità = ?");
+        $statement->bind_param("ii", $orderID, $availabilityID);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return mysqli_num_rows($result) != 0;
+    }
+
+    public function getConcernedSellers($orderID) {
+        $statement = $this->db->prepare("
+            SELECT DISTINCT v.username
+            FROM venditore v, disponibilità d, inclusione i, ordine o
+            WHERE v.username = d.usernameVenditore
+            AND d.IDdisponibilità = i.IDdisponibilità
+            AND i.IDordine = o.IDordine
+            AND o.IDordine = ?
+        ");
+        $statement->bind_param("i", $orderID);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getAvailabilitySeller($availabilityID) {
+        $statement = $this->db->prepare("
+            SELECT v.*
+            FROM venditore v, disponibilità d
+            WHERE v.username = d.usernameVenditore
+            AND d.IDdisponibilità = ?
+        ");
+        $statement->bind_param("i", $availabilityID);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function decrementAvailability($amount, $availabilityID) {
+        $statement = $this->db->prepare("
+            UPDATE disponibilità SET quantità = quantità - ?
+            WHERE IDdisponibilità = ?
+        ");
+        $statement->bind_param("ii", $amount, $availabilityID);
+        try {
+            $statement->execute();
+            return true;
+        } catch (Exception $th) {
+            return false;
+        }
+    }
+
+    public function getBuyerFromID($username) {
+        $statement = $this->db->prepare("SELECT * FROM acquirente WHERE username = ?");
+        $statement->bind_param("s", $username);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function recordPayment($orderID, $price) {
+        $statement = $this->db->prepare("INSERT INTO pagamento(IDordine, data, prezzo) VALUES (?, curdate(), ?)");
+        $statement->bind_param("ii", $orderID, $price);
+        try {
+            $statement->execute();
+            return true;
+        } catch (Exception $th) {
+            return false;
+        }
+    }
+
+    public function getCategoryByProduct($productID) {
+        $statement = $this->db->prepare("
+            SELECT c.*
+            FROM categoria c, prodotto p, sottocategoria s
+            WHERE p.sottocategoria = s.nome
+            AND c.nome = s.categoria
+            AND p.IDprodotto = ?
+        ");
+        $statement->bind_param("i", $productID);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>

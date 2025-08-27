@@ -17,6 +17,8 @@
             echo "availability/modify.php";
         } else if ($templateParams["tipoForm"] == "nuovaDisponibilità") {
             echo "availability/add.php";
+        } else if ($templateParams["tipoForm"] == "pagamento") {
+            echo "payment/process.php";
         } else {
             echo "profile/login.php";
         }
@@ -42,6 +44,8 @@
                 echo "Aggiorna disponibilità";
             } else if ($templateParams["tipoForm"] == "nuovaDisponibilità") {
                 echo "Aggiungi disponibilità";
+            } else if ($templateParams["tipoForm"] == "pagamento") {
+                echo "Pagamento";
             } else {
                 echo "Login";
             }
@@ -218,6 +222,25 @@
                         <li>
                             <input type="submit" name="submit" value="Crea disponibilità" />
                         </li>';
+                } else if ($templateParams["tipoForm"] == "pagamento") {
+                    echo '<li><input type="hidden" name="IDordine" value="' . $templateParams["IDordine"] . '" /></li>'
+                        . '<li>
+                            <label for="nome">Nome intestatario:</label><input type="text" id="nome" name="nome" />
+                        </li>
+                        <li>
+                            <label for="cognome">Cognome intestatario: </label><input type="text" id="cognome" name="cognome" />
+                        <li>
+                            <label for="numCarta">Numero carta:</label><input type="tel" id="numCarta" name="numCarta" pattern="[0-9]{16}" maxlength="16" />
+                        </li>
+                        <li>
+                            <label for="scadenza">Scadenza carta:</label><input type="month" id="scadenza" name="scadenza" />
+                        </li>
+                        <li>
+                            <label for="cvv">CVV:</label><input type="tel" id="cvv" name="cvv" pattern="[0-9]{3}" maxlength="3" />
+                        </li>
+                        <li>
+                            <input type="submit" name="submit" value="Paga ora" />
+                        </li>';
                 } else {
                     echo <<<EOD
                         <li>
@@ -257,6 +280,8 @@
                    || $templateParams["tipoForm"] == "nuovaDisponibilità") {
             echo '<a href="handle_availability.php?id=' . $templateParams["IDprodotto"] . '&categoria='
                 . $templateParams["categoria"] . '"><button>Torna indietro</button></a>';
+        } else if ($templateParams["tipoForm"] == "pagamento") {
+            echo '<a href="cart.php"><button>Torna indietro</button></a>';
         }
     ?>
 </section>
