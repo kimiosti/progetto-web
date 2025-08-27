@@ -891,5 +891,13 @@ class DatabaseHelper{
         $result = $statement->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getRandomProducts() {
+        $statement = $this->db->prepare("SELECT * FROM prodotto ORDER BY RAND() LIMIT 4");
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
