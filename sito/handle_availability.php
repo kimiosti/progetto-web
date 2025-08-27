@@ -14,7 +14,7 @@ if (!isset($_SESSION["idutente"]) || !isset($_SESSION["tipoUtente"])) {
     $templateParams["testoBottone"] = "Torna al profilo";
 
     require "templates/base.php";
-} else if (!isset($_GET["id"]) || !isset($_GET["categoria"])) {
+} else if (!isset($_GET["id"])) {
     header("Location: research.php");
     die();
 } else {
@@ -22,8 +22,9 @@ if (!isset($_SESSION["idutente"]) || !isset($_SESSION["tipoUtente"])) {
     $templateParams["titolo"] = "PureEssence - Gestione disponibilità";
     $templateParams["main"] = "templates/product_availabilities.php";
     $prodotti = $dbh->getProductById($_GET["id"]);
-    $templateParams["prodotto"] = empty($prodotti) ? null : $prodotti[0];
-    $templateParams["categoria"] = $_GET["categoria"];
+    $templateParams["prodotto"] = empty($prodotti) ? null : $prodotti["prodotto"];
+    $categorie = $dbh->getCategoryByProduct($_GET["id"]);
+    $templateParams["categoria"] = empty($categorie) ? null : $categorie[0];
     $templateParams["disponibilita"] = $dbh->getAvailabilitiesBySeller($_GET["id"], $_SESSION["idutente"]);
 
     require 'templates/base.php';
