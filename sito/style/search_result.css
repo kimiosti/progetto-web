@@ -21,13 +21,13 @@ body > main > section > nav > a {
 }
 
 .empty-result h2 {
-    font-size: 2em;
+    font-size: 20pt;
     margin-bottom: 15px;
     color: #333;
 }
 
 .empty-result .lead {
-    font-size: 1.2em;
+    font-size: 16pt;
     color: #555;
 }
 
@@ -47,6 +47,7 @@ body > main > section > nav > a {
     font-weight: bold;
     border-radius: 5px;
     transition: background-color 0.3s;
+    font-size: 12pt;
 }
 
 .btn-home:hover {
