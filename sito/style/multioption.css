@@ -26,9 +26,15 @@ body > main > section > nav > ul > li {
     margin-bottom: 20px;
     text-align: center;
     vertical-align: top;
-    aspect-ratio: 1.618;
+    aspect-ratio: 1;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+body > main > section > nav > ul > li > a {
+    height: 100%;
+    width: 100%;
+    display: block;
 }
 
 body > main > section > nav > ul > li > a > div > img {
@@ -39,7 +45,7 @@ body > main > section > nav > ul > li > a > div > img {
 
 body > main > section > nav > ul > li > a > div > h2 {
     padding: 0 10%;
-    font-size: 16pt;
+    font-size: 14pt;
     font-weight: 500;
     margin-bottom: 10px;
 }
@@ -52,5 +58,10 @@ body > main > section > nav > ul > li > a > div > h2 {
     body > main > section > nav > ul > li {
         width: 20%;
         margin: 0 2.5%;
+        aspect-ratio: 1.618;
+    }
+
+    body > main > section > nav > ul > li > a > div > h2 {
+        font-size: 16pt;
     }
 }
