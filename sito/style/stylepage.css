@@ -1,50 +1,20 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
-
-
-.prodotti_categoria {
-    position: relative;
-    margin: 0;
+body > main > section {
     padding: 0;
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
-    font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden;
-}
-
-.filtri {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    margin: 0 20px 30px;
-}
-
-.filtri button {
-    position: relative;
-    font-family: 'Montserrat', sans-serif;
-    background-color: white;
-    border: 1.5px solid #a6a6a6;
-    width: 220px;
-    height: 50px;
-    text-align: left;
-    cursor: pointer;
 }
 
 .filtri button img {
     position: absolute;
-    width: 20px;
     height: 10px;
-    right: 15px;
+    right: 8px;
     top: 50%;
     transform: translateY(-50%);
 }
 
-
 .intro {
+    margin: 0;
     position: relative;
     width: 100%;
     max-width: 1520px;
-    margin: 0 auto 30px;
     height: 270px;
     z-index: 0;
 }
@@ -57,100 +27,98 @@
 }
 
 
-.intro h2 {
+.intro h1 {
     position: absolute;
-    top: 50px;
-    left: 50px;
-    font-size: 50px;
+    top: calc(25% - 24pt - 15px);
+    left: 5%;
+    font-size: 24pt;
+    font-weight: 600;
     color: #383838;
     z-index: 1;
-    margin: 0;
 }
 
-.intro h3 {
+.intro p {
     position: absolute;
-    top: 130px;
-    left: 50px;
-    width: 60%;
-    font-size: 20px;
+    top: 25%;
+    left: 5%;
+    width: 50%;
+    font-size: 12pt;
+    font-weight: 600;
     color: #383838;
-    text-align: left;
+    text-align: justify;
     z-index: 1;
     margin: 0;
+    line-height: 1.2;
 }
 
-
-.prodotti_categoria .elenco_prodotti {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 70px;
-    padding: 0 20px;
-    margin-bottom: 60px;
+.elenco_prodotti {
+    text-align: center;
 }
 
-.prodotti_categoria .prodotto {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    height: 480px;
+.prodotto {
+    vertical-align: top;
+    display: inline-block;
+    width: 40%;
+    margin: 20px 5%;
     background-color: white;
-    padding: 10px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     box-sizing: border-box;
-    overflow: hidden;
+    aspect-ratio: 1 / 3.5;
 }
 
-.prodotti_categoria .prodotto img {
-    width: 220px;
-    height: 220px;
-    display: block;
-    margin: 0 auto 5px;
-    object-fit: cover;
+.prodotto img {
+    width: 80%;
+    aspect-ratio: 1;
 }
 
-.prodotti_categoria .prodotto h3 {
-    font-size: 18px;
+.prodotto h3 {
+    margin-bottom: 10px;
+    padding-top: 20px;
+    font-size: 12pt;
+    font-weight: 600;
     color: #333;
-    line-height: 1.3;
+    min-height: 30pt;
 }
 
-.prodotti_categoria .prodotto p {
-    margin: 5px 0;
-    font-size: 15px;
+.prodotto h4 {
+    margin: 0;
+    margin-bottom: 10px;
+    padding-top: 20px;
+    font-size: 12pt;
+    font-weight: 600;
+    color: #333;
+    min-height: 30pt;
+}
+
+.prodotto p {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 10px 0;
+    padding: 0 5%;
+    font-size: 10pt;
     color: #333;
     line-height: 1.4;
+    min-height: calc(38pt + 10px);
 }
 
 .prodotto-bottom {
-    margin-top: auto;
+    margin-top: 10px;
+    box-sizing: border-box;
+    width: 100%;
 }
 
-.prodotti_categoria .prodotto p.prezzo {
-    font-weight: bold;
-    font-size: 18px;
+.prodotto p.prezzo {
+    min-height: 0;
+    font-weight: 600;
+    font-size: 14pt;
     margin: 5px 0 2px;
 }
 
-.prodotti_categoria .prodotto p.taglia {
+.prodotto p.taglia {
     margin: 0;
-    font-size: 14px;
-}
-
-.breadcrumb-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px 50px;
-    flex-wrap: wrap;
-}
-
-.breadcrumb-left {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+    font-size: 10pt;
 }
 
 .breadcrumb {
@@ -167,85 +135,32 @@
 }
 
 .titoletto {
-    padding-top: 20px;
-    font-size: 30px;
+    font-size: 18pt;
     margin: 0;
-}
-
-@media screen and (max-width: 991px) {
-    .breadcrumb-wrapper {
-        margin: 0 20px 20px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-    }
-
-    .intro-text {
-        display: none;
-    }
-
-    .intro-image {
-        width: 100%;
-        height: 100%;
-        flex-basis: auto;
-    }
-
-    .intro {
-        background-color: transparent;
-        min-height: 0;
-    }
-
-    .intro h2 {
-        position: absolute;
-        top: 28px;
-        left: 20px;
-        font-size: 27px;
-        color: #383838;
-        z-index: 1;
-        margin: 0;
-    }
-    .intro h3 {
-        z-index: 1;
-        position: absolute;
-        width: 55%;
-        top: 26%;
-        left: 20px;
-        font-size: 15px;
-        color: #383838;
-        text-align: justify;
-    }
-
-    .elenco_prodotti .prodotto-link {
-        width: calc(50% - 15px);
-    }
-
-    .elenco_prodotti .prodotto {
-        width: auto;
-        height: 320px;
-        padding: 8px;
-    }
-
-    .elenco_prodotti .prodotto img {
-        width: 130px;
-        height: 130px;
-    }
-
-    .elenco_prodotti .prodotto h3 {
-        font-size: 12px;
-    }
-
-    .elenco_prodotti .prodotto p {
-        font-size: 10px;
-    }
-
-    .elenco_prodotti .prodotto p.prezzo {
-        font-size: 14px;
-    }
-
 }
 
 @media screen and (min-width: 992px) {
     .breadcrumb {
         font-size: 10pt;
+    }
+
+    .intro h1 {
+        font-size: 32pt;
+        top: calc(30% - 32pt - 15px)
+    }
+
+    .intro p {
+        font-size: 20pt;
+        top: 30%;
+    }
+
+    .prodotto {
+        width: 20%;
+        margin: 10px 2.5%;
+        aspect-ratio: 1 / 2.5;
+    }
+
+    .titoletto {
+        font-size: 20pt;
     }
 }

@@ -1,58 +1,54 @@
-/*filtri*/
-.filtri{
-    column-gap: 150px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.filtri {
+  text-align: center;
 }
 
+.filtri .wrapper {
+  box-sizing: border-box;
+  width: 40%;
+  margin: 10px 5%;
+  display: inline-block;
+}
 
-.filtri button{
-    position: relative;
-    font-family: 'Montserrat';
+.filtri .wrapper button {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10pt;
     background-color: white;
     border: 1.5px solid #a6a6a6;
-    width:220px;
-    height: 50px;
-    text-align: left;
-}
-
-/* Contenitore principale delle "pillole" dei filtri */
-.prodotti_categoria .filtri-attivi-container {
-    display: flex;
-    margin-left: 95px;
-    flex-wrap: wrap;
-    gap: 12px;
     width: 100%;
-    clear: both;
-    padding-bottom: 40px;
+    text-align: left;
+    position: relative;
+    cursor: pointer;
+    padding: 15px 5%;
 }
 
 /* Stile base per tutte le pillole */
-.prodotti_categoria .filtro-pill {
-    display: inline-flex;
-    align-items: center;
-    padding: 8px 14px;
-    font-size: 14px;
+.filtro-pill {
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 10px 20px 10px 0;
+    padding: 15px 5%;
+    font-size: 10pt;
     background-color: #f1f1f1;
     border: 1px solid #dcdcdc;
     border-radius: 20px;
     color: #333;
     text-decoration: none;
     transition: background-color 0.2s;
+    width: fit-content;
+    white-space: nowrap;
 }
 
 /* Stile specifico per il link "Cancella tutti" al passaggio del mouse */
-.prodotti_categoria .filtro-pill.cancella-tutti:hover {
+.filtro-pill.cancella-tutti:hover {
     background-color: #e0e0e0;
     border-color: #c0c0c0;
 }
 
 /* Stile per la "X" per rimuovere un singolo filtro */
-.prodotti_categoria .remove-filtro {
-    margin-left: 10px;
-    font-size: 20px;
-    font-weight: bold;
+.remove-filtro {
+    margin-left: 5%;
+    font-size: 10pt;
+    font-weight: 600;
     color: #888;
     text-decoration: none;
     cursor: pointer;
@@ -60,7 +56,7 @@
 }
 
 /* Effetto al passaggio del mouse sulla "X" */
-.prodotti_categoria .remove-filtro:hover {
+.remove-filtro:hover {
     color: #000;
 }
 
@@ -77,8 +73,9 @@
 }
 
 .dropdown {
+    box-sizing: border-box;
     display: none;
-    width: 218.5px;
+    width: 32%;
     font-family: 'Montserrat';
     position: absolute;
     background: white;
@@ -90,41 +87,36 @@
 }
 
 .dropdown li {
-    padding: 10px;
-    margin-left: 5px;
-    line-height: 2.2;
+    text-align: center;
+    padding: 15px 0;
     border-bottom: 1px solid #eee;
 }
 
-.dropdown p {
-    font-size: 13px;
+.dropdown a {
+    font-size: 10pt;
 }
 
 /*barra ricerca*/
 
 
-button img.decor .reset {
+button.reset img.decor {
     position: absolute;
-    width: 35px;
-    height: 35px;
-    right: 15px;
-    top: 50%;
+    width: 15px;
+    height: 15px;
+    right: 10px;
     transform: translateY(-50%);
-
 }
 
 button img.decorazione {
     position: absolute;
-    width: 19px;
-    height: 19px;
-    left: 15px;
-    top: 50%;
+    width: 20px;
+    height: 20px;
+    left: 5%;
     transform: translateY(-50%);
 }
 
-
-/* Stile della form */
 .form {
+  margin-top: 20px;
   position: relative;
   width: 270px;
   height: 40px;
@@ -135,7 +127,6 @@ button img.decorazione {
   background: #fff;
   transition: border-radius 0.5s ease;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
-
 }
 
 .form button {
@@ -145,11 +136,12 @@ button img.decorazione {
 }
 
 .form .input {
-  font-size: 0.9rem;
+  font-size: 10pt;
+  font-family: "Montserrat", sans-serif;
   background-color: transparent;
   width: 100%;
   height: 100%;
-  padding: 0.7em 1.5em;
+  padding: 5px 10%;
   border: none;
 }
 
@@ -180,35 +172,15 @@ button img.decorazione {
   transform: scale(1);
 }
 
+button.reset {
+  visibility: hidden;
+}
 
-input:not(:placeholder-shown) ~ .reset {
+.input:not(:placeholder-shown) ~ button.reset {
   opacity: 1;
   visibility: visible;
 }
 
+@media screen and (min-width: 992px) {
 
-@media screen and (max-width: 991px) {
-  .filtri {
-      gap: 20px 10px;
-      margin: 0 10px 30px;
-    }
-
-    .filtri .wrapper {
-      width: calc(50% - 10px);
-    }
-
-    .filtri .wrapper button {
-      width: 100%;
-      font-size: 12px;
-    }
-
-    .prodotti_categoria .filtri-attivi-container {
-      margin-left: 20px;
-      width: 90%;
-
-    }
-
-    .dropdown {
-      width: 44.1%;
-    }
 }
