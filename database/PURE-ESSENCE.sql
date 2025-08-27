@@ -72,20 +72,6 @@ create table CATEGORIA (
      descrizione tinytext not null,
      constraint IDCATEGORIA primary key (nome));
 
-create table OFFERTA (
-     IDofferta int not null auto_increment,
-     URLcopertina varchar(50) not null,
-     didascalia varchar(100) not null,
-     descrizione varchar(1500) not null,
-     percentuale int not null,
-     spedizioneGratis boolean not null,
-     inizio date not null,
-     fine date not null,
-     usernameVenditore varchar(50) not null,
-     categoria varchar(50),
-     marca varchar(80),
-     constraint IDOFFERTA primary key (IDofferta));
-
 create table MARCA (
      nome varchar(80) not null,
      constraint IDMARCA primary key (nome));
@@ -160,18 +146,6 @@ alter table PREFERITO add constraint FKAFFERENZA
 alter table PREFERITO add constraint FKAGGIUNTA
      foreign key (usernameAcquirente)
      references ACQUIRENTE (username);
-
-alter table OFFERTA add constraint FKPUBBLICA
-     foreign key (usernameVenditore)
-     references VENDITORE (username);
-
-alter table OFFERTA add constraint FKINERENZA
-     foreign key (categoria)
-     references CATEGORIA (nome);
-
-alter table OFFERTA add constraint FKRIGUARDO
-     foreign key (marca)
-     references MARCA (nome);
 
 alter table SOTTOCATEGORIA add constraint FKINCLUSIONE
      foreign key (categoria)
