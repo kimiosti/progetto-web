@@ -1,6 +1,10 @@
 <link rel="stylesheet" type="text/css" href="style/stylepage.css" />
 <link rel="stylesheet" type="text/css" href="style/research.css" />
-<script src="scripts/suggested.js"></script>
+<?php
+    if (!isset($_SESSION["tipoUtente"]) || $_SESSION["tipoUtente"] != "venditore") {
+        echo '<script src="scripts/suggested.js"></script>';
+    }
+?>
 <section>
 <nav><a href="index.php">Home</a><span>/</span><?php
     if (isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {
