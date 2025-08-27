@@ -79,28 +79,72 @@ function generateFilterLinks($filterParamName, $availableOptions, $optionKey) {
         </section><section class="wrapper">
             <button class="click">Taglia <img class="arrow" src="img/arrow-up.png" alt=""></button>
             <ul class="dropdown">
-                <?php generateFilterLinks('taglia', $templateParams['taglieprodottofiltri'], 'taglia'); ?>
+                <?php
+                    $sizeRanges = [
+                        '0-50'    => 'Fino a 50 ml',
+                        '51-100'  => '51 - 100 ml',
+                        '101-200' => '101 - 200 ml',
+                        '201'     => 'Oltre 200 ml'
+                    ];
+
+                    $selectedSizes = $_GET['taglia'] ?? [];
+
+                    foreach ($sizeRanges as $value => $label) {
+                        $params = $_GET;
+                        $isSelected = in_array($value, $selectedSizes);
+
+                        $tempSizes = $selectedSizes;
+                        if ($isSelected) {
+                            $tempSizes = array_diff($tempSizes, [$value]);
+                        } else {
+                            $tempSizes[] = $value;
+                        }
+
+                        $params['taglia'] = $tempSizes;
+                        if (empty($params['taglia'])) {
+                            unset($params['taglia']);
+                        }
+
+                        $url = 'prodotti_Categoria.php?' . http_build_query($params);
+                        $activeClass = $isSelected ? 'filtro-attivo' : '';
+
+                        echo '<li><a href="' . htmlspecialchars($url) . '" class="' . htmlspecialchars($activeClass) . '">' . htmlspecialchars($label) . '</a></li>';
+                    }
+                ?>
             </ul>
         </section><section class="wrapper">
             <button class="click">Prezzo <img class="arrow" src="img/arrow-up.png" alt=""></button>
             <ul class="dropdown">
                 <?php
-                    $prezziSelezionati = $_GET['prezzo'] ?? [];
-                    foreach($templateParams['prezzoprodottofiltri'] as $prezzo) {
-                        $prezzoCorrente = $prezzo['prezzo'];
+                    $priceRanges = [
+                        '0-50'    => '0 - 50 €',
+                        '50-100'  => '50 - 100 €',
+                        '100-200' => '100 - 200 €',
+                        '200'     => 'Oltre 200 €'
+                    ];
+
+                    $selectedPrices = $_GET['prezzo'] ?? [];
+
+                    foreach ($priceRanges as $value => $label) {
                         $params = $_GET;
-                        $isSelezionato = in_array($prezzoCorrente, $prezziSelezionati);
-                        $prezziTemp = $prezziSelezionati;
-                        if ($isSelezionato) {
-                            $prezziTemp = array_diff($prezziTemp, [$prezzoCorrente]);
+                        $isSelected = in_array($value, $selectedPrices);
+
+                        $tempPrices = $selectedPrices;
+                        if ($isSelected) {
+                            $tempPrices = array_diff($tempPrices, [$value]);
                         } else {
-                            $prezziTemp[] = $prezzoCorrente;
+                            $tempPrices[] = $value;
                         }
-                        $params['prezzo'] = $prezziTemp;
-                        if(empty($params['prezzo'])) { unset($params['prezzo']); }
+
+                        $params['prezzo'] = $tempPrices;
+                        if (empty($params['prezzo'])) {
+                            unset($params['prezzo']);
+                        }
+
                         $url = 'prodotti_Categoria.php?' . http_build_query($params);
-                        $classeAttiva = $isSelezionato ? 'filtro-attivo' : '';
-                        echo '<li><a href="' . htmlspecialchars($url) . '" class="' . htmlspecialchars($classeAttiva) . '">' . htmlspecialchars($prezzoCorrente) . ' €</a></li>';
+                        $activeClass = $isSelected ? 'filtro-attivo' : '';
+
+                        echo '<li><a href="' . htmlspecialchars($url) . '" class="' . htmlspecialchars($activeClass) . '">' . htmlspecialchars($label) . '</a></li>';
                     }
                 ?>
             </ul>

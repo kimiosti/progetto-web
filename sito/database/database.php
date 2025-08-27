@@ -52,18 +52,50 @@ class DatabaseHelper{
         foreach ($sottocategorie as $sottocategoria) { $params[] = $sottocategoria; }
         $types .= str_repeat('s', count($sottocategorie));
     }
+
     if (!empty($taglie)) {
-        $placeholders = implode(',', array_fill(0, count($taglie), '?'));
-        $query .= " AND d.taglia IN (" . $placeholders . ")";
-        foreach ($taglie as $taglia) { $params[] = $taglia; }
-        $types .= str_repeat('s', count($taglie));
+        $sizeConditions = [];
+
+        foreach ($taglie as $range) {
+            $values = explode('-', $range);
+            if (count($values) === 2) {
+                $sizeConditions[] = "(CAST(d.taglia AS UNSIGNED) BETWEEN ? AND ?)";
+                $params[] = (int)$values[0];
+                $params[] = (int)$values[1];
+                $types .= 'ii';
+            } elseif (count($values) === 1) {
+                $sizeConditions[] = "(CAST(d.taglia AS UNSIGNED) >= ?)";
+                $params[] = (int)$values[0];
+                $types .= 'i';
+            }
+        }
+
+        if (!empty($sizeConditions)) {
+            $query .= " AND (" . implode(' OR ', $sizeConditions) . ")";
+        }
     }
+
     if (!empty($prezzi)) {
-        $placeholders = implode(',', array_fill(0, count($prezzi), '?'));
-        $query .= " AND d.prezzo IN (" . $placeholders . ")";
-        foreach ($prezzi as $prezzo) { $params[] = $prezzo; }
-        $types .= str_repeat('d', count($prezzi));
+        $priceConditions = [];
+        foreach ($prezzi as $range) {
+            $values = explode('-', $range);
+
+            if (count($values) === 2) {
+                $priceConditions[] = "(d.prezzo BETWEEN ? AND ?)";
+                $params[] = (float)$values[0];
+                $params[] = (float)$values[1];
+                $types .= 'dd';
+            } elseif (count($values) === 1) {
+                $priceConditions[] = "(d.prezzo >= ?)";
+                $params[] = (float)$values[0];
+                $types .= 'd';
+            }
     }
+
+    if (!empty($priceConditions)) {
+        $query .= " AND (" . implode(' OR ', $priceConditions) . ")";
+    }
+}
 
     if (!empty($search)) {
         $search_is_filter = false;
