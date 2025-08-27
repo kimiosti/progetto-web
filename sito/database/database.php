@@ -876,5 +876,20 @@ class DatabaseHelper{
             return false;
         }
     }
+
+    public function getCategoryByProduct($productID) {
+        $statement = $this->db->prepare("
+            SELECT c.*
+            FROM categoria c, prodotto p, sottocategoria s
+            WHERE p.sottocategoria = s.nome
+            AND c.nome = s.categoria
+            AND p.IDprodotto = ?
+        ");
+        $statement->bind_param("i", $productID);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
