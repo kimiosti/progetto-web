@@ -1,5 +1,6 @@
 <link rel="stylesheet" type="text/css" href="style/search_result.css"/>
 
+<section>
 <nav><a href="index.php">Home</a><span>/</span><?php
     if (isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {
         echo '<a href="profile.php">Pagina personale</a><span>/</span>'
@@ -26,3 +27,4 @@
 
     <a href="research.php" class="btn-home">Continua a cercare</a>
 </div>
+</section>
