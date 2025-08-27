@@ -31,15 +31,14 @@ function generateFilterLinks($filterParamName, $availableOptions, $optionKey) {
 <link rel="stylesheet" type="text/css" href="style/stylefilter.css"/>
 <script src="script/filterpage.js"></script>
 
-<div class="prodotti_categoria">
+
     <section class="intro" <?php if(isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") { echo 'hidden="true"'; } ?>>
-        <h2><?php echo strtoupper(htmlspecialchars($templateParams['categoriaSelezionata'])); ?></h2>
+        <h1><?php echo strtoupper(htmlspecialchars($templateParams['categoriaSelezionata'])); ?></h1>
         <img src="img/banner.png" alt="#">
-        <h3><?php echo htmlspecialchars($templateParams["descrizioneCategoria"]); ?> </h3>
+        <p><?php echo htmlspecialchars($templateParams["descrizioneCategoria"]); ?> </p>
     </section>
 
     <section class="breadcrumb-wrapper">
-        <section class="breadcrumb-left">
             <nav class="breadcrumb">
                 <a href="index.php">Home</a>/<?php
                     if (isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {
@@ -50,8 +49,10 @@ function generateFilterLinks($filterParamName, $availableOptions, $optionKey) {
                     }
                 ?><span><?php echo ucfirst(htmlspecialchars($templateParams['categoriaSelezionata'])); ?></span>
             </nav>
-            <h3 class="titoletto">Filtri</h3>
-        </section>
+    </section>
+
+    <section>
+        <h2 class="titoletto">Filtri</h2>
 
         <form class="form" method="GET">
             <input type="hidden" name="categoria" value="<?php echo htmlspecialchars($templateParams['categoriaSelezionata']); ?>">
@@ -65,29 +66,22 @@ function generateFilterLinks($filterParamName, $availableOptions, $optionKey) {
         </form>
     </section>
 
-    <section class="filtri">
-        <section class="wrapper">
+    <section class="filtri"><section class="wrapper">
             <button class="click">Marca <img class="arrow" src="img/arrow-up.png" alt=""></button>
             <ul class="dropdown">
                 <?php generateFilterLinks('marca', $templateParams['marcafiltri'], 'marca'); ?>
             </ul>
-        </section>
-
-        <section class="wrapper">
-            <button class="click">Tipologia di prodotto <img class="arrow" src="img/arrow-up.png" alt=""></button>
+        </section><section class="wrapper">
+            <button class="click">Tipologia <img class="arrow" src="img/arrow-up.png" alt=""></button>
             <ul class="dropdown">
                 <?php generateFilterLinks('sottocategoria', $templateParams['sottocategoriafiltri'], 'sottocategoria'); ?>
             </ul>
-        </section>
-
-        <section class="wrapper">
+        </section><section class="wrapper">
             <button class="click">Taglia <img class="arrow" src="img/arrow-up.png" alt=""></button>
             <ul class="dropdown">
                 <?php generateFilterLinks('taglia', $templateParams['taglieprodottofiltri'], 'taglia'); ?>
             </ul>
-        </section>
-
-        <section class="wrapper">
+        </section><section class="wrapper">
             <button class="click">Prezzo <img class="arrow" src="img/arrow-up.png" alt=""></button>
             <ul class="dropdown">
                 <?php
@@ -110,8 +104,7 @@ function generateFilterLinks($filterParamName, $availableOptions, $optionKey) {
                     }
                 ?>
             </ul>
-        </section>
-    </section>
+        </section></section>
 
     <section class="filtri-attivi-container">
     <?php
@@ -149,14 +142,11 @@ function generateFilterLinks($filterParamName, $availableOptions, $optionKey) {
         foreach ($templateParams["prodotti"] as $prodotto) {
             $link = (isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") ? "handle_availability.php" : "product_detail.php";
             $queryParams = [ 'id' => $prodotto['IDprodotto'] ];
-    ?>
-            <a href="<?php echo $link . '?' . http_build_query($queryParams); ?>" class="prodotto-link">
-                <div class="prodotto">
+    ?><a href="<?php echo $link . '?' . http_build_query($queryParams); ?>" class="prodotto-link"><div class="prodotto">
                     <h3><?php echo htmlspecialchars(ucfirst($prodotto['marca'])); ?></h3>
                     <img src="img/<?php echo htmlspecialchars($prodotto['URLimmagine']); ?>" alt="<?php echo htmlspecialchars($prodotto['nome']); ?>" />
                     <h4><?php echo htmlspecialchars(ucfirst($prodotto['nome'])); ?></h4>
                     <p><?php echo htmlspecialchars($prodotto['didascalia']); ?></p>
-
                     <?php if (!isset($_SESSION["tipoUtente"]) || $_SESSION["tipoUtente"] != "venditore"): ?>
                         <div class="prodotto-bottom">
 
@@ -176,11 +166,8 @@ function generateFilterLinks($filterParamName, $availableOptions, $optionKey) {
 
                         </div>
                     <?php endif; ?>
-                </div>
-            </a>
-    <?php
+                </div></a><?php
         }
     }
     ?>
-</section>
-</div>
+    </section>
