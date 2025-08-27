@@ -1,17 +1,14 @@
-body > main > nav {
-    width: 80%;
-    margin: 20px 10%;
-    padding-top: 20px;
+body > main > section > nav {
     font-size: 8pt;
     color: #545454;
 }
 
-body > main > nav > a {
+body > main > section > nav > a {
     color: #545454;
 }
 
 .empty-result {
-    margin-top: 40px;
+    margin-top: 20px;
     margin-bottom: 4%;
     text-align: center;
     max-width: 600px;
@@ -59,7 +56,7 @@ body > main > nav > a {
 }
 
 @media screen and (min-width: 992px) {
-    body > main > nav {
+    body > main > section > nav {
         font-size: 10pt;
     }
 }
