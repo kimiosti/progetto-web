@@ -30,6 +30,10 @@ if ($_SESSION["tipoUtente"] == "acquirente") {
         <li><a href="set-email.php"><div><img src="<?php echo LOCAL_IMG_DIR."envelope.svg"; ?>" alt="Cambia email" /><h2>Cambia email</h2></div></a>
         </li><li><a href="set-password.php"><div><img src="<?php echo LOCAL_IMG_DIR."key.svg"; ?>" alt="Cambia password" /><h2>Cambia password</h2></div></a>
         </li><li><a href="set-phone.php"><div><img src="<?php echo LOCAL_IMG_DIR."telephone.svg"; ?>" alt="Cambia telefono" /><h2>Cambia telefono</h2></div></a>
-        </li><li><a href="delete-account.php"><div><img src="<?php echo LOCAL_IMG_DIR."x.svg"; ?>" alt="Rimuovi account" /><h2>Rimuovi account<h2></div></a>
+        </li><?php
+            if (isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] != "venditore") {
+                echo '<li><a href="delete-account.php"><div><img src="' . LOCAL_IMG_DIR . 'x.svg" alt="Rimuovi account" /><h2>Rimuovi account</h2></div></a></li>';
+            }
+        ?>
     </ul></nav>
 </section>

@@ -10,6 +10,17 @@
             <div><img src="<?php echo LOCAL_IMG_DIR . $availability["URLimmagine"]; ?>" alt="" /></div><div><p>Taglia: <?php echo $availability["taglia"]; ?></p>
             <p>Quantità: <?php echo $availability["quantità"]; ?></p>
             <p>Prezzo: €<?php echo number_format($availability["quantità"] * $availability["prezzo"], 2, ","); ?></p>
-            <a href="product_detail.php?id=<?php echo $availability["IDprodotto"]; ?>"><button>Compra di nuovo</button></a></div>
+            <a href="<?php
+                if (isset($_SESSION["tipoUtente"]) && ($_SESSION["tipoUtente"]) == "venditore") {
+                    echo 'handle_availability.php?id=' . $availability["IDprodotto"];
+                } else {
+                    echo 'product_detail.php?id=' . $availability["IDprodotto"];
+                }?>"><button><?php
+                    if (isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {
+                        echo 'Visualizza disponibilità';
+                    } else {
+                        echo 'Compra di nuovo';
+                    }
+                ?></button></a></div>
         </div><?php endforeach; ?></section>
 </section>
