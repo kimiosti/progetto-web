@@ -49,7 +49,7 @@
         <section class="about-call-to-action">
             <h2>Pronta a Iniziare il Tuo Viaggio?</h2>
             <p>Scopri i prodotti pensati per esaltare la tua bellezza unica.</p>
-            <a href="prodotti_categoria.php?categoria=viso" class="button-primary">Scopri la Collezione</a>
+            <a href="research.php" class="button-primary">Scopri la Collezione</a>
         </section>
 
 </section>
