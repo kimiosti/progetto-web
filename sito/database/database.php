@@ -930,5 +930,18 @@ class DatabaseHelper{
         $result = $statement->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function deleteNotification($user_type, $notificationID) {
+        $query = "DELETE FROM " . ($user_type == "venditore" ? "`notifica-venditore`" : "`notifica-acquirente`")
+            . "WHERE IDnotifica = ? AND letto = 1";
+        $statement = $this->db->prepare($query);
+        $statement->bind_param("i", $notificationID);
+        try {
+            $statement->execute();
+            return true;
+        } catch (Exception $th) {
+            return false;
+        }
+    }
 }
 ?>
