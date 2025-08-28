@@ -83,7 +83,7 @@ create table SOTTOCATEGORIA (
 
 create table `NOTIFICA-ACQUIRENTE` (
      IDnotifica int not null auto_increment,
-     titolo varchar(50) not null,
+     titolo varchar(128) not null,
      contenuto varchar(256) not null,
      letto boolean not null default false,
      data date not null,
@@ -94,7 +94,7 @@ create table `NOTIFICA-ACQUIRENTE` (
 
 create table `NOTIFICA-VENDITORE` (
      IDnotifica int not null auto_increment,
-     titolo varchar(50) not null,
+     titolo varchar(128) not null,
      contenuto varchar(256) not null,
      letto boolean not null default false,
      data date not null,
