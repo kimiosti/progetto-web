@@ -31,6 +31,10 @@ body > main > section > div > p {
     font-size: 10pt;
 }
 
+body > main > section > div > section {
+    text-align: center;
+}
+
 body > main > section > div > section > a {
     display: contents;
 }
@@ -62,7 +66,7 @@ body > main > section > div > section button:hover {
 
     body > main > section > div > section button {
         width: 20%;
-        margin-right: 0;
+        margin: 5px 2.5%;
     }
 
     body > main > section > div > p {
