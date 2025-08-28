@@ -12,9 +12,9 @@
         <?php foreach ($templateParams["prodotti"] as $prodotto): ?><a href="product_detail.php?id=<?php
             echo $prodotto["IDprodotto"];
         ?>" class="prodotto-link"><div class="prodotto">
-            <h3><?php echo ucfirst($prodotto["marca"]); ?></h3>
+            <h2><?php echo ucfirst($prodotto["marca"]); ?></h2>
             <img src="<?php echo LOCAL_IMG_DIR . $prodotto["URLimmagine"]; ?>?" alt="<?php echo $prodotto["nome"]; ?>" />
-            <h4><?php echo ucfirst($prodotto["nome"]); ?></h4>
+            <h3><?php echo ucfirst($prodotto["nome"]); ?></h3>
             <p><?php echo $prodotto["didascalia"]; ?></p>
             <div class="prodotto-bottom">
                 <?php

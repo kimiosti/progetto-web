@@ -59,9 +59,9 @@ function generateFilterLinks($filterParamName, $availableOptions, $optionKey) {
             <button type="submit">
                 <img class="decorazione" src="img/search-icon.svg" alt="Cerca">
             </button>
-            <input class="input" name="search" placeholder="Cerca prodotti..." type="text" value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+            <label for="search" hidden="true">Cerca</label><input class="input" id="search" name="search" placeholder="Cerca prodotti..." type="text" value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
             <button class="reset" type="button" onclick="location.href='prodotti_Categoria.php?categoria=<?php echo urlencode($templateParams['categoriaSelezionata']); ?>'">
-                <img class="decor" src="img/reset-icon.svg">
+                <img class="decor" src="img/reset-icon.svg" alt="cancella" />
             </button>
         </form>
     </section>

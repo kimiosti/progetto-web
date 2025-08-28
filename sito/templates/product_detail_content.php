@@ -31,7 +31,7 @@ if (empty($immagini) && !empty($prodotto['URLimmagine'])) {
 
     <section class="product-info">
         <h1 class="product-name"><?php echo htmlspecialchars($prodotto['nome']); ?></h1>
-        <h3 class="product-subtitle"><?php echo htmlspecialchars($prodotto['didascalia']); ?></h3>
+        <h2 class="product-subtitle"><?php echo htmlspecialchars($prodotto['didascalia']); ?></h2>
         <?php if (!empty($prodotto['descrizione'])): ?>
         <p class="product-description"><?php echo nl2br(htmlspecialchars($prodotto['descrizione'])); ?></p>
         <?php endif; ?>
@@ -43,7 +43,6 @@ if (empty($immagini) && !empty($prodotto['URLimmagine'])) {
                 <label class="taglia-label">Scegli una taglia</label>
                 <section class="taglia-selector" data-js="taglia-selector-button">
                     <span data-js="selected-taglia"><?php echo htmlspecialchars($disponibilita[0]['taglia']); ?></span>
-                    <i class="fas fa-chevron-down"></i>
                 </section>
             </section>
             <button class="btn-wishlist" title="Aggiungi ai preferiti">
@@ -56,7 +55,7 @@ if (empty($immagini) && !empty($prodotto['URLimmagine'])) {
         <form action="actions/cart/add.php" method="POST" class="actions">
             <section class="quantity-selector">
                 <button type="button" class="qty-btn" data-js="decrease">-</button>
-                <input type="number" data-js="quantity" value="1" min="1" readonly>
+                <label for="quantity-input" hidden="true">Quantità selezionata</label><input type="number" id="quantity-input" data-js="quantity" value="1" min="1" readonly>
                 <button type="button" class="qty-btn" data-js="increase">+</button>
             </section>
             <section class="product-buttons">

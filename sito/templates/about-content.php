@@ -21,7 +21,7 @@
                 Selezioniamo con cura marchi internazionali di cosmetica, skincare e make-up, scelti per qualità, affidabilità e innovazione. Ogni prodotto che trovi da noi è il risultato di una ricerca attenta, pensata per garantire sicurezza, performance e la possibilità di esprimere al meglio la propria unicità.                </p>
                 <p>
                 Il nostro impegno è accompagnarti nella scoperta del prodotto giusto per te, con la certezza di trovare sempre brand originali, certificati e aggiornati alle ultime tendenze.                </p>
-                <h4>Benvenuti nel nostro mondo: un luogo dove la bellezza è scelta, qualità e ispirazione.</h4>
+                <h3>Benvenuti nel nostro mondo: un luogo dove la bellezza è scelta, qualità e ispirazione.</h3>
             </div>
         </section>
 
