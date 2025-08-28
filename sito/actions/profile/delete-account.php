@@ -22,12 +22,6 @@ if (isset($_SESSION["idutente"]) && isset($_SESSION["tipoUtente"])) {
         } else {
             nonDeletedRedirect();
         }
-    } else {
-        if ($dbh->deleteSeller($_SESSION["idutente"])) {
-            deletedRedirect();
-        } else {
-            nonDeletedRedirect();
-        }
-    }    
+    }
 }
 ?>
