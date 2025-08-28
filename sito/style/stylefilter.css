@@ -173,5 +173,12 @@ button.reset {
 }
 
 @media screen and (min-width: 992px) {
+  .filtri .wrapper{
+    width: 20%;
+    margin: 10px 2.5%;
+  }
 
+  .dropdown {
+    width: 16%;
+  }
 }
