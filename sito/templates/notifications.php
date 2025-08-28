@@ -36,7 +36,13 @@ echo $notifica["IDnotifica"];
 echo (isset($_GET["read"]) && $_GET["read"] == "true") ? "true" : "false";
 ?>"><button><?php
 echo $notifica["letto"] == 1 ? 'Segna come non letta' : 'Segna come letta';
-?></button></a>
+?></button></a><?php
+    if (isset($_GET["read"]) && $_GET["read"] == "true") {
+        echo '<a href="actions/notifications/delete.php?id=' . $notifica["IDnotifica"] . '&read='
+            . ((isset($_GET["read"]) && $_GET["read"] == true) ? "true" : "false") . '"><button>'
+            . 'Elimina notifica</button></a>';
+    }
+?>
 </section>
 </div>
 <?php endforeach ?>
