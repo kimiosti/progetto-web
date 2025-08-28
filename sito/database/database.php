@@ -236,30 +236,6 @@ class DatabaseHelper{
         }
     }
 
-    public function deleteSeller($username) {
-        try {
-            $availabilityStatement = $this->db->prepare("DELETE FROM disponibilità WHERE usernameVenditore = ?");
-            $availabilityStatement->bind_param("s", $username);
-            $availabilityStatement->execute();
-
-            $offerStatement = $this->db->prepare("DELETE FROM offerta WHERE usernameVenditore = ?");
-            $offerStatement->bind_param("s", $username);
-            $offerStatement->execute();
-
-            $notificationStatement = $this->db->prepare("DELETE FROM `ricezione-venditore` WHERE usernameVenditore = ?");
-            $notificationStatement->bind_param("s", $username);
-            $notificationStatement->execute();
-
-            $accountStatement = $this->db->prepare("DELETE FROM venditore WHERE username = ?");
-            $accountStatement->bind_param("s", $username);
-            $accountStatement->execute();
-
-            return $this->db->affected_rows == 1;
-        } catch (Exception $th) {
-            return false;
-        }
-    }
-
     public function deleteCustomer($username) {
         try {
             $fetchOrders = $this->db->prepare("SELECT * FROM ordine WHERE usernameAcquirente = ?");
