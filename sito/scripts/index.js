@@ -13,5 +13,15 @@ function refresh() {
     });
 }
 
+const mobileMenuButton = document.querySelector("body > header > nav > button");
+mobileMenuButton.addEventListener("click", function() {
+    const dropdownMenu = document.querySelector("body > header > nav:first-of-type > ul");
+    if (dropdownMenu.style.visibility == "hidden") {
+        dropdownMenu.style.visibility = "visible";
+    } else {
+        dropdownMenu.style.visibility = "hidden";
+    }
+});
+
 refresh();
 setInterval(refresh, 2000);
