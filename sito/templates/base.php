@@ -73,6 +73,6 @@
             </section>
             <p>© 2025 PureEssence</p>
         </footer>
+    <script src="scripts/index.js"></script>
     </body>
-<script src="scripts/index.js"></script>
 </html>
