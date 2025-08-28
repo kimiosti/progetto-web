@@ -21,7 +21,6 @@
     padding: 15px 5%;
 }
 
-/* Stile base per tutte le pillole */
 .filtro-pill {
     display: inline-block;
     box-sizing: border-box;
@@ -38,13 +37,11 @@
     white-space: nowrap;
 }
 
-/* Stile specifico per il link "Cancella tutti" al passaggio del mouse */
 .filtro-pill.cancella-tutti:hover {
     background-color: #e0e0e0;
     border-color: #c0c0c0;
 }
 
-/* Stile per la "X" per rimuovere un singolo filtro */
 .remove-filtro {
     margin-left: 5%;
     font-size: 10pt;
@@ -55,14 +52,11 @@
     transition: color 0.2s;
 }
 
-/* Effetto al passaggio del mouse sulla "X" */
 .remove-filtro:hover {
     color: #000;
 }
 
 
-
-/*tendina*/
 .click{
     display: block;
     cursor: pointer;
@@ -95,8 +89,6 @@
 .dropdown a {
     font-size: 10pt;
 }
-
-/*barra ricerca*/
 
 
 button.reset img.decor {
@@ -149,7 +141,6 @@ button img.decorazione {
   outline: none;
 }
 
-/* Animated bottom border */
 .form::before {
   content: "";
   position: absolute;
