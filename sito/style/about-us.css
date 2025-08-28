@@ -1,5 +1,8 @@
 .about-us-container {
     font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    margin: 0;
+    padding-top: 0;
 }
 
 .about-hero {
@@ -42,8 +45,8 @@
 }
 
 .hero-title-group img {
-    height: 600px;
-    width: auto;
+    height: 200px;
+    width: 550px;
 }
 
 .about-story {
@@ -154,8 +157,63 @@
 }
 
 @media screen and (max-width: 768px) {
-    .about-hero h1 {
-        font-size: 60px;
+
+    .about-hero {
+        position: relative;
+        height: 45vh;
+        display: flex;
+        justify-content:left;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .about-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.1);
+        z-index: 2;
+    }
+
+    .about-hero-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+    }
+
+    .about-hero-content {
+        position: relative;
+        z-index: 3;
+        padding: 0 5%;
+        text-align: left;
+        color: #000000;
+    }
+
+    .hero-title-group {
+        display: flex;
+        flex-direction: column;
+        align-items:start;
+        gap: 0;
+    }
+
+    .hero-title-group h1 {
+        font-size: 2.8rem;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero-title-group img {
+        width: 70%;
+        max-width: 280px;
+        height: auto;
     }
 
     .about-story {
@@ -165,6 +223,11 @@
 
     .about-story-narrative {
         padding-left: 0;
+        text-align: left;
+    }
+
+    .about-story-narrative p {
+        text-align: left;
     }
 
     .philosophy-grid {
@@ -177,7 +240,7 @@
         padding: 3rem 5%;
     }
 
-    .about-story h2,
+    .about-story-narrative h2,
     .about-philosophy h2,
     .about-call-to-action h2 {
         font-size: 2rem;
