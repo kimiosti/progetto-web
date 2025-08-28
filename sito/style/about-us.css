@@ -76,6 +76,11 @@
     margin-bottom: 1.5rem;
 }
 
+.about-story-narrative h3 {
+    font-size: 12pt;
+    font-weight: 600;
+}
+
 .about-story-narrative p {
     text-align: justify;
     line-height: 1.7;

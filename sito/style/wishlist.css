@@ -79,6 +79,25 @@ body > main > section > nav > ul > li > a > footer > p {
     margin: 0;
 }
 
+.prodotto h2 {
+    margin-bottom: 10px;
+    padding-top: 20px;
+    font-size: 10pt;
+    font-weight: 600;
+    color: #333;
+    min-height: 20pt;
+}
+
+.prodotto h3 {
+    margin: 0;
+    margin-bottom: 10px;
+    padding-top: 20px;
+    font-size: 9pt;
+    font-weight: 600;
+    color: #333;
+    min-height: 30pt;
+}
+
 @media screen and (min-width: 992px) {
     body > main > section > nav {
         font-size: 10pt;
@@ -88,5 +107,14 @@ body > main > section > nav > ul > li > a > footer > p {
         width: 20%;
         margin: 10px 2.5% 20px 2.5%;
         aspect-ratio: 1 / 1.618;
+    }
+
+    .prodotto h2 {
+        font-size: 12pt;
+        min-height: 8pt;
+    }
+
+    .prodotto h3 {
+        font-size: 12pt;
     }
 }
