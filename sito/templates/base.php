@@ -5,14 +5,20 @@
         <link rel="icon" type="images/png" href="img/favicon.png">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8" />
         <link rel="stylesheet" type="text/css" href="style/style.css"/>
-        <script src="scripts/index.js"></script>
         <script src="script/search.js"></script>
 
     </head>
 
     <body>
         <header class="site-header">
-            <nav><a href="#"><img src="<?php echo LOCAL_IMG_DIR."list.svg"; ?>" alt="Categorie" /></a>
+            <nav><button><img src="<?php echo LOCAL_IMG_DIR."list.svg"; ?>" alt="Categorie" /></button>
+            <ul>
+                <?php foreach($templateParams["categorie"] as $categoria) {
+                    echo '<li><a href="prodotti_categoria.php?categoria=' . urlencode($categoria["nome"]) . '">'
+                        . strtoupper($categoria["nome"]) . '</a></li>';
+                }
+                ?>
+            </ul>
             </nav><div><a href="index.php"><img src="<?php echo LOCAL_IMG_DIR."logo.png"; ?> " alt="Home Page" /></a>
             </div><nav><ul>
                 <li><a href="#" title="Cerca" <?php if(isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] == "venditore") {echo 'hidden="true"';} ?>>
@@ -68,4 +74,5 @@
             <p>© 2025 PureEssence</p>
         </footer>
     </body>
+<script src="scripts/index.js"></script>
 </html>
