@@ -22,12 +22,8 @@ if (!isset($_SESSION["idutente"])) {
         } else {
             for ($i = 0; $i < count($templateParams["prodotti"]); $i++) {
                 $availabilities = $dbh->getAvailabilities($templateParams["prodotti"][$i]["IDprodotto"]);
-                if (empty($availabilities)) {
-                    $templateParams["prodotti"][$i]["prezzo"] = -1;
-                } else {
-                    $templateParams["prodotti"][$i]["prezzo"] = $availabilities[0]["prezzo"];
-                    $templateParams["prodotti"][$i]["taglia"] = $availabilities[0]["taglia"];
-                }
+                $templateParams["prodotti"][$i]["prezzo"] = empty($availabilities) ? null : $availabilities[0]["prezzo"];
+                $templateParams["prodotti"][$i]["taglia"] = empty($availabilities) ? null : $availabilities[0]["taglia"];
             }
         }
         $templateParams["main"] = "templates/wishlist.php";

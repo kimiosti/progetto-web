@@ -74,7 +74,7 @@ if (empty($immagini) && !empty($prodotto['URLimmagine'])) {
                     <img src="img/arrow-up.png" class="accordion-arrow" alt="Apri sezione">
                 </button>
                 <div class="accordion-panel">
-                    <p><?php echo !empty($prodotto['istruzioni_per_luso']) ? nl2br(htmlspecialchars($prodotto['istruzioni_per_luso'])) : 'Istruzioni per l\'uso assenti.'; ?></p>
+                    <p><?php echo !empty($prodotto['istruzioni']) ? nl2br(htmlspecialchars($prodotto['istruzioni'])) : 'Istruzioni per l\'uso assenti.'; ?></p>
                 </div>
             </div>
             <div class="accordion-item">

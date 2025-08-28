@@ -1,3 +1,7 @@
+body > main > section:first-of-type {
+    padding-top: 20px;
+}
+
 body > main > section > nav {
     font-size: 8pt;
     color: #545454;
